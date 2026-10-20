@@ -1,0 +1,211 @@
+# MP3 Player
+
+Author: Stefan Jipa
+
+## Goal
+build a good, modern MP3 player with a retro style (going all out on the design)
+
+## Requirements
+- custom made, PCB designed in KiCad, assembled by JLCPCB (as many parts as possible from their stock)
+- compact
+- highest possible audio quality on the jack (FLAC/WAV, not just MP3)
+- Bluetooth to wireless headphones (A2DP)
+- 3.5mm jack with plug detection
+- push-push microSD
+- USB-C: charging + programming (USB-UART) + ESD protection
+- thin LiPo battery + charger + fuel gauge + soft power (power on from a button)
+- display readable in sunlight
+- v1 WITHOUT speakers (WM8960/class-D stay for v2)
+
+## Architecture
+
+```
+USB-C ─ ESD ─┬─ CP2102N ── auto-reset ── ESP32-PICO-MINI-02
+             └─ BQ25180 (charger + power path + ship mode + button)
+                   │ VSYS
+                   ├─ TPS63802 buck-boost ── 3.3V digital (ESP32, SD, display)
+                   ├─ LP5907 LDO ─────────── clean 3.3V analog (DAC)
+                   └─ LM27762 ────────────── clean ±rails (headphone amp)
+                 LiPo ── MAX17048 (fuel gauge, I2C)
+
+ESP32 ── I2S ── PCM5122 (DAC) ── OPA1622 (headphone amp) ── 3.5mm jack (detect pin → GPIO)
+      ├─ SDMMC 4-bit ── microSD push-push
+      ├─ SPI ── display (ST7567 1.37" main / Sharp LS013B7DH03 fallback)
+      ├─ I2C ── BQ25180, MAX17048, PCM5122
+      ├─ GPIO ── buttons
+      └─ BT A2DP ── wireless headphones
+```
+
+## Components (BOM v1)
+
+JLC prices / stock checked on 2026-10-20. All are "extended" (~$3 JLC fee per part type).
+Before ordering: re-check stock + the exact variant on jlcpcb.com/parts.
+
+### Brain
+| What | Part | LCSC | Stock | Price | Notes |
+|---|---|---|---|---|---|
+| MCU | **ESP32-PICO-MINI-02** (N8R2) | C2980306 / C3013939 | ~1100 | ~$5.6 | 13.2x16.6mm, 8MB flash + **2MB PSRAM** (audio/FLAC buffer), built-in antenna + certified. Check which code is the PCB-antenna variant and which is "U" (U.FL) |
+| alternative | ESP32-WROOM-32E | C701341 | 27k | $3.75 | larger (18x25.5), no PSRAM |
+| why not | ESP32-PICO-V3 (bare chip) | C967022 | 313 | $4.2 | you design the antenna + RF matching + crystal yourself → hard to get right, not worth it |
+
+Only the **classic** ESP32 has Bluetooth Classic (A2DP) for headphones. S3/C3/C6 are BLE only.
+
+### Audio (hi-fi path)
+| What | Part | LCSC | Stock | Price | Notes |
+|---|---|---|---|---|---|
+| DAC | **PCM5122** | C1540085 | 177 | $4.1 | 112dB, 32-bit/384kHz, hardware volume over I2C, works without MCLK (internal PLL from BCK) |
+| headphone amp | **OPA1622** | C2876559 | 2682 | $3.0 | top-tier for headphones (very low THD), VSON-10 3x3 |
+| amp rails | **LM27762** | C473398 | 35k | $0.96 | generates clean ± voltage (charge pump + LDO) for the OPA1622 |
+| jack | 3.5mm with **detect** pin (switch) | to choose (PJ-320/PJ-342 family) | — | ~$0.1 | check the datasheet for a detect contact |
+
+"All-in-one" option for a more compact build: **CS43131** (Cirrus, DAC + headphone amp + jack detect, 130dB, the chip in good dongles).
+LCSC C965907, only **30 in stock**, ~$5.6. Digital interface probably 1.8V only → would need level shifters
+(TXB0104 C105266 + PCA9306 C33196). To be checked in the datasheet.
+
+Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122.
+
+### Power
+| What | Part | LCSC | Stock | Price | Notes |
+|---|---|---|---|---|---|
+| charger | **BQ25180** | C3682423 | 4077 | $1.76 | I2C, power path, **ship mode + button** (MR) = soft power, tiny DSBGA-8 |
+| alternative | BQ25185 | C19725033 | 4259 | $1.55 | no I2C (standalone), WSON easier to solder |
+| 3.3V digital | **TPS63802** buck-boost 2A | C2845237 | 37k | $0.91 | drains the battery fully, handles BT/WiFi peaks |
+| 3.3V analog | **LP5907-3.3** | C80670 | 49k | $0.16 | low-noise LDO, DAC only, from VSYS |
+| fuel gauge | **MAX17048** | C2682616 | 24k | $2.15 | real battery percentage, DFN 2x2 |
+| battery | LiPo pouch with protection | — | — | — | bought separately. e.g. 402535 (~300mAh) / 503040 (~500mAh) / 503450 (~1000mAh) |
+
+**Soft power (BQ25180):**
+- **power on**: press the button, BQ25180 leaves ship mode and powers the system
+- **power off**: ESP32 sends the ship mode command over I2C; the battery is disconnected (a few nA)
+- **long press**: hardware reset, in case something hangs
+- dedicated alternative: LTC2954 (C683782, $6.7, expensive)
+
+### USB-C
+| What | Part | LCSC | Stock | Price | Notes |
+|---|---|---|---|---|---|
+| connector | TYPE-C-31-M-12 (16 pins) | C165948 | 347k | $0.19 | + 2x 5.1k on CC1/CC2 |
+| ESD | USBLC6-2SC6 | C7519 | 44k | $0.18 | on D+/D- |
+| USB-UART | **CP2102N** QFN-20 | C969913 | 10k | $1.9 | + 2 transistors for ESP32 auto-reset/boot |
+| alternative | CH343P | C2846043 | 10k | $1.0 | cheaper, just as small |
+
+### Storage, display, buttons
+| What | Part | LCSC | Stock | Price | Notes |
+|---|---|---|---|---|---|
+| microSD | push-push (自弹式) | C91145 (TF-01A) | 181k | $0.19 | check footprint + card detect pin |
+| main display | **ST7567 1.37" 128x64** (bare panel on FPC) | — not at JLC | — | — | AliExpress. Reflective LCD, readable in sunlight, Nokia vibe |
+| fallback display | **Sharp LS013B7DH03** 1.28" memory LCD | 0 stock at JLC | — | ~$10 | Mouser/DigiKey. 10-pin FPC 0.5mm |
+| FPC | 0.5mm, pin count per panel | Hirose FH12-10S-0.5SH, C506791 (10P) | 7900 | $0.51 | |
+| buttons | side tact switch / small SMD | to choose | — | — | play/pause, next, prev, vol+, vol- (+ power = BQ25180 button) |
+
+**Both displays on the same PCB:** both use SPI. Put **two FPC footprints** on the board (one for ST7567, one for LS013) and populate only one. No adapter needed.
+- **LS013B7DH03**: needs 3V and an EXTCOMIN signal (~1Hz toggle), driven from a GPIO
+- **ST7567**: needs a few capacitors for its internal charge pump, per the panel datasheet
+- **important**: buy the ST7567 panel first and make the footprint from its actual pinout, since it varies between sellers
+
+## Who solders what
+
+Rule: JLC places only what can't be hand-soldered (QFN/DFN/BGA/LGA, no visible pins).
+Parts with visible pins are bought from LCSC in the same cart (same parcel) and soldered at home → no $3/type fee.
+
+### JLC (assembly) — 9 extended types (~$27 in fees)
+| Part | LCSC | Package | Why JLC |
+|---|---|---|---|
+| ESP32-PICO-MINI-02 | C2980306 / C3013939 | LGA (pads underneath) | impossible by hand |
+| PCM5122 | C1540085 | TSSOP-28 | 0.65mm pitch, hand-solderable but risky; we want clean joints on audio |
+| OPA1622 | C2876559 | VSON-10 3x3 | thermal pad underneath |
+| LM27762 | C473398 | WSON-12 2x3 | thermal pad underneath |
+| BQ25180 | C3682423 | DSBGA-8 | BGA |
+| TPS63802 | C2845237 | VSON-10 2x3 | no pins |
+| TPS63802 inductor (0.47uH) | to choose | 2016/2520 | must sit next to the IC, reflowed |
+| MAX17048 | C2682616 | DFN-8 2x2 | no pins |
+| CP2102N | C969913 | QFN-20 3x3 | no pins |
+| resistors, capacitors, 2 auto-reset transistors | **basic** list only | 0402/0603, SOT-23 | basic = no fee |
+
+### Me (iron + flux) — 0 fees
+| Part | LCSC | Package | Difficulty |
+|---|---|---|---|
+| tact buttons | to choose | SMD/THT | easy |
+| 3.5mm jack with detect | to choose (PJ-320/PJ-342) | SMD/THT | easy |
+| LP5907-3.3 | C80670 | SOT-23-5 | easy |
+| USBLC6-2SC6 | C7519 | SOT-23-6 | easy |
+| microSD push-push | C91145 (TF-01A) | SMD | medium (pins under the metal shell, lots of flux) |
+| display FPC (x1, only the one used) | C506791 Hirose FH12-10S | 0.5mm | medium (drag soldering + flux + wick) |
+| USB-C 16 pins | C165948 | SMD, 0.5mm pitch | **hard** — flux, fine tip, inspect for bridges under magnification |
+| battery (JST or direct) | — | — | easy |
+| display on FPC | — | — | just plug it into the connector |
+
+Order: JLC does the reflow, then at home first USB-C and microSD (the fine ones), then FPC, finally jack, buttons, battery.
+
+Tools: iron with a fine tip (e.g. Pinecil/TS101), gel flux (no-clean), wick, 0.3-0.5mm solder, magnifier, multimeter.
+Check USB-C for continuity (VBUS-GND and D+/D-) **before** plugging it in.
+
+## Cost estimate (2026-10-20, to re-check when ordering)
+
+Parts per board (price at 1-9 pcs): ~$23
+- ICs: ~$21 (ESP32 5.6, PCM5122 4.1, OPA1622 3.0, MAX17048 2.15, CP2102N 1.9, BQ25180 1.76, TPS63802+inductor 1.1, LM27762 0.96, rest <1)
+- connectors + buttons: ~$1.5
+- passives: ~$0.5 (basic)
+
+Prototype (5 PCBs 4 layers, 2 assembled Economic, leaded parts soldered at home):
+| What | ~$ |
+|---|---|
+| 4-layer PCB x5 | 8 |
+| PCBA Economic setup + stencil | 10 |
+| extended fees (9 x $3) | 27 |
+| parts for 2 boards (JLC + LCSC) | 46 |
+| shipping to RO (Global Standard) | 12 |
+| VAT 21% | 22 |
+| **total** | **~125 (~560 lei)** |
+
+If Economic doesn't accept the BGA (BQ25180) → Standard (+~$17) or BQ25185 (WSON, no I2C).
+
+Extra (per unit): battery ~20-30 lei, ST7567 ~15-25 lei, LS013B7DH03 ~60-70 lei, microSD ~30 lei.
+
+## Design notes
+- **antenna area**: no copper (not even a ground plane) under the module antenna, module at the board edge. With a metal case, a plastic window is needed in front of the antenna
+- **audio**: analog ground separate from digital ground, joined at a single point near the DAC. DAC and amp far from the ESP32 and the TPS63802 inductor
+- **ESP32**: strapping pins (GPIO0, 2, 12, 15) on SDMMC and boot need care. GPIO12 must be LOW at boot with 3.3V flash (or burn the eFuse)
+- **real quality**: on the jack, FLAC/WAV at 44.1/48kHz. On Bluetooth quality is limited by SBC (ESP32 doesn't do aptX/LDAC)
+- **music on the card**: the classic ESP32 has no native USB. Copy to microSD on a PC or upload over WiFi (web page served by the player)
+- **speakers (v2)**: WM8960 or a small class-D (MAX98357A on I2S) + phone speakers
+
+## Status (2026-10-20)
+
+Done:
+- [x] architecture + BOM chosen, JLC stock/prices checked
+- [x] JLC vs "I solder" list, cost estimated ~$125
+- [x] KiCad libraries installed (`lib/`, 18 parts with symbol + footprint + 3D)
+- [x] datasheets in `datasheets/` (MAX17048 missing, link under Resources)
+
+Next — I draw the schematic MYSELF, Claude only reviews (questions/hints, doesn't give the connections):
+- [ ] paper sketch: 5 blocks (USB → power → ESP32 → audio, + SD/display/buttons) and what goes on each arrow
+- [ ] 1-2 Phil's Lab videos (KiCad, microcontroller + USB + power)
+- [ ] **block 1: USB-C + USBLC6 + CP2102N + auto-reset** ← START HERE
+  - CP2102N datasheet + official ESP32-PICO-KIT schematic (Espressif)
+  - ritual: page 1 → Pin Functions (power / inputs / outputs / config / NC) → Typical Application → copy + understand every part
+- [ ] block 2: ESP32 (power, decoupling, EN/BOOT)
+- [ ] block 3: power (BQ25180 → TPS63802 → LP5907) — careful, this is where parts get fried
+- [ ] block 4: audio (PCM5122 → OPA1622 + LM27762 → jack)
+- [ ] block 5: microSD, display, buttons
+- each block on a separate hierarchical sheet in KiCad
+- schematic sources to copy from: TI "<chip>EVM user guide", ESP32-PICO-KIT, Adafruit/SparkFun on GitHub
+
+## Schematic
+mp3_player.kicad_sch
+
+## Software
+code.md
+- ESP-IDF or Arduino + `arduino-audio-tools` + `ESP32-A2DP` (pschatzmann): read SD → decode MP3/FLAC → I2S (jack) or A2DP (BT headphones)
+
+## Tests
+
+## Resources
+- datasheets: `datasheets/` (all parts + ESP32 hardware design guidelines + ST7567 + LS013B7DH03)
+- MAX17048 (download manually): https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf
+- JLC parts: https://jlcpcb.com/parts
+- arduino-audio-tools: https://github.com/pschatzmann/arduino-audio-tools
+- ESP32-A2DP: https://github.com/pschatzmann/ESP32-A2DP
+
+## KiCad libraries
+- `lib/mp3_player.kicad_sym` + `lib/mp3_player.pretty` + `lib/mp3_player.3dshapes`, registered in the project's `sym-lib-table` / `fp-lib-table`
+- generated with `easyeda2kicad` from LCSC codes. New part: `easyeda2kicad --full --lcsc_id Cxxxx --output $PWD/lib/mp3_player --project-relative`

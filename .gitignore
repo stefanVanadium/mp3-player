@@ -1,0 +1,12 @@
+# KiCad
+*.lck
+*-backups/
+fp-info-cache
+*.kicad_prl
+# easyeda2kicad download cache
+.easyeda_cache/
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "mp3_player")(type "KiCad")(uri "${KIPRJMOD}/lib/mp3_player.kicad_sym")(options "")(descr "MP3 player parts (from LCSC/EasyEDA)"))
+)
