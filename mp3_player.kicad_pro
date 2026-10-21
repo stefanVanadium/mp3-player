@@ -304,7 +304,7 @@
     "annotate_start_num": 0,
     "annotation": {
       "method": 0,
-      "sort_order": 0
+      "sort_order": 1
     },
     "bom_export_filename": "${PROJECTNAME}.csv",
     "bom_fmt_presets": [],
@@ -430,12 +430,12 @@
         "uuid": "76c16811-a47d-41db-930c-99ff404eb4d5"
       },
       {
-        "filename": "usb-c_+_cp2102n_+_auto-reset.kicad_sch",
+        "filename": "usb.kicad_sch",
         "name": "USB-C + CP2102N + auto-reset",
         "uuid": "48b626a8-147d-4457-a8b4-c289755da89f"
       },
       {
-        "filename": "alimentare.kicad_sch",
+        "filename": "power.kicad_sch",
         "name": "power",
         "uuid": "cf6306b0-24ac-4691-b94f-15267c942134"
       },
@@ -450,12 +450,12 @@
         "uuid": "c6422f90-0327-4136-a608-1204883e57cc"
       },
       {
-        "filename": "microsd\\_+_display_+_buttons.kicad_sch",
+        "filename": "io.kicad_sch",
         "name": "microSD + display + buttons",
         "uuid": "b4eaa3ea-75e2-4ef4-bfd3-af07abb13c16"
       }
     ],
-    "used_designators": "#PWR1-150,BT1,C1-43,CN1,Card1,D1-2,FPC1,J1,L1,Q1-2,R1-48,SW1-9,U1-9,USBC1-2",
+    "used_designators": "#FLG1-8,#PWR1-155,BT1,C1-45,CN1,Card1,D1-2,FPC1,J1-4,L1,Q1-2,R1-48,SW1-12,U1-9,USBC1-2",
     "variants": []
   },
   "sheets": [

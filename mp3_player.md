@@ -170,30 +170,24 @@ Extra (per unit): battery ~20-30 lei, LS013B7DH03 ~60-70 lei, microSD ~30 lei.
 - **music on the card**: the classic ESP32 has no native USB. Copy to microSD on a PC or upload over WiFi (web page served by the player)
 - **speakers (v2)**: WM8960 or a small class-D (MAX98357A on I2S) + phone speakers
 
-## Status (2026-10-20)
+## Status (2026-10-21)
 
 Done:
 - [x] architecture + BOM chosen, JLC stock/prices checked
 - [x] JLC vs "I solder" list, cost estimated ~$125
-- [x] KiCad libraries installed (`lib/`, 18 parts with symbol + footprint + 3D)
+- [x] KiCad libraries installed (`lib/`, symbol + footprint + 3D per part)
 - [x] datasheets in `datasheets/` (all parts, MAX17048 included)
-- [x] pins verified against datasheets, full connection list in **[conexiuni.md](conexiuni.md)** (2026-10-21)
+- [x] pins verified against datasheets, full connection list in **[connections.md](connections.md)**
+- [x] **schematic done** (2026-10-21): 5 sheets (usb, power, esp32, audio, io), 112 parts, annotated. Final check on the KiCad netlist: 278/278 pin and passive checks against `connections.md` pass. ERC: only cosmetic warnings left (EasyEDA pin types, off-grid wire ends)
 
-Next — I draw the schematic MYSELF, Claude only reviews (questions/hints, doesn't give the connections):
-- [ ] paper sketch: 5 blocks (USB → power → ESP32 → audio, + SD/display/buttons) and what goes on each arrow
-- [ ] 1-2 Phil's Lab videos (KiCad, microcontroller + USB + power)
-- [ ] **block 1: USB-C + USBLC6 + CP2102N + auto-reset** ← START HERE
-  - CP2102N datasheet + official ESP32-PICO-KIT schematic (Espressif)
-  - ritual: page 1 → Pin Functions (power / inputs / outputs / config / NC) → Typical Application → copy + understand every part
-- [ ] block 2: ESP32 (power, decoupling, EN/BOOT)
-- [ ] block 3: power (BQ25180 → TPS63802 → LP5907) — careful, this is where parts get fried
-- [ ] block 4: audio (PCM5122 → OPA1622 + LM27762 → jack)
-- [ ] block 5: microSD, display, buttons
-- each block on a separate hierarchical sheet in KiCad
-- schematic sources to copy from: TI "<chip>EVM user guide", ESP32-PICO-KIT, Adafruit/SparkFun on GitHub
+Next:
+- [ ] assign footprints to passives (0402/0603 from the JLC basic list), D2 (SOD-123) and BT1 (battery connector)
+- [ ] PCB: board outline + case, placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
+- [ ] check the real PJ-342, TF-01A card detect and LS013 flex contact side against the footprints before ordering
+- [ ] firmware bring-up (see `code.md`)
 
 ## Schematic
-mp3_player.kicad_sch
+One sheet per block: `usb.kicad_sch` (USB-C, ESD, CP2102N, auto-reset), `power.kicad_sch`, `esp32.kicad_sch`, `audio.kicad_sch`, `io.kicad_sch` (microSD, display, buttons, jack detect). Pin-by-pin reference: [connections.md](connections.md).
 
 ## Software
 code.md

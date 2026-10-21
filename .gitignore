@@ -3,6 +3,7 @@
 *-backups/
 fp-info-cache
 .history/
+*.bak
 *.kicad_prl
 # easyeda2kicad download cache
 .easyeda_cache/

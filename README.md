@@ -2,7 +2,7 @@
 
 ![KiCad](https://img.shields.io/badge/KiCad-10-314CB0?logo=kicad&logoColor=white)
 ![ESP32](https://img.shields.io/badge/ESP32-PICO--MINI--02-E7352C?logo=espressif&logoColor=white)
-![Status](https://img.shields.io/badge/status-pre--schematic-orange)
+![Status](https://img.shields.io/badge/status-schematic%20done-yellow)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A modern hi-fi music player with a retro look. It plays FLAC/WAV through a proper DAC and headphone amp, streams to Bluetooth headphones, and has a reflective display you can read in direct sunlight.
@@ -54,6 +54,7 @@ mp3_player.md         project documentation (start here)
 mp3_player.kicad_*    KiCad 10 project
 lib/                  symbols, footprints, 3D models (generated from LCSC parts)
 datasheets/           datasheets for every chosen part
+connections.md        pin-by-pin schematic connections and datasheet review
 code.md               firmware notes
 mp3_player.tex/.pdf   printable writeup
 ```
@@ -62,7 +63,7 @@ mp3_player.tex/.pdf   printable writeup
 
 - [x] Requirements, architecture, BOM
 - [x] KiCad libraries + datasheets
-- [ ] Schematic (block by block: USB → ESP32 → power → audio → SD/display/buttons)
+- [x] Schematic (5 sheets: USB, power, ESP32, audio, I/O)
 - [ ] PCB
 - [ ] Firmware (`arduino-audio-tools` + `ESP32-A2DP`)
 - [ ] Case
