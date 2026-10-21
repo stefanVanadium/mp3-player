@@ -433,9 +433,14 @@
         "filename": "usb-c_+_cp2102n_+_auto-reset.kicad_sch",
         "name": "USB-C + CP2102N + auto-reset",
         "uuid": "48b626a8-147d-4457-a8b4-c289755da89f"
+      },
+      {
+        "filename": "alimentare.kicad_sch",
+        "name": "Alimentare",
+        "uuid": "cf6306b0-24ac-4691-b94f-15267c942134"
       }
     ],
-    "used_designators": "#PWR1-19,C1-6,D1-2,Q1-2,R1-9,U1,USBC1-2",
+    "used_designators": "#PWR1-54,BT1,C1-21,D1-2,J1,L1,Q1-2,R1-17,SW1-2,U1-6,USBC1-2",
     "variants": []
   },
   "sheets": [
@@ -446,6 +451,10 @@
     [
       "48b626a8-147d-4457-a8b4-c289755da89f",
       "USB-C + CP2102N + auto-reset"
+    ],
+    [
+      "cf6306b0-24ac-4691-b94f-15267c942134",
+      "Alimentare"
     ]
   ],
   "text_variables": {},
