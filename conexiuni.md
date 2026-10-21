@@ -24,7 +24,6 @@ Probleme găsite:
 Nu am putut verifica din datasheet (verifici fizic, cu multimetrul):
 - **PJ-342**: din desen, 5 și 2 sunt sleeve, 6 e ring (contact NC: 7), 3 e tip (contact NC: 4). Când ai jack-ul în mână, verifici cu multimetrul pe o mufă băgată
 - **TF-01A pin 9 (CD)**: presupun că se închide la GND/shell când e card băgat (active low). Verifici la fel
-- **ST7567**: pinout-ul diferă de la vânzător la vânzător (știai deja). Mai jos e după numele semnalelor
 
 ## 2. Rail-uri (net-uri de alimentare)
 
@@ -61,8 +60,8 @@ Nu am putut verifica din datasheet (verifici fizic, cu multimetrul):
 | 17 | IO27 | `I2S_DOUT` | → PCM5122 DIN |
 | 29 | IO5 | `LCD_SCK` | SPI clock display |
 | 33 | IO19 | `LCD_MOSI` | SPI data display |
-| 12 | IO32 | `LCD_CS` | ST7567 CS / LS013 SCS (la LS013 e activ HIGH, se rezolvă din firmware) |
-| 13 | IO33 | `LCD_DC` | ST7567 A0 (D/C). La LS013 nu se folosește (EXTMODE = L) |
+| 12 | IO32 | `LCD_CS` | LS013 SCS (activ HIGH, se rezolvă din firmware) |
+| 13 | IO33 | `LCD_DISP` | LS013 DISP (afișaj on/off). 100k pull-down, ca ecranul să stea stins până e inițializat |
 | 26 | IO20 | `BTN_PLAY` | buton la GND + 10k pull-up |
 | 27 | IO7 | `AUDIO_EN` | 100k pull-down. Pornește LM27762 și scoate DAC-ul din mute |
 | 28 | IO8 | `PWR_INT` | 10k pull-up. BQ25180 /INT + MAX17048 ALRT (wired-OR, ambele sunt open-drain) |
@@ -285,18 +284,18 @@ Prin divizor, amplificatorul pornește abia când rail-urile sunt aproape gata, 
 
 Cei 5 pull-up de 10k (CMD, D0–D3) îi pui la +3V3. **Nu pui pull-up pe CLK.**
 
-### 4.7 Display: două footprint-uri FPC, montezi doar unul
+### 4.7 Display: Sharp LS013B7DH03 (decis 2026-10-21, ST7567 scos)
 
-**Sharp LS013B7DH03 → FH12-10S (J_LS013)**
+**Sharp LS013B7DH03 → FH12-10S**
 | Pin FPC | Semnal | Conectare |
 |---|---|---|
 | 1 | SCLK | `LCD_SCK` (max 1 MHz la panoul ăsta) |
 | 2 | SI | `LCD_MOSI` |
 | 3 | SCS | `LCD_CS` |
 | 4 | EXTCOMIN | `GND` (inversia VCOM se face prin software) |
-| 5 | DISP | `ESP_EN` |
-| 6 | VDDA | `+3V3`, 1µF |
-| 7 | VDD | `+3V3`, 1µF |
+| 5 | DISP | `LCD_DISP` + 0.1µF la GND (recomandat de Sharp) |
+| 6 | VDDA | `+3V3`, ≥0.1µF |
+| 7 | VDD | `+3V3`, ≥1µF |
 | 8 | EXTMODE | `GND` (= mod serial VCOM) |
 | 9 | VSS | `GND` |
 | 10 | VSSA | `GND` |
@@ -304,20 +303,7 @@ Cei 5 pull-up de 10k (CMD, D0–D3) îi pui la +3V3. **Nu pui pull-up pe CLK.**
 
 Recomandat pentru panoul ăsta e 2.7–3.3V, deci 3.3V e chiar la limită, dar în spec. Verifică și dacă FPC-ul panoului are contactele sus sau jos, ca să știi orientarea conectorului.
 
-**ST7567 (al doilea FPC)**: numărul de pini îl afli după ce cumperi panoul
-| Semnal ST7567 | Conectare |
-|---|---|
-| SCL / SCLK | `LCD_SCK` |
-| SI / SDA | `LCD_MOSI` |
-| CS | `LCD_CS` |
-| A0 / RS / DC | `LCD_DC` |
-| RST | `ESP_EN` |
-| VDD | `+3V3` + decuplare |
-| VSS | `GND` |
-| condensatorii charge pump / VOUT / V0 | cum zice fișa panoului |
-| backlight (dacă are) | prin rezistență la +3V3 (sau MOSFET, dar nu mai ai GPIO) |
-
-Reset-ul display-ului e pe `ESP_EN` pentru că n-a mai rămas niciun GPIO. Se resetează odată cu ESP-ul, iar la un reboot software trimiți comanda de reset (0xE2) la ST7567.
+Secvența de pornire din datasheet (Figure 6-1): DISP stă LOW cât timp se curăță memoria ecranului (comanda all clear). Abia apoi DISP trece pe HIGH. De asta DISP e pe un GPIO cu pull-down, nu pe `ESP_EN`.
 
 ### 4.8 Butoane + jack detect
 

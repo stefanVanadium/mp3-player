@@ -13,7 +13,7 @@ A modern hi-fi music player with a retro look. It plays FLAC/WAV through a prope
 - **FLAC / WAV / MP3** from a push-push microSD card
 - **Bluetooth A2DP** to wireless headphones (classic ESP32)
 - **3.5mm jack with plug detection**
-- **Sunlight-readable display**: reflective ST7567 LCD (Nokia vibe), with a Sharp memory LCD as a drop-in fallback on the same PCB
+- **Sunlight-readable display**: Sharp LS013B7DH03 memory LCD, crisp in direct sun and almost zero power
 - **Soft power**: one button wakes the player from ship mode, and the ESP32 turns it off
 - **USB-C**: charging, programming via USB-UART with auto-reset, and ESD protection
 - **Real battery percentage** from a MAX17048 fuel gauge
@@ -41,7 +41,7 @@ Full architecture, BOM with JLCPCB stock/prices, who-solders-what, cost estimate
 | DAC | PCM5122, hardware volume over I2C |
 | Headphone amp | OPA1622 |
 | Storage | microSD, 4-bit SDMMC |
-| Display | ST7567 1.37" 128x64 (or Sharp LS013B7DH03) |
+| Display | Sharp LS013B7DH03 1.28" 128x128 memory LCD |
 | Battery | thin LiPo pouch, 300–1000mAh |
 | Wireless | Bluetooth A2DP (SBC) |
 | Board | 4-layer, assembled by JLCPCB + hand-soldered connectors |

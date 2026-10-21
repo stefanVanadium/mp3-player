@@ -448,9 +448,14 @@
         "filename": "audio.kicad_sch",
         "name": "audio",
         "uuid": "c6422f90-0327-4136-a608-1204883e57cc"
+      },
+      {
+        "filename": "microsd\\_+_display_+_buttons.kicad_sch",
+        "name": "microSD + display + buttons",
+        "uuid": "b4eaa3ea-75e2-4ef4-bfd3-af07abb13c16"
       }
     ],
-    "used_designators": "#PWR1-120,BT1,C1-38,CN1,D1-2,J1,L1,Q1-2,R1-46,SW1-5,U1-9,USBC1-2",
+    "used_designators": "#PWR1-150,BT1,C1-43,CN1,Card1,D1-2,FPC1,J1,L1,Q1-2,R1-48,SW1-9,U1-9,USBC1-2",
     "variants": []
   },
   "sheets": [
@@ -473,6 +478,10 @@
     [
       "c6422f90-0327-4136-a608-1204883e57cc",
       "audio"
+    ],
+    [
+      "b4eaa3ea-75e2-4ef4-bfd3-af07abb13c16",
+      "microSD + display + buttons"
     ]
   ],
   "text_variables": {},

@@ -13,4 +13,5 @@
 - GPIO0 is boot-only (diode to GPIO2 = SD D0). Never drive it low at runtime
 - `SD_DET` (I36) and `JACK_DET` (I39): poll with debounce (ESP32 errata glitch on GPIO36/39)
 - before entering ship mode: write MAX17048 `MODE.EnSleep = 1`. The gauge sits directly on the battery, and with EnSleep set it drops to <1µA sleep once SDA/SCL go low (I2C pull-ups lose power) for >2.5s. Without it, it stays in hibernate at ~4µA
+- display (LS013B7DH03): keep `LCD_DISP` (IO33) low, send the all-clear command, then set DISP high. Toggle the VCOM bit in the SPI header about once a second (EXTMODE = GND)
 - I2C: BQ25180 0x6A, MAX17048 0x36, PCM5122 0x4C

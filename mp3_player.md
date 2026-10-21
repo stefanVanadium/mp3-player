@@ -30,7 +30,7 @@ USB-C ─ ESD ─┬─ CP2102N ── auto-reset ── ESP32-PICO-MINI-02
 
 ESP32 ── I2S ── PCM5122 (DAC) ── OPA1622 (headphone amp) ── 3.5mm jack (detect pin → GPIO)
       ├─ SDMMC 4-bit ── microSD push-push
-      ├─ SPI ── display (ST7567 1.37" main / Sharp LS013B7DH03 fallback)
+      ├─ SPI ── display (Sharp LS013B7DH03 memory LCD)
       ├─ I2C ── BQ25180, MAX17048, PCM5122
       ├─ GPIO ── buttons
       └─ BT A2DP ── wireless headphones
@@ -92,15 +92,15 @@ Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122
 | What | Part | LCSC | Stock | Price | Notes |
 |---|---|---|---|---|---|
 | microSD | push-push (自弹式) | C91145 (TF-01A) | 181k | $0.19 | check footprint + card detect pin |
-| main display | **ST7567 1.37" 128x64** (bare panel on FPC) | — not at JLC | — | — | AliExpress. Reflective LCD, readable in sunlight, Nokia vibe |
-| fallback display | **Sharp LS013B7DH03** 1.28" memory LCD | 0 stock at JLC | — | ~$10 | Mouser/DigiKey. 10-pin FPC 0.5mm |
+| display | **Sharp LS013B7DH03** 1.28" 128x128 memory LCD | 0 stock at JLC | — | ~$10 | DigiKey/Mouser. 10-pin FPC 0.5mm. Chosen 2026-10-21 over ST7567: known pinout, nicer, and the same display is reused across projects (see ../PROJECTS.md) |
 | FPC | 0.5mm, pin count per panel | Hirose FH12-10S-0.5SH, C506791 (10P) | 7900 | $0.51 | |
 | buttons | side tact switch / small SMD | to choose | — | — | play/pause, next, prev, vol+, vol- (+ power = BQ25180 button) |
 
-**Both displays on the same PCB:** both use SPI. Put **two FPC footprints** on the board (one for ST7567, one for LS013) and populate only one. No adapter needed.
-- **LS013B7DH03**: needs 3V and an EXTCOMIN signal (~1Hz toggle), driven from a GPIO
-- **ST7567**: needs a few capacitors for its internal charge pump, per the panel datasheet
-- **important**: buy the ST7567 panel first and make the footprint from its actual pinout, since it varies between sellers
+**Display notes (LS013B7DH03):**
+- SPI up to 1 MHz, SCS is active HIGH
+- EXTMODE = GND, so VCOM inversion is done over serial (no EXTCOMIN toggle needed)
+- DISP on IO33 with a 100k pull-down: the panel stays blank until firmware has cleared its memory (datasheet power-on sequence)
+- check the FPC contact side (Sharp recommends a top-contact connector) before ordering the PCB
 
 ## Who solders what
 
@@ -159,7 +159,7 @@ Prototype (5 PCBs 4 layers, 2 assembled Economic, leaded parts soldered at home)
 
 If Economic doesn't accept the BGA (BQ25180) → Standard (+~$17) or BQ25185 (WSON, no I2C).
 
-Extra (per unit): battery ~20-30 lei, ST7567 ~15-25 lei, LS013B7DH03 ~60-70 lei, microSD ~30 lei.
+Extra (per unit): battery ~20-30 lei, LS013B7DH03 ~60-70 lei, microSD ~30 lei.
 
 ## Design notes
 - **antenna area**: no copper (not even a ground plane) under the module antenna, module at the board edge. With a metal case, a plastic window is needed in front of the antenna
@@ -202,7 +202,7 @@ code.md
 ## Tests
 
 ## Resources
-- datasheets: `datasheets/` (all parts + ESP32 hardware design guidelines + ST7567 + LS013B7DH03)
+- datasheets: `datasheets/` (all parts + ESP32 hardware design guidelines + LS013B7DH03)
 - MAX17048 (source): https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf
 - JLC parts: https://jlcpcb.com/parts
 - arduino-audio-tools: https://github.com/pschatzmann/arduino-audio-tools
