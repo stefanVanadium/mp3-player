@@ -72,7 +72,7 @@ Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122
 | 3.3V digital | **TPS63802** buck-boost 2A | C2845237 | 37k | $0.91 | drains the battery fully, handles BT/WiFi peaks |
 | 3.3V analog | **LP5907-3.3** | C80670 | 49k | $0.16 | low-noise LDO, DAC only, from VSYS |
 | fuel gauge | **MAX17048** | C2682616 | 24k | $2.15 | real battery percentage, DFN 2x2 |
-| battery | LiPo pouch with protection | — | — | — | bought separately. e.g. 402535 (~300mAh) / 503040 (~500mAh) / 503450 (~1000mAh) |
+| battery | **LiPo 503450, 1000 mAh**, with protection circuit | — | — | — | chosen 2026-10-21. 5.0 x 34 x 50 mm, bought separately. Charge at 0.5C = 500 mA (~2.5 h). Estimated runtime ~11-13 h on the jack, ~7-8 h on Bluetooth |
 
 **Soft power (BQ25180):**
 - **power on**: press the button, BQ25180 leaves ship mode and powers the system
