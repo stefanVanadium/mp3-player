@@ -438,9 +438,14 @@
         "filename": "alimentare.kicad_sch",
         "name": "Alimentare",
         "uuid": "cf6306b0-24ac-4691-b94f-15267c942134"
+      },
+      {
+        "filename": "esp32.kicad_sch",
+        "name": "ESP32",
+        "uuid": "e7a6a6cd-6e47-432f-a794-94ecc7288598"
       }
     ],
-    "used_designators": "#PWR1-54,BT1,C1-21,D1-2,J1,L1,Q1-2,R1-17,SW1-2,U1-6,USBC1-2",
+    "used_designators": "#PWR1-96,BT1,C1-24,D1-2,J1,L1,Q1-2,R1-46,SW1-5,U1-7,USBC1-2",
     "variants": []
   },
   "sheets": [
@@ -455,6 +460,10 @@
     [
       "cf6306b0-24ac-4691-b94f-15267c942134",
       "Alimentare"
+    ],
+    [
+      "e7a6a6cd-6e47-432f-a794-94ecc7288598",
+      "ESP32"
     ]
   ],
   "text_variables": {},
