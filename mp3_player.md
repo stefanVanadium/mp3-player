@@ -102,6 +102,31 @@ Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122
 - DISP on IO33 with a 100k pull-down: the panel stays blank until firmware has cleared its memory (datasheet power-on sequence)
 - check the FPC contact side (Sharp recommends a top-contact connector) before ordering the PCB
 
+### Passives
+Chosen for quality, not lowest price. Every part has its code in the `LCSC Part` field (used for the JLC BOM).
+
+| Where | Part | LCSC | Package |
+|---|---|---|---|
+| audio path, rail dividers, all 10K/100K (470, 10K, 20K, 91K, 100K, 147K, 150K) | Yageo RT0402BRD07 thin film, 0.1%, 25ppm | C852799, C190095, C705630, C852952, C852472, C5197520, C852538 | 0402 |
+| odd values with no thin film in stock (511K TPS63802 FB, 22.1K/47.5K CP2102N VBUS) | Yageo RC0402FR-07, 1% | C163461, C163478, C137974 | 0402 |
+| digital only (4.7K I2C, 5.1K CC, 1K, 33, 1M) | UniRoyal 1% (basic) | C25900, C25905, C11702, C25105, C26083 | 0402 |
+| DAC output filter 2.2nF (C24, C25) | Murata GRM1555 **C0G** ±2% (no piezo/DC-bias distortion in the signal path) | C2987940 | 0402 |
+| 0.1µF decoupling | Samsung CL05B X7R 16V | C1525 | 0402 |
+| 1µF | Samsung CL05A X5R 25V | C52923 | 0402 |
+| 1µF on VBUS (C10) | Samsung X5R 50V | C15849 | 0603 |
+| 2.2µF / 4.7µF | Samsung CL10A X5R 16V | C23630 / C19666 | 0603 |
+| 10µF on 3.3V rails | Samsung CL10A X5R 10V | C19702 | 0603 |
+| 10µF on VSYS (C15, C19, C21) | Samsung X5R 25V (less DC-bias loss) | C96446 | 0603 |
+| 10µF on VBUS / C9 | Samsung CL21A X5R 25V | C15850 | 0805 |
+| 22µF TPS63802 output | Samsung CL21A X5R 25V | C45783 | 0805 |
+| D2 boot diode | B5819W (basic) | C8598 | SOD-123 |
+| BT1 battery | JST PH 2-pin SMD, right angle (hand-soldered) | C295747 | S2B-PH-SM4-TB |
+
+Bulk caps are 0603/0805 rather than 0402: an 0402 10µF keeps only ~30-40% of its value at 3.3V (DC bias).
+Thin film + C0G add 11 extended part types (~$33 JLC fees). Only 6 of them are unavoidable (odd values + C0G); the
+quality upgrade (thin film instead of basic 10K/100K/470/20K/150K) costs ~$15 extra per order.
+**JST polarity**: there is no standard. Check the red wire of the battery against pad 1 (+) before plugging it in.
+
 ## Who solders what
 
 Rule: JLC places only what can't be hand-soldered (QFN/DFN/BGA/LGA, no visible pins).
@@ -180,8 +205,9 @@ Done:
 - [x] pins verified against datasheets, full connection list in **[connections.md](connections.md)**
 - [x] **schematic done** (2026-10-21): 5 sheets (usb, power, esp32, audio, io), 112 parts, annotated. Final check on the KiCad netlist: 278/278 pin and passive checks against `connections.md` pass. ERC: only cosmetic warnings left (EasyEDA pin types, off-grid wire ends)
 
+- [x] **footprints + LCSC codes on all 112 parts** (2026-10-21), see [Passives](#passives)
+
 Next:
-- [ ] assign footprints to passives (0402/0603 from the JLC basic list), D2 (SOD-123) and BT1 (battery connector)
 - [ ] PCB: board outline + case, placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
 - [ ] check the real PJ-342, TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)

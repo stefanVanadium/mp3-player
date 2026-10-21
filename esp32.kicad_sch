@@ -3689,7 +3689,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 174.498 104.14 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C25900"
 			(at 174.498 104.14 90)
 			(hide yes)
 			(show_name no)
@@ -4509,7 +4520,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.03 75.438 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.03 75.438 90)
 			(hide yes)
 			(show_name no)
@@ -4823,7 +4845,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.0073 118.618 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.0073 118.618 90)
 			(hide yes)
 			(show_name no)
@@ -4902,7 +4935,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 111.252 96.52 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C852472"
 			(at 111.252 96.52 90)
 			(hide yes)
 			(show_name no)
@@ -4981,7 +5025,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.03 72.898 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.03 72.898 90)
 			(hide yes)
 			(show_name no)
@@ -5060,7 +5115,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.03 116.078 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.03 116.078 90)
 			(hide yes)
 			(show_name no)
@@ -5139,7 +5205,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 122.682 133.35 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C852472"
 			(at 122.682 133.35 90)
 			(hide yes)
 			(show_name no)
@@ -5295,7 +5372,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.03 113.538 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.03 113.538 90)
 			(hide yes)
 			(show_name no)
@@ -5688,7 +5776,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 106.9848 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C1525"
 			(at 106.9848 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -6581,7 +6680,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.03 123.698 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.03 123.698 90)
 			(hide yes)
 			(show_name no)
@@ -6739,7 +6849,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 170.688 104.14 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C25900"
 			(at 170.688 104.14 90)
 			(hide yes)
 			(show_name no)
@@ -6818,7 +6939,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.03 88.138 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.03 88.138 90)
 			(hide yes)
 			(show_name no)
@@ -6897,7 +7029,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 114.6048 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C45783"
 			(at 114.6048 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -7288,7 +7431,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 163.83 130.048 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 163.83 130.048 90)
 			(hide yes)
 			(show_name no)
@@ -7367,7 +7521,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.0009 77.978 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.0009 77.978 90)
 			(hide yes)
 			(show_name no)
@@ -7991,7 +8156,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.03 85.598 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.03 85.598 90)
 			(hide yes)
 			(show_name no)
@@ -8262,7 +8438,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 113.027 110.998 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 113.027 110.998 90)
 			(hide yes)
 			(show_name no)
@@ -8496,7 +8683,18 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 101.6 128.778 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+				(property "LCSC Part" "C190095"
 			(at 101.6 128.778 90)
 			(hide yes)
 			(show_name no)
