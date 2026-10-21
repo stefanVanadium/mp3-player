@@ -85,7 +85,7 @@ Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122
 |---|---|---|---|---|---|
 | connector | TYPE-C-31-M-12 (16 pins) | C165948 | 347k | $0.19 | + 2x 5.1k on CC1/CC2 |
 | ESD | USBLC6-2SC6 | C7519 | 44k | $0.18 | on D+/D- |
-| USB-UART | **CP2102N** QFN-20 | C969913 | 10k | $1.9 | + 2 transistors for ESP32 auto-reset/boot |
+| USB-UART | **CP2102N-A02-GQFN24R** | C969151 | 19.7k | $1.98 | + 2 transistors for ESP32 auto-reset/boot. QFN24, not QFN20: the QFN20 has no DTR pin, and auto-reset needs DTR + RTS |
 | alternative | CH343P | C2846043 | 10k | $1.0 | cheaper, just as small |
 
 ### Storage, display, buttons
@@ -118,8 +118,8 @@ Parts with visible pins are bought from LCSC in the same cart (same parcel) and 
 | TPS63802 | C2845237 | VSON-10 2x3 | no pins |
 | TPS63802 inductor (0.47uH) | to choose | 2016/2520 | must sit next to the IC, reflowed |
 | MAX17048 | C2682616 | DFN-8 2x2 | no pins |
-| CP2102N | C969913 | QFN-20 3x3 | no pins |
-| resistors, capacitors, 2 auto-reset transistors | **basic** list only | 0402/0603, SOT-23 | basic = no fee |
+| CP2102N-A02-GQFN24R | C969151 | QFN-24 4x4 | no pins |
+| resistors, capacitors, 2 auto-reset transistors, B5819W Schottky (C8598, GPIO2→GPIO0 boot fix) | **basic** list only | 0402/0603, SOT-23, SOD-123 | basic = no fee |
 
 ### Me (iron + flux) — 0 fees
 | Part | LCSC | Package | Difficulty |
@@ -142,7 +142,7 @@ Check USB-C for continuity (VBUS-GND and D+/D-) **before** plugging it in.
 ## Cost estimate (2026-10-20, to re-check when ordering)
 
 Parts per board (price at 1-9 pcs): ~$23
-- ICs: ~$21 (ESP32 5.6, PCM5122 4.1, OPA1622 3.0, MAX17048 2.15, CP2102N 1.9, BQ25180 1.76, TPS63802+inductor 1.1, LM27762 0.96, rest <1)
+- ICs: ~$21 (ESP32 5.6, PCM5122 4.1, OPA1622 3.0, MAX17048 2.15, CP2102N 2.0, BQ25180 1.76, TPS63802+inductor 1.1, LM27762 0.96, rest <1)
 - connectors + buttons: ~$1.5
 - passives: ~$0.5 (basic)
 
@@ -163,8 +163,9 @@ Extra (per unit): battery ~20-30 lei, ST7567 ~15-25 lei, LS013B7DH03 ~60-70 lei,
 
 ## Design notes
 - **antenna area**: no copper (not even a ground plane) under the module antenna, module at the board edge. With a metal case, a plastic window is needed in front of the antenna
-- **audio**: analog ground separate from digital ground, joined at a single point near the DAC. DAC and amp far from the ESP32 and the TPS63802 inductor
-- **ESP32**: strapping pins (GPIO0, 2, 12, 15) on SDMMC and boot need care. GPIO12 must be LOW at boot with 3.3V flash (or burn the eFuse)
+- **audio**: ONE solid ground plane, no split (TI recommends a common AGND/DGND for the PCM512x). Separation comes from placement: DAC and amp far from the ESP32 and the TPS63802 inductor, digital traces away from the analog outputs
+- **OPA1622 thermal pad = V− (−3V), not GND**. Its vias go to a −3V copper pour
+- **ESP32**: SDMMC 4-bit uses strapping pins. GPIO12 (SD D2) has a pull-up, so burn the eFuse ONCE before the first flash: `espefuse.py set_flash_voltage 3.3V`. GPIO2 (SD D0) has a pull-up, so a B5819W diode from GPIO2 (anode) to GPIO0 (cathode) pulls it low when auto-reset enters download mode. Don't use GPIO0 for anything else
 - **real quality**: on the jack, FLAC/WAV at 44.1/48kHz. On Bluetooth quality is limited by SBC (ESP32 doesn't do aptX/LDAC)
 - **music on the card**: the classic ESP32 has no native USB. Copy to microSD on a PC or upload over WiFi (web page served by the player)
 - **speakers (v2)**: WM8960 or a small class-D (MAX98357A on I2S) + phone speakers
@@ -175,7 +176,8 @@ Done:
 - [x] architecture + BOM chosen, JLC stock/prices checked
 - [x] JLC vs "I solder" list, cost estimated ~$125
 - [x] KiCad libraries installed (`lib/`, 18 parts with symbol + footprint + 3D)
-- [x] datasheets in `datasheets/` (MAX17048 missing, link under Resources)
+- [x] datasheets in `datasheets/` (all parts, MAX17048 included)
+- [x] pins verified against datasheets, full connection list in **[conexiuni.md](conexiuni.md)** (2026-10-21)
 
 Next — I draw the schematic MYSELF, Claude only reviews (questions/hints, doesn't give the connections):
 - [ ] paper sketch: 5 blocks (USB → power → ESP32 → audio, + SD/display/buttons) and what goes on each arrow
@@ -201,7 +203,7 @@ code.md
 
 ## Resources
 - datasheets: `datasheets/` (all parts + ESP32 hardware design guidelines + ST7567 + LS013B7DH03)
-- MAX17048 (download manually): https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf
+- MAX17048 (source): https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf
 - JLC parts: https://jlcpcb.com/parts
 - arduino-audio-tools: https://github.com/pschatzmann/arduino-audio-tools
 - ESP32-A2DP: https://github.com/pschatzmann/ESP32-A2DP
