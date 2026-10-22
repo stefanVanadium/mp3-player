@@ -14,3 +14,4 @@ fp-info-cache
 *.toc
 # Enclosure (build123d venv)
 enclosure/.venv/
+__pycache__/
