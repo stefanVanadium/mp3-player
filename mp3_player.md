@@ -231,6 +231,7 @@ Concept decided 2026-10-22. **Chosen: variant B, rounded corners** (A and the sh
 - **Ports**: on the flat part of the bottom face, clear of the corner radius; plug axes centred in the thickness
 - **Display**: LS013B7DH03 behind a clear window (glass or acrylic) in the front face, on a spacer above the PCB
 - **Tools**: modelled in code with [build123d](https://github.com/gumyr/build123d), `enclosure/concept.py` (venv in `enclosure/.venv`). STEP + renders in `enclosure/out/`. View in FreeCAD. Renders: `.venv/bin/python render/compare.py out` (also `render.py`, `ends_ortho.py`; need `pyvista`)
+- **Renders**: `render/hero.py` makes the README image (`out/hero_B.png`). Later, once the PCB and the final model are done: a photoreal render (materials, lighting, depth of field), e.g. in Blender from the STEP
 - **Sketch**: `examplev1.dxf`, Stefan's first design sketch (proportions not to scale)
 
 ### Final variants (2026-10-22)

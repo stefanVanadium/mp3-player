@@ -7,6 +7,11 @@
 
 A modern hi-fi music player with a retro look. It plays FLAC/WAV through a proper DAC and headphone amp, streams to Bluetooth headphones, and has a reflective display you can read in direct sunlight.
 
+<p align="center">
+  <img src="enclosure/out/hero_B.png" alt="Concept render of the enclosure, front and back" width="520">
+</p>
+<p align="center"><sub>First concept render of the enclosure (41 × 102 × 8.4 mm, anodized aluminium with a printed click wheel and antenna cap). Not final.</sub></p>
+
 ## Highlights
 
 - **Hi-fi audio path**: PCM5122 DAC (112dB, 32-bit/384kHz) → OPA1622 headphone amp powered from clean ± rails
@@ -42,9 +47,10 @@ Full architecture, BOM with JLCPCB stock/prices, who-solders-what, cost estimate
 | Headphone amp | OPA1622 |
 | Storage | microSD, 4-bit SDMMC |
 | Display | Sharp LS013B7DH03 1.28" 128x128 memory LCD |
-| Battery | thin LiPo pouch, 300–1000mAh |
+| Battery | LiPo pouch LP403759, 1000 mAh (4 mm thin) |
 | Wireless | Bluetooth A2DP (SBC) |
-| Board | 4-layer, assembled by JLCPCB + hand-soldered connectors |
+| Board | 4-layer, 0.8 mm, assembled by JLCPCB + hand-soldered connectors |
+| Case | CNC aluminium, anodized (titanium for v2), 41 × 102 × 8.4 mm |
 | Prototype cost | ~$125 for 2 boards |
 
 ## Repo layout
@@ -56,6 +62,7 @@ lib/                  symbols, footprints, 3D models (generated from LCSC parts)
 datasheets/           datasheets for every chosen part
 connections.md        pin-by-pin schematic connections and datasheet review
 code.md               firmware notes
+enclosure/            parametric case model (build123d), STEP + renders
 mp3_player.tex/.pdf   printable writeup
 ```
 
@@ -64,9 +71,10 @@ mp3_player.tex/.pdf   printable writeup
 - [x] Requirements, architecture, BOM
 - [x] KiCad libraries + datasheets
 - [x] Schematic (5 sheets: USB, power, ESP32, audio, I/O)
+- [x] Case concept (parametric model, two variants)
 - [ ] PCB
 - [ ] Firmware (`arduino-audio-tools` + `ESP32-A2DP`)
-- [ ] Case
+- [ ] Final case model + photoreal render
 
 ## License
 
