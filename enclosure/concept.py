@@ -13,8 +13,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from build123d import (
-    Axis, Box, Color, Compound, Cylinder, Location, Plane, Polyline, Pos,
-    Rot, export_step, export_stl, extrude, fillet, make_face,
+    Axis, Box, Color, Compound, Cylinder, ExportDXF, Location, Plane, Polyline, Pos,
+    RectangleRounded, Rot, Unit, export_step, export_stl, extrude, fillet, make_face,
 )
 
 OUT = Path(__file__).parent / "out"
@@ -229,12 +229,32 @@ def build(v: Variant):
     return Compound(children=children, label=f"concept_{v.name}"), parts
 
 
+def pcb_outline(v: Variant):
+    """Board outline in enclosure coordinates (bottom edge of the inner cavity at
+    y = WALL_END), 0.2 mm clear of the walls."""
+    W, L = v.width, v.length
+    w, l = W - 2 * WALL_SIDE - 0.4, L - 2 * WALL_END - 0.4
+    r = max(v.corner_r - WALL_SIDE - 0.2, 0.1)
+    return Pos(0, L / 2) * RectangleRounded(w, l, r), (w, l, r)
+
+
+def export_outline(v: Variant):
+    face, (w, l, r) = pcb_outline(v)
+    dxf = ExportDXF(unit=Unit.MM)
+    dxf.add_layer("Edge.Cuts")
+    dxf.add_shape(face.faces()[0].outer_wire(), layer="Edge.Cuts")
+    dxf.write(OUT / f"pcb_outline_{v.name}.dxf")
+    return w, l, r
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     for v in VARIANTS:
         assembly, parts = build(v)
         export_step(assembly, OUT / f"concept_{v.name}.step")
         export_stl(parts[0][0], OUT / f"concept_{v.name}_body.stl")
+        w, l, r = export_outline(v)
+        print(f"  PCB outline {w:g} x {l:g} mm, corner R{r:g}")
         usb = v.pcb_bot - v.usb.centre - v.thickness / 2
         jack = v.pcb_bot - v.jack.centre - v.thickness / 2
         print(f"{v.name}: {v.width:g} x {v.length:g} x {v.thickness:g} mm, "

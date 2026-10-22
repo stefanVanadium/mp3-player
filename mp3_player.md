@@ -213,7 +213,8 @@ Next:
 - [x] enclosure concept: variant B, rounded (see [Enclosure](#enclosure))
 - [x] schematic for enclosure B (2026-10-22): jack PJ-342C CB (CN1), USB-C CB0.8 (USB1), BT1 JST SH, wheel TS-1187B-B, power EVQP7J01P, 100nF on `JACK_DET`. ERC 0/0, netlist diff vs. previous commit = only these changes
 - [ ] choose the exact LP403759 cell (drawing with PCM length, JST SH lead)
-- [ ] board outline from the enclosure model
+- [x] Board Setup (2026-10-22): 4 layers (F.Cu signal, In1 GND, In2 GND2, B.Cu signal), 0.8 mm, ENIG. JLC-safe rules: 0.15 mm track/clearance, via 0.6/0.3, hole-to-hole 0.5, edge 0.3, silk 0.15 mm / 1.0 mm text. Net class `Power` (0.4 mm) on VBUS, VBAT, VSYS, +3V3, +3V3_A, ±3V0_AMP
+- [ ] import the board outline on Edge.Cuts: `enclosure/out/pcb_outline_B.dxf` (38.2 × 99.6 mm, R3.6, made by `concept.py`)
 - [ ] PCB: placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
 - [ ] check the real PJ-342C CB (HP-DET), TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
