@@ -12,3 +12,5 @@ fp-info-cache
 *.log
 *.out
 *.toc
+# Enclosure (build123d venv)
+enclosure/.venv/

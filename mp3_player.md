@@ -203,14 +203,28 @@ Done:
 - [x] KiCad libraries installed (`lib/`, symbol + footprint + 3D per part)
 - [x] datasheets in `datasheets/` (all parts, MAX17048 included)
 - [x] pins verified against datasheets, full connection list in **[connections.md](connections.md)**
-- [x] **schematic done** (2026-10-21): 5 sheets (usb, power, esp32, audio, io), 112 parts, annotated. Final check on the KiCad netlist: 278/278 pin and passive checks against `connections.md` pass. ERC: only cosmetic warnings left (EasyEDA pin types, off-grid wire ends)
+- [x] **schematic done** (2026-10-21): 5 sheets (usb, power, esp32, audio, io), 112 parts, annotated. Final check on the KiCad netlist: 278/278 pin and passive checks against `connections.md` pass. ERC clean (2026-10-22): 0 errors, 0 warnings (`Unspecified` pin type set to OK in the pin conflict map, USBLC6 pins fixed, power flags moved onto real nets)
 
 - [x] **footprints + LCSC codes on all 112 parts** (2026-10-21), see [Passives](#passives)
 
 Next:
-- [ ] PCB: board outline + case, placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
+- [ ] enclosure concept → board outline (see [Enclosure](#enclosure))
+- [ ] PCB: placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
 - [ ] check the real PJ-342, TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
+
+## Enclosure
+Decided 2026-10-22, details still open.
+
+- **Form**: vertical, iPod-style. Display on top of the front face, buttons below it
+- **v1 shell: CNC aluminium 6061, anodized.** Any colour (grey, dark blue, pink, purple), matte or gloss, cheap at JLCCNC / PCBWay
+- **v2 shell: anodized titanium.** Interference colours (natural grey, blue, purple, gold, magenta; no pastel pink), heavier and more premium, several times the machining cost. Only after v1 fits
+- **Buttons**: 3D printed. **Mechanical click wheel** under the display, iPod mini style: a printed ring rocking on 4 tactile switches (top VOL+, bottom VOL−, left PREV, right NEXT) plus a centre PLAY button. No capacitive scrolling in v1 (needs a touch controller and free GPIOs)
+- **Antenna window**: a metal shell blocks BT/WiFi, so the **top end is a 3D printed plastic cap**, with the ESP32 antenna right under it (no copper or metal under or around the antenna)
+- **Bottom edge**: USB-C + 3.5mm jack, so wired headphones come straight out of a pocket
+- **Stack**: LiPo 503450 (≈50 × 34 × 5 mm) behind the PCB. Estimated total thickness ≈10–11 mm (PCB 1 mm + parts 2–3 mm + battery + walls). Thinner needs a thinner cell
+- **Display**: LS013B7DH03 behind a clear window (glass or acrylic) in the front face
+- **Tools**: modelled in code with [build123d](https://github.com/gumyr/build123d) (`enclosure/`, venv in `enclosure/.venv`), PCB imported as STEP from KiCad. STEP out for the CNC shop, STL for the printed parts. View in FreeCAD
 
 ## Schematic
 One sheet per block: `usb.kicad_sch` (USB-C, ESD, CP2102N, auto-reset), `power.kicad_sch`, `esp32.kicad_sch`, `audio.kicad_sch`, `io.kicad_sch` (microSD, display, buttons, jack detect). Pin-by-pin reference: [connections.md](connections.md).

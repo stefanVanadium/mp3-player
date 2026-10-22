@@ -3123,37 +3123,28 @@
 		(dnp no)
 		(uuid "052ee2c6-0df2-4095-b1c2-38b85ba33f53")
 		(property "Reference" "C30"
-			(at 191.262 123.952 0)
+			(at 188.595 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0.1µF"
-			(at 192.278 120.142 0)
+		(property "Value" "C"
+			(at 188.595 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 188.2648 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C1525"
 			(at 188.2648 118.11 0)
 			(hide yes)
 			(show_name no)
@@ -3177,6 +3168,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 189.23 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1525"
+			(at 188.2648 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3404,16 +3406,16 @@
 		(dnp no)
 		(uuid "0a8168fa-1e2c-43f4-8c7a-98e19e97aedc")
 		(property "Reference" "R38"
-			(at 254.762 143.256 0)
+			(at 253.492 136.652 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.635 0.635)
 				)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "R"
 			(at 252.73 139.7 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3424,17 +3426,6 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 250.952 139.7 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C190095"
 			(at 250.952 139.7 90)
 			(hide yes)
 			(show_name no)
@@ -3458,6 +3449,17 @@
 		)
 		(property "Description" "Resistor"
 			(at 252.73 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C190095"
+			(at 250.952 139.7 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3494,7 +3496,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0ebdab41-80e2-42d2-94e7-f6ac0d06e611")
-		(property "Reference" "#PWR0126"
+		(property "Reference" "#PWR126"
 			(at 252.73 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -3554,7 +3556,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0126")
+					(reference "#PWR126")
 					(unit 1)
 				)
 			)
@@ -3571,7 +3573,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "12b95333-773e-408f-8099-bfbe56f9eb81")
-		(property "Reference" "#PWR0116"
+		(property "Reference" "#PWR116"
 			(at 76.2 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -3583,7 +3585,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 77.47 124.46 90)
+			(at 78.74 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3631,7 +3633,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0116")
+					(reference "#PWR116")
 					(unit 1)
 				)
 			)
@@ -3648,7 +3650,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "13845ade-0be5-4229-9671-f540877dc5bb")
-		(property "Reference" "#PWR0117"
+		(property "Reference" "#PWR117"
 			(at 138.43 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -3660,7 +3662,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 137.16 124.46 90)
+			(at 135.89 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3708,7 +3710,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0117")
+					(reference "#PWR117")
 					(unit 1)
 				)
 			)
@@ -3726,7 +3728,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "185e2077-a555-427b-80ae-5982f041bd99")
-		(property "Reference" "#PWR0120"
+		(property "Reference" "#PWR120"
 			(at 119.38 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -3787,7 +3789,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0120")
+					(reference "#PWR120")
 					(unit 1)
 				)
 			)
@@ -3805,37 +3807,28 @@
 		(dnp no)
 		(uuid "1a0d206f-4e20-4642-b707-14ab983442b1")
 		(property "Reference" "C32"
-			(at 70.358 124.46 0)
+			(at 66.675 121.92 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "2.2µF"
-			(at 60.452 124.46 0)
+		(property "Value" "C"
+			(at 66.675 127 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 67.0052 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C23630"
 			(at 67.0052 128.27 0)
 			(hide yes)
 			(show_name no)
@@ -3859,6 +3852,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 66.04 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C23630"
+			(at 67.0052 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3895,7 +3899,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "291ae082-b2c8-4a0a-8767-c1fd71f06b32")
-		(property "Reference" "#PWR0129"
+		(property "Reference" "#PWR129"
 			(at 119.38 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -3956,7 +3960,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0129")
+					(reference "#PWR129")
 					(unit 1)
 				)
 			)
@@ -3974,7 +3978,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3178e0c2-fced-44c2-bb69-87d3216d658d")
-		(property "Reference" "#PWR0110"
+		(property "Reference" "#PWR110"
 			(at 240.03 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -4034,7 +4038,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0110")
+					(reference "#PWR110")
 					(unit 1)
 				)
 			)
@@ -4052,37 +4056,28 @@
 		(dnp no)
 		(uuid "36a549d7-b348-40c6-888e-e86660d4b23e")
 		(property "Reference" "C37"
-			(at 191.262 135.382 0)
+			(at 188.595 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0.1µF"
-			(at 192.278 131.572 0)
+		(property "Value" "C"
+			(at 188.595 130.81 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 188.2648 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C1525"
 			(at 188.2648 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -4106,6 +4101,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 189.23 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1525"
+			(at 188.2648 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4142,7 +4148,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "37d35e5e-c809-4e0a-a8ca-cf20cac22df7")
-		(property "Reference" "#PWR0115"
+		(property "Reference" "#PWR115"
 			(at 119.38 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -4203,7 +4209,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0115")
+					(reference "#PWR115")
 					(unit 1)
 				)
 			)
@@ -4220,7 +4226,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3d2ddf3e-79e8-4df5-b55e-123e2b58e412")
-		(property "Reference" "#PWR0121"
+		(property "Reference" "#PWR121"
 			(at 180.34 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -4232,7 +4238,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 181.61 129.54 90)
+			(at 182.88 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4280,7 +4286,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0121")
+					(reference "#PWR121")
 					(unit 1)
 				)
 			)
@@ -4298,7 +4304,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3e035543-a1ef-4596-8db7-8d334f63aeed")
-		(property "Reference" "#PWR0112"
+		(property "Reference" "#PWR112"
 			(at 132.08 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -4359,7 +4365,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0112")
+					(reference "#PWR112")
 					(unit 1)
 				)
 			)
@@ -4377,7 +4383,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3eeca766-10d4-4e77-a691-02a35aed3881")
-		(property "Reference" "#PWR0109"
+		(property "Reference" "#PWR109"
 			(at 234.95 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -4438,7 +4444,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0109")
+					(reference "#PWR109")
 					(unit 1)
 				)
 			)
@@ -4456,37 +4462,28 @@
 		(dnp no)
 		(uuid "44e5a2d0-bb6b-445e-9e3a-fdcdeb3abedb")
 		(property "Reference" "C25"
-			(at 98.298 48.768 90)
+			(at 92.71 48.895 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "2.2nF"
-			(at 95.25 52.832 90)
+		(property "Value" "C"
+			(at 97.79 48.895 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 99.06 48.5648 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C2987940"
 			(at 99.06 48.5648 0)
 			(hide yes)
 			(show_name no)
@@ -4510,6 +4507,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 95.25 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C2987940"
+			(at 99.06 48.5648 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4546,37 +4554,28 @@
 		(dnp no)
 		(uuid "4690c6f0-cef8-4f52-a9f5-633a3ebd26e3")
 		(property "Reference" "C24"
-			(at 98.044 42.164 90)
+			(at 97.79 43.815 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "2.2nF"
-			(at 95.25 39.878 90)
+		(property "Value" "C"
+			(at 92.71 43.815 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 91.44 44.1452 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C2987940"
 			(at 91.44 44.1452 0)
 			(hide yes)
 			(show_name no)
@@ -4600,6 +4599,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 95.25 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C2987940"
+			(at 91.44 44.1452 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4636,7 +4646,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "49b004aa-fdab-4f24-aa32-e53b13191222")
-		(property "Reference" "J2"
+		(property "Reference" "CN2"
 			(at 220.98 36.83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4743,7 +4753,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "J2")
+					(reference "CN2")
 					(unit 1)
 				)
 			)
@@ -4761,17 +4771,17 @@
 		(dnp no)
 		(uuid "49e3976f-c574-454b-bef4-271649866b07")
 		(property "Reference" "R35"
-			(at 80.772 44.196 90)
+			(at 88.138 43.942 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.635 0.635)
 				)
 			)
 		)
-		(property "Value" "470"
-			(at 84.836 43.18 90)
+		(property "Value" "R"
+			(at 85.09 43.18 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4781,17 +4791,6 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 85.09 41.402 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C852799"
 			(at 85.09 41.402 90)
 			(hide yes)
 			(show_name no)
@@ -4815,6 +4814,17 @@
 		)
 		(property "Description" "Resistor"
 			(at 85.09 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C852799"
+			(at 85.09 41.402 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4851,37 +4861,28 @@
 		(dnp no)
 		(uuid "4b27072e-dbc1-4801-8fe5-30447572eedf")
 		(property "Reference" "C35"
-			(at 43.942 135.382 0)
+			(at 41.275 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0.1µF"
-			(at 44.704 131.572 0)
+		(property "Value" "C"
+			(at 41.275 130.81 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 40.9448 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C1525"
 			(at 40.9448 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -4905,6 +4906,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 41.91 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1525"
+			(at 40.9448 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4941,16 +4953,16 @@
 		(dnp no)
 		(uuid "4ecf57b6-101b-416f-a85e-778e0533efa6")
 		(property "Reference" "R36"
-			(at 80.518 50.546 90)
+			(at 82.042 48.768 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.635 0.635)
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "R"
 			(at 85.09 49.53 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4961,17 +4973,6 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 85.09 51.308 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C852799"
 			(at 85.09 51.308 90)
 			(hide yes)
 			(show_name no)
@@ -4995,6 +4996,17 @@
 		)
 		(property "Description" "Resistor"
 			(at 85.09 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C852799"
+			(at 85.09 51.308 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5031,37 +5043,28 @@
 		(dnp no)
 		(uuid "4f26af3b-f6a9-46ae-817d-b36665abc1d0")
 		(property "Reference" "C36"
-			(at 54.102 135.382 0)
+			(at 51.435 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "10µF"
-			(at 54.61 131.572 0)
+		(property "Value" "C"
+			(at 51.435 130.81 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 51.1048 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C19702"
 			(at 51.1048 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -5085,6 +5088,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 52.07 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C19702"
+			(at 51.1048 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5121,7 +5135,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5054c874-0dbe-4039-8878-70209bcdf2a8")
-		(property "Reference" "#PWR0128"
+		(property "Reference" "#PWR128"
 			(at 119.38 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -5182,7 +5196,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0128")
+					(reference "#PWR128")
 					(unit 1)
 				)
 			)
@@ -5200,37 +5214,28 @@
 		(dnp no)
 		(uuid "5092a6b7-de58-4956-988e-12e8aaa49f5b")
 		(property "Reference" "C38"
-			(at 201.422 135.382 0)
+			(at 198.755 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "2.2µF"
-			(at 202.438 131.572 0)
+		(property "Value" "C"
+			(at 198.755 130.81 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 198.4248 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C23630"
 			(at 198.4248 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -5254,6 +5259,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 199.39 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C23630"
+			(at 198.4248 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5289,7 +5305,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "552d08ae-657d-45d7-af0c-c3b127e7e823")
-		(property "Reference" "#PWR0113"
+		(property "Reference" "#PWR113"
 			(at 180.34 118.11 0)
 			(hide yes)
 			(show_name no)
@@ -5301,7 +5317,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 181.61 118.11 90)
+			(at 182.88 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5349,7 +5365,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0113")
+					(reference "#PWR113")
 					(unit 1)
 				)
 			)
@@ -5366,7 +5382,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "632c43d5-26f4-4efb-86cb-9072325b266e")
-		(property "Reference" "#PWR0123"
+		(property "Reference" "#PWR123"
 			(at 76.2 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -5378,7 +5394,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 77.47 139.7 90)
+			(at 78.74 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5426,7 +5442,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0123")
+					(reference "#PWR123")
 					(unit 1)
 				)
 			)
@@ -5444,39 +5460,26 @@
 		(dnp no)
 		(uuid "637254cb-5b1a-4e67-b9ec-3b0442dadcfb")
 		(property "Reference" "R37"
-			(at 240.03 59.436 0)
+			(at 240.792 52.832 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.635 0.635)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "10K"
-			(at 240.03 57.912 90)
+		(property "Value" "R"
+			(at 240.03 55.88 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 238.252 55.88 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C190095"
 			(at 238.252 55.88 90)
 			(hide yes)
 			(show_name no)
@@ -5500,6 +5503,17 @@
 		)
 		(property "Description" "Resistor"
 			(at 240.03 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C190095"
+			(at 238.252 55.88 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5536,16 +5550,16 @@
 		(dnp no)
 		(uuid "6a637a13-7fe4-4cbd-8f36-e5a7965248e6")
 		(property "Reference" "R39"
-			(at 259.842 143.256 0)
+			(at 257.048 142.748 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.635 0.635)
 				)
 			)
 		)
-		(property "Value" "20K"
+		(property "Value" "R"
 			(at 257.81 139.7 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5556,17 +5570,6 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 259.588 139.7 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C705630"
 			(at 259.588 139.7 90)
 			(hide yes)
 			(show_name no)
@@ -5590,6 +5593,17 @@
 		)
 		(property "Description" "Resistor"
 			(at 257.81 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C705630"
+			(at 259.588 139.7 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5626,37 +5640,28 @@
 		(dnp no)
 		(uuid "7231e2fd-d7f5-4ab9-9b24-c85dc4e63374")
 		(property "Reference" "C28"
-			(at 117.602 117.602 0)
+			(at 114.935 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0.1µF"
-			(at 118.364 113.792 0)
+		(property "Value" "C"
+			(at 114.935 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 114.6048 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C1525"
 			(at 114.6048 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -5680,6 +5685,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 115.57 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1525"
+			(at 114.6048 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5716,7 +5732,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "74a73b0d-c324-4ec9-8116-5f1d5b16bc60")
-		(property "Reference" "#PWR0118"
+		(property "Reference" "#PWR118"
 			(at 33.02 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -5728,13 +5744,14 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 34.29 129.54 0)
+			(at 35.56 129.5399 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -5776,7 +5793,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0118")
+					(reference "#PWR118")
 					(unit 1)
 				)
 			)
@@ -5793,7 +5810,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "758262c8-eefe-47b7-beb3-09c8e4c23f56")
-		(property "Reference" "#PWR0119"
+		(property "Reference" "#PWR119"
 			(at 53.34 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -5805,7 +5822,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 54.61 129.54 90)
+			(at 55.88 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5853,7 +5870,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0119")
+					(reference "#PWR119")
 					(unit 1)
 				)
 			)
@@ -5871,39 +5888,26 @@
 		(dnp no)
 		(uuid "78be54a2-1d53-4c74-9467-e8933a476d93")
 		(property "Reference" "R34"
-			(at 243.84 37.084 0)
+			(at 239.268 43.688 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.635 0.635)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "10K"
-			(at 240.03 38.608 90)
+		(property "Value" "R"
+			(at 240.03 40.64 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 241.808 40.64 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C190095"
 			(at 241.808 40.64 90)
 			(hide yes)
 			(show_name no)
@@ -5927,6 +5931,17 @@
 		)
 		(property "Description" "Resistor"
 			(at 240.03 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C190095"
+			(at 241.808 40.64 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5963,7 +5978,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7922bdc4-e781-4dc2-bb67-a0101cf6e48c")
-		(property "Reference" "#PWR0105"
+		(property "Reference" "#PWR105"
 			(at 240.03 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -6023,7 +6038,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0105")
+					(reference "#PWR105")
 					(unit 1)
 				)
 			)
@@ -6041,37 +6056,28 @@
 		(dnp no)
 		(uuid "82ee851a-3436-4444-aad9-16445e0d6aa9")
 		(property "Reference" "C29"
-			(at 127.762 117.602 0)
+			(at 125.095 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "10µF"
-			(at 128.27 113.792 0)
+		(property "Value" "C"
+			(at 125.095 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 124.7648 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C19702"
 			(at 124.7648 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -6095,6 +6101,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 125.73 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C19702"
+			(at 124.7648 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6131,37 +6148,28 @@
 		(dnp no)
 		(uuid "a602b312-0f11-4076-93bc-431dc7b3df96")
 		(property "Reference" "C27"
-			(at 81.026 117.602 0)
+			(at 78.105 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "10µF"
-			(at 81.534 113.538 0)
+		(property "Value" "C"
+			(at 78.105 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 77.7748 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C19702"
 			(at 77.7748 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -6185,6 +6193,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 78.74 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C19702"
+			(at 77.7748 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6221,7 +6240,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b446243e-d146-4c05-b35a-a414ba847e3a")
-		(property "Reference" "#PWR0108"
+		(property "Reference" "#PWR108"
 			(at 105.41 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -6282,7 +6301,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0108")
+					(reference "#PWR108")
 					(unit 1)
 				)
 			)
@@ -6300,37 +6319,28 @@
 		(dnp no)
 		(uuid "b9181ede-67f9-48b7-91f1-e17cb8589863")
 		(property "Reference" "C33"
-			(at 131.064 123.444 90)
+			(at 130.81 125.095 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0.1µF"
-			(at 128.27 128.016 90)
+		(property "Value" "C"
+			(at 125.73 125.095 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 124.46 125.4252 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C1525"
 			(at 124.46 125.4252 0)
 			(hide yes)
 			(show_name no)
@@ -6354,6 +6364,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 128.27 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1525"
+			(at 124.46 125.4252 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6390,37 +6411,28 @@
 		(dnp no)
 		(uuid "c2d3ac49-06cc-4add-a5e7-41864e370778")
 		(property "Reference" "C34"
-			(at 66.548 130.556 90)
+			(at 60.96 128.905 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "2.2µF"
-			(at 63.5 132.588 90)
+		(property "Value" "C"
+			(at 66.04 128.905 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 67.31 128.5748 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C23630"
 			(at 67.31 128.5748 0)
 			(hide yes)
 			(show_name no)
@@ -6444,6 +6456,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 63.5 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C23630"
+			(at 67.31 128.5748 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6480,7 +6503,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c2dd5296-cb31-4a11-9174-e8825e8a87c4")
-		(property "Reference" "#PWR0122"
+		(property "Reference" "#PWR122"
 			(at 213.36 130.81 0)
 			(hide yes)
 			(show_name no)
@@ -6541,7 +6564,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0122")
+					(reference "#PWR122")
 					(unit 1)
 				)
 			)
@@ -6559,7 +6582,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c4541a20-3dba-411a-bb57-dc9f6de3432d")
-		(property "Reference" "#PWR0124"
+		(property "Reference" "#PWR124"
 			(at 119.38 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -6620,7 +6643,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0124")
+					(reference "#PWR124")
 					(unit 1)
 				)
 			)
@@ -6638,7 +6661,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c90d9547-2d48-47c4-8806-b053c0485091")
-		(property "Reference" "#PWR0127"
+		(property "Reference" "#PWR127"
 			(at 109.22 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -6699,7 +6722,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0127")
+					(reference "#PWR127")
 					(unit 1)
 				)
 			)
@@ -6716,7 +6739,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d201c36e-a38b-4302-a24a-cebc4d14ffcb")
-		(property "Reference" "#PWR0111"
+		(property "Reference" "#PWR111"
 			(at 62.23 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -6728,7 +6751,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 63.5 111.76 90)
+			(at 64.77 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6776,7 +6799,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0111")
+					(reference "#PWR111")
 					(unit 1)
 				)
 			)
@@ -6794,7 +6817,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d3a33987-001e-4766-b081-0fb4747bc24f")
-		(property "Reference" "#PWR0107"
+		(property "Reference" "#PWR107"
 			(at 105.41 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -6855,7 +6878,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0107")
+					(reference "#PWR107")
 					(unit 1)
 				)
 			)
@@ -7013,37 +7036,28 @@
 		(dnp no)
 		(uuid "d94cd39f-fe4c-4a7a-bd43-9442f7e84bff")
 		(property "Reference" "C31"
-			(at 201.422 123.952 0)
+			(at 198.755 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "2.2µF"
-			(at 202.438 120.142 0)
+		(property "Value" "C"
+			(at 198.755 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 198.4248 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C23630"
 			(at 198.4248 118.11 0)
 			(hide yes)
 			(show_name no)
@@ -7067,6 +7081,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 199.39 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C23630"
+			(at 198.4248 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7103,7 +7128,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da1df5c9-0d5e-4b2b-9bbd-dd95a99ffdc0")
-		(property "Reference" "#PWR0114"
+		(property "Reference" "#PWR114"
 			(at 123.19 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -7164,7 +7189,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0114")
+					(reference "#PWR114")
 					(unit 1)
 				)
 			)
@@ -7182,37 +7207,28 @@
 		(dnp no)
 		(uuid "db03974f-ecd7-4f2c-8570-4b857db7f912")
 		(property "Reference" "C26"
-			(at 73.406 117.602 0)
+			(at 70.485 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0.1µF"
-			(at 74.168 113.792 0)
+		(property "Value" "C"
+			(at 70.485 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 70.1548 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-				(property "LCSC Part" "C1525"
 			(at 70.1548 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -7236,6 +7252,17 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 71.12 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1525"
+			(at 70.1548 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7272,7 +7299,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e6191ece-6aa7-412b-b979-04d74c1b3be3")
-		(property "Reference" "#PWR0106"
+		(property "Reference" "#PWR106"
 			(at 234.95 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -7284,7 +7311,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 232.6103 41.9099 90)
+			(at 232.41 41.9099 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7333,7 +7360,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0106")
+					(reference "#PWR106")
 					(unit 1)
 				)
 			)
@@ -7350,7 +7377,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ef8d60ca-e424-4bd4-b49b-9bc0e718caa2")
-		(property "Reference" "#PWR0125"
+		(property "Reference" "#PWR125"
 			(at 76.2 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -7362,7 +7389,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 77.47 142.24 90)
+			(at 78.74 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7410,7 +7437,7 @@
 		(instances
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "#PWR0125")
+					(reference "#PWR125")
 					(unit 1)
 				)
 			)
