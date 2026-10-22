@@ -214,17 +214,40 @@ Next:
 - [ ] firmware bring-up (see `code.md`)
 
 ## Enclosure
-Decided 2026-10-22, details still open.
+Concept decided 2026-10-22. **Chosen: variant B, rounded corners** (A and the sharp versions stay in `concept.py` for reference).
 
-- **Form**: vertical, iPod-style. Display on top of the front face, buttons below it
+- **Form**: vertical, iPod-style. Display on top of the front face, click wheel below it
 - **v1 shell: CNC aluminium 6061, anodized.** Any colour (grey, dark blue, pink, purple), matte or gloss, cheap at JLCCNC / PCBWay
 - **v2 shell: anodized titanium.** Interference colours (natural grey, blue, purple, gold, magenta; no pastel pink), heavier and more premium, several times the machining cost. Only after v1 fits
-- **Buttons**: 3D printed. **Mechanical click wheel** under the display, iPod mini style: a printed ring rocking on 4 tactile switches (top VOL+, bottom VOL−, left PREV, right NEXT) plus a centre PLAY button. No capacitive scrolling in v1 (needs a touch controller and free GPIOs)
-- **Antenna window**: a metal shell blocks BT/WiFi, so the **top end is a 3D printed plastic cap**, with the ESP32 antenna right under it (no copper or metal under or around the antenna)
-- **Bottom edge**: USB-C + 3.5mm jack, so wired headphones come straight out of a pocket
-- **Stack**: LiPo 503450 (≈50 × 34 × 5 mm) behind the PCB. Estimated total thickness ≈10–11 mm (PCB 1 mm + parts 2–3 mm + battery + walls). Thinner needs a thinner cell
-- **Display**: LS013B7DH03 behind a clear window (glass or acrylic) in the front face
-- **Tools**: modelled in code with [build123d](https://github.com/gumyr/build123d) (`enclosure/`, venv in `enclosure/.venv`), PCB imported as STEP from KiCad. STEP out for the CNC shop, STL for the printed parts. View in FreeCAD
+- **Click wheel**: mechanical, iPod mini style. A 3D printed ring rocking on 4 contacts (top VOL+, bottom VOL−, left PREV, right NEXT) plus a centre PLAY button. Contacts are **metal domes** (~0.4 mm, hand-applied), not 2 mm tactile switches, or the front stack grows by ~1.5 mm. No capacitive scrolling in v1 (needs a touch controller and free GPIOs)
+- **Antenna window**: a metal shell blocks BT/WiFi, so the **top end is a 3D printed plastic cap** (9 mm), with the ESP32 antenna right under it
+- **microSD**: slot in the left side, next to the ESP32 (short SD traces, keeps the cap free of metal)
+- **Back ramp**: a wedge cut into the back, centred, running into the bottom edge (half the thickness deep at the edge). It starts where the battery ends, so it covers the bottom ~19 mm, not half the length. USB-C and jack sit in the two full-thickness pillars on either side
+- **Ports**: on the flat part of the bottom face, clear of the corner radius; plug axes centred in the thickness
+- **Display**: LS013B7DH03 behind a clear window (glass or acrylic) in the front face, on a spacer above the PCB
+- **Tools**: modelled in code with [build123d](https://github.com/gumyr/build123d), `enclosure/concept.py` (venv in `enclosure/.venv`). STEP + renders in `enclosure/out/`. View in FreeCAD. Renders: `.venv/bin/python render/compare.py out` (also `render.py`, `ends_ortho.py`; need `pyvista`)
+- **Sketch**: `examplev1.dxf`, Stefan's first design sketch (proportions not to scale)
+
+### Final variants (2026-10-22)
+
+| | **A, compact** | **B, thin** |
+|---|---|---|
+| Size (W × L × T) | **41 × 90.4 × 10.7 mm** | **41 × 102.4 × 8.4 mm** |
+| Battery | LiPo 503450, 1000 mAh (5 × 34 × 50, ~54 mm with PCM), behind the parts | LiPo LP403759, 1000 mAh (4 × 37 × 59, ~63 mm with PCM), next to the parts |
+| Layout on the back | battery over the middle, parts ≤ 1.5 mm under it | ESP32 + SD at the top, battery in the middle, power + audio at the bottom |
+| USB-C | TYPE-C-31-M-12 (C165948), top mount (current part) | **TYPE-C 16P CB0.8 073 (C2906289)**, sinking 0.8 mm, made for 0.8 mm boards, ~$0.08 |
+| Jack | PJ-342 (C668606), top mount (current part) | **PJ-342C CB (C49287245)**, sinking 1.25 mm, ~$0.27 |
+| Port centring | USB-C +0.5 / jack −0.5 mm from centre (the two parts differ in height) | both within 0.01 mm of centre |
+| Ramp width | ~8 mm (rounded corners), ~14 mm (sharp) | same |
+
+Corner options for both: rounded (R5 plan view, 1 mm edges) or sharp (R0.6 / 0.3 mm edges). Sharp corners leave more room for the ports, so the ramp gets wider.
+
+Trade-offs and notes:
+- **B could be 7.4 mm** with the ports ~0.4 mm above centre (`center_ports=False`). Centring them costs 1 mm
+- A sinking USB-C does **not** help A: it raises the port, and A's ports already sit high
+- **B needs schematic changes**: PJ-342C CB is a 4-pole (TRRS) jack with a different pinout (1 MIC, 2 GND, 3 AU-R, 4 AU-L, 5 reserved, 6 HP-DET), so the jack symbol, footprint and detect circuit change. Check how HP-DET switches before drawing it. Both sinking parts need a **board cutout** (Edge.Cuts in their footprints)
+- **Battery connector**: JST PH (5.5 mm tall) does not fit in B. Solder the cell leads to pads, or use a low-profile connector
+- Catalogue cell sizes exclude the protection PCB and leads (+3–5 mm). Get the exact drawing of the chosen cell before fixing the board outline
 
 ## Schematic
 One sheet per block: `usb.kicad_sch` (USB-C, ESD, CP2102N, auto-reset), `power.kicad_sch`, `esp32.kicad_sch`, `audio.kicad_sch`, `io.kicad_sch` (microSD, display, buttons, jack detect). Pin-by-pin reference: [connections.md](connections.md).
