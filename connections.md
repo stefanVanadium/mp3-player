@@ -22,9 +22,10 @@ Issues found and how they were resolved:
 | 8 | all 21 GPIOs are used | info | for more I/O add an I2C expander (e.g. TCA9534) |
 | 9 | ESP32-PICO-MINI-02 is marked NRND | info | still stocked at JLC, fine for this project |
 | 10 | display: ST7567 pinout varies by seller | decision | dropped. **Sharp LS013B7DH03 only** (same display across projects, see `../PROJECTS.md`) |
+| 11 | enclosure B (8.4 mm thick) needs low parts and centred ports (2026-10-22) | decision | sinking USB-C and jack, JST SH battery connector, 0.75 mm wheel switches, side power switch. See 4.1, 4.4, 4.5, 4.8 |
 
 Not verifiable from the datasheet, check with a multimeter on the real part:
-- **PJ-342**: from the drawing, 5 and 2 = sleeve, 6 = ring (NC contact 7), 3 = tip (NC contact 4)
+- **PJ-342C CB**: from the drawing, pin 6 (HP-DET) is a normally open contact that touches the plug tip (L) when a plug is in. Check this, and that pin 5 (reserved) is unconnected
 - **TF-01A pin 9 (CD)**: assumed to close to GND/shell when a card is inserted (active low)
 - **FH12 vs LS013 flex**: Sharp recommends a top-contact connector. Check which side the contacts face
 
@@ -82,9 +83,9 @@ All pull-ups for SD, buttons, `PWR_INT`, I2C and the `AUDIO_EN` / `LCD_DISP` pul
 
 ## 4. Blocks
 
-### 4.1 USB-C (J1) + ESD (D1)
+### 4.1 USB-C (USBC1) + ESD (D1)
 
-**USB-C TYPE-C-31-M-12**
+**USB-C TYPE-C 16P CB0.8 073** (C2906289, SHOU HAN). Sinking type for a **0.8 mm board**: the body drops 0.8 mm into a board cutout, which is drawn on Edge.Cuts inside the footprint. Same 16-pin pinout as the old TYPE-C-31-M-12, but the shell is a single pin `0`.
 | Pin | Net |
 |---|---|
 | A4B9, B4A9 (VBUS) | `VBUS` |
@@ -94,7 +95,7 @@ All pull-ups for SD, buttons, `PWR_INT`, I2C and the `AUDIO_EN` / `LCD_DISP` pul
 | A6, B6 (DP1, DP2) | `USB_DP` (tied together) |
 | A7, B7 (DN1, DN2) | `USB_DN` (tied together) |
 | A8, B8 (SBU) | no-connect |
-| 1–4 (EH, shell) | `GND` |
+| 0 (shell) | `GND` |
 
 **USBLC6-2SC6** (symbol pins are unnamed)
 | Pin | Function | Net |
@@ -154,7 +155,14 @@ Why +3V3 and not VBUS: with USB unplugged and the ESP32 running, TX/RX can't bac
 
 I2C address 0x6A. Short press wakes from ship mode. While running, presses raise `/INT` (WAKE1/WAKE2), so the ESP32 sees the power button without a dedicated GPIO. Long press = hardware reset.
 
-**Battery (BT1)**: 2-pin connector (e.g. JST-PH), + → `VBAT`, − → `GND`.
+**Battery (BT1)**: JST SH 1.0 mm, **SM02B-SRSS-TB** (C160402), side entry, ~2.9 mm tall (JST PH is 5.5 mm and does not fit). Keep the `Battery_Cell` symbol and change only the footprint and LCSC field.
+| Pad | Connection |
+|---|---|
+| 1 | + → `VBAT` |
+| 2 | − → `GND` |
+| tabs | mounting, unnumbered in the footprint (no net) |
+
+Order the cell with a JST SH 1.0 mm plug (or re-crimp it). Polarity is not standard: check the red lead against pad 1 before plugging in.
 
 **TPS63802 (U4, 3.3V digital)**
 | Pin | Name | Connection |
@@ -263,14 +271,15 @@ Charge-pump capacitors (CAPP/CAPM, VNEG): good ceramics (X7R/C0G), per TI.
 
 The divider enables the amp only once the rails are almost up, so no pop (datasheet method). While `AUDIO_EN` is low, LM27762 is off and the OPA1622 is unpowered.
 
-**Jack PJ-342 (J2)** (verify with a multimeter, see section 1)
-| Pin | Role | Connection |
+**Jack PJ-342C CB (CN1)** (C49287245, SHOU HAN). 4-pole (TRRS), sinking 1.25 mm into a board cutout (Edge.Cuts in the footprint). Replaces PJ-342: **the pinout is different**. Verify with a multimeter, see section 1.
+| Pin | Datasheet name | Connection |
 |---|---|---|
-| 3 | Tip (L) | `HP_L`, + 10k to GND |
-| 6 | Ring (R) | `HP_R`, + 10k to GND |
-| 5, 2 | Sleeve | `GND` |
-| 4 | tip NC contact | `JACK_SW` (detect) |
-| 7 | ring NC contact | no-connect |
+| 4 | AU-L (tip) | `HP_L`, + 10k to GND |
+| 3 | AU-R (ring 1) | `HP_R`, + 10k to GND |
+| 2 | GND (ring 2) | `GND` |
+| 1 | MIC (sleeve) | `GND`. A 3-pole plug shorts sleeve and ring 2 anyway; on a 4-pole headset the mic is simply unused |
+| 6 | HP-DET | `JACK_SW` (detect, see 4.8) |
+| 5 | Reserved | no-connect |
 
 ### 4.6 microSD (J3, TF-01A)
 
@@ -311,22 +320,28 @@ Power-on sequence (datasheet Figure 6-1): DISP stays LOW while the pixel memory 
 
 ### 4.8 Buttons + jack detect
 
-All buttons are TS-1088: one pin on the net, the other to `GND`. Pull-ups are on the ESP32 sheet.
+One side of each button on the net, the other to `GND`. Pull-ups are on the ESP32 sheet.
 
-| Button | Net | Sheet |
-|---|---|---|
-| Play/Pause | `BTN_PLAY` (IO20) | esp32 |
-| Vol+ | `BTN_VOLUP` (I34) | io |
-| Vol− | `BTN_VOLDN` (I35) | io |
-| Next | `BTN_NEXT` (I37) | io |
-| Prev | `BTN_PREV` (I38) | io |
-| Power | BQ25180 TS/MR (4.4) | power |
-| Boot (hidden) | `ESP_BOOT` | esp32 |
+| Ref | Button | Net | Part | Where |
+|---|---|---|---|---|
+| SW4 | Play/Pause (wheel centre) | `BTN_PLAY` (IO20) | TS-1187B-B (C500066) | front, under the wheel |
+| SW5 | Vol+ (wheel top) | `BTN_VOLUP` (I34) | TS-1187B-B | front, under the wheel |
+| SW6 | Vol− (wheel bottom) | `BTN_VOLDN` (I35) | TS-1187B-B | front, under the wheel |
+| SW7 | Next (wheel right) | `BTN_NEXT` (I37) | TS-1187B-B | front, under the wheel |
+| SW8 | Prev (wheel left) | `BTN_PREV` (I38) | TS-1187B-B | front, under the wheel |
+| SW2 | Power | BQ25180 TS/MR (4.4) | **EVQP7J01P** (C2828254), side push | front, right board edge, level with the display |
+| SW3 | Boot (hidden) | `ESP_BOOT` | TS-1088 (unchanged) | back, inside |
+| SW1 | Reset (hidden) | `ESP_EN` | TS-1088 (unchanged) | back, inside |
 
-**Jack detect**: `JACK_SW` (jack pin 4) → 100k in series → `JACK_DET` (I39), plus a 1M pull-up from `JACK_DET` to +3V3.
-- no plug: pin 4 touches the tip (~0V through the 10k bleeder), so `JACK_DET` ≈ 0.3V = **LOW**
-- plug in: the contact opens, so `JACK_DET` = **HIGH**
-- the 100k protects the GPIO if audio plays with no plug in (the tip can swing ±2V)
+- The switches keep the 2-pin TS-1088 symbol; only Value, Footprint and LCSC change. Their footprints in `lib/` are renumbered so pads joined inside the switch share a number: pad 1 = net side, pad 2 = GND side
+- **TS-1187B-B**: 4.8 × 4.8 × 0.75 mm, 1.6 N, 300k cycles. Datasheet pads 1–2 are joined inside (footprint pad 1), 3–4 too (footprint pad 2). Check with a multimeter on the first part: pads in the same row must always beep
+- **EVQP7J01P**: 3.5 × 3.55 × 1.35 mm, pushed from the board edge. 1–1' (footprint pad 1) and 2–2' (footprint pad 2) are joined inside. The front side has ~1.8 mm of room at the edge, enough for 1.35 mm. The actuator must stick out past the board edge to reach the side button
+
+**Jack detect**: `JACK_SW` (jack pin 6, HP-DET) → 100k in series → `JACK_DET` (I39), 1M pull-up from `JACK_DET` to +3V3, **plus 100nF from `JACK_DET` to GND** (new).
+- no plug: HP-DET is open, the 1M pulls `JACK_DET` **HIGH**
+- plug in: HP-DET touches the tip (~0V through the 10k bleeder), so `JACK_DET` ≈ 0.3V = **LOW**
+- **the polarity is the opposite of the old PJ-342 circuit**: firmware reads LOW = headphones in
+- with a plug in, the detect line now carries the L audio signal. The 100k + 100nF low-pass (~16 Hz) averages it out to ~0.3V, so a loud bass note can't read as "unplugged". The 100k also limits clamp current
 
 ## 5. Buses
 

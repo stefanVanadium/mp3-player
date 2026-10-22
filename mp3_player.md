@@ -56,7 +56,7 @@ Only the **classic** ESP32 has Bluetooth Classic (A2DP) for headphones. S3/C3/C6
 | DAC | **PCM5122** | C1540085 | 177 | $4.1 | 112dB, 32-bit/384kHz, hardware volume over I2C, works without MCLK (internal PLL from BCK) |
 | headphone amp | **OPA1622** | C2876559 | 2682 | $3.0 | top-tier for headphones (very low THD), VSON-10 3x3 |
 | amp rails | **LM27762** | C473398 | 35k | $0.96 | generates clean ± voltage (charge pump + LDO) for the OPA1622 |
-| jack | 3.5mm with **detect** pin (switch) | to choose (PJ-320/PJ-342 family) | — | ~$0.1 | check the datasheet for a detect contact |
+| jack | **PJ-342C CB**, 4-pole, sinking (enclosure B) | C49287245 | 663 | $0.27 | HP-DET contact for plug detection. Replaced PJ-342 (C668606) on 2026-10-22, see connections.md 4.5 |
 
 "All-in-one" option for a more compact build: **CS43131** (Cirrus, DAC + headphone amp + jack detect, 130dB, the chip in good dongles).
 LCSC C965907, only **30 in stock**, ~$5.6. Digital interface probably 1.8V only → would need level shifters
@@ -83,7 +83,7 @@ Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122
 ### USB-C
 | What | Part | LCSC | Stock | Price | Notes |
 |---|---|---|---|---|---|
-| connector | TYPE-C-31-M-12 (16 pins) | C165948 | 347k | $0.19 | + 2x 5.1k on CC1/CC2 |
+| connector | **TYPE-C 16P CB0.8 073**, sinking, for 0.8 mm boards | C2906289 | 19.8k | $0.10 | + 2x 5.1k on CC1/CC2. Replaced TYPE-C-31-M-12 (C165948) on 2026-10-22 for enclosure B |
 | ESD | USBLC6-2SC6 | C7519 | 44k | $0.18 | on D+/D- |
 | USB-UART | **CP2102N-A02-GQFN24R** | C969151 | 19.7k | $1.98 | + 2 transistors for ESP32 auto-reset/boot. QFN24, not QFN20: the QFN20 has no DTR pin, and auto-reset needs DTR + RTS |
 | alternative | CH343P | C2846043 | 10k | $1.0 | cheaper, just as small |
@@ -120,7 +120,7 @@ Chosen for quality, not lowest price. Every part has its code in the `LCSC Part`
 | 10µF on VBUS / C9 | Samsung CL21A X5R 25V | C15850 | 0805 |
 | 22µF TPS63802 output | Samsung CL21A X5R 25V | C45783 | 0805 |
 | D2 boot diode | B5819W (basic) | C8598 | SOD-123 |
-| BT1 battery | JST PH 2-pin SMD, right angle (hand-soldered) | C295747 | S2B-PH-SM4-TB |
+| BT1 battery | JST SH 2-pin SMD, side entry, ~2.9 mm tall (hand-soldered) | C160402 | SM02B-SRSS-TB (JST PH is too tall for enclosure B) |
 
 Bulk caps are 0603/0805 rather than 0402: an 0402 10µF keeps only ~30-40% of its value at 3.3V (DC bias).
 Thin film + C0G add 11 extended part types (~$33 JLC fees). Only 6 of them are unavoidable (odd values + C0G); the
@@ -149,13 +149,15 @@ Parts with visible pins are bought from LCSC in the same cart (same parcel) and 
 ### Me (iron + flux) — 0 fees
 | Part | LCSC | Package | Difficulty |
 |---|---|---|---|
-| tact buttons | to choose | SMD/THT | easy |
+| click wheel buttons (x5) | C500066 TS-1187B-B, 0.75 mm | SMD | easy |
+| power button, side push | C2828254 EVQP7J01P, 1.35 mm | SMD | medium (small pads at the board edge) |
+| boot + reset buttons | C720477 TS-1088 | SMD | easy |
 | 3.5mm jack with detect | to choose (PJ-320/PJ-342) | SMD/THT | easy |
 | LP5907-3.3 | C80670 | SOT-23-5 | easy |
 | USBLC6-2SC6 | C7519 | SOT-23-6 | easy |
 | microSD push-push | C91145 (TF-01A) | SMD | medium (pins under the metal shell, lots of flux) |
 | display FPC (x1, only the one used) | C506791 Hirose FH12-10S | 0.5mm | medium (drag soldering + flux + wick) |
-| USB-C 16 pins | C165948 | SMD, 0.5mm pitch | **hard** — flux, fine tip, inspect for bridges under magnification |
+| USB-C 16 pins, sinking | C2906289 | SMD, 0.5mm pitch, sits in a board cutout | **hard** — flux, fine tip, inspect for bridges under magnification |
 | battery (JST or direct) | — | — | easy |
 | display on FPC | — | — | just plug it into the connector |
 
@@ -208,9 +210,12 @@ Done:
 - [x] **footprints + LCSC codes on all 112 parts** (2026-10-21), see [Passives](#passives)
 
 Next:
-- [ ] enclosure concept → board outline (see [Enclosure](#enclosure))
+- [x] enclosure concept: variant B, rounded (see [Enclosure](#enclosure))
+- [x] schematic for enclosure B (2026-10-22): jack PJ-342C CB (CN1), USB-C CB0.8 (USB1), BT1 JST SH, wheel TS-1187B-B, power EVQP7J01P, 100nF on `JACK_DET`. ERC 0/0, netlist diff vs. previous commit = only these changes
+- [ ] choose the exact LP403759 cell (drawing with PCM length, JST SH lead)
+- [ ] board outline from the enclosure model
 - [ ] PCB: placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
-- [ ] check the real PJ-342, TF-01A card detect and LS013 flex contact side against the footprints before ordering
+- [ ] check the real PJ-342C CB (HP-DET), TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
 
 ## Enclosure
@@ -235,7 +240,7 @@ Concept decided 2026-10-22. **Chosen: variant B, rounded corners** (A and the sh
 | Size (W × L × T) | **41 × 90.4 × 10.7 mm** | **41 × 102.4 × 8.4 mm** |
 | Battery | LiPo 503450, 1000 mAh (5 × 34 × 50, ~54 mm with PCM), behind the parts | LiPo LP403759, 1000 mAh (4 × 37 × 59, ~63 mm with PCM), next to the parts |
 | Layout on the back | battery over the middle, parts ≤ 1.5 mm under it | ESP32 + SD at the top, battery in the middle, power + audio at the bottom |
-| USB-C | TYPE-C-31-M-12 (C165948), top mount (current part) | **TYPE-C 16P CB0.8 073 (C2906289)**, sinking 0.8 mm, made for 0.8 mm boards, ~$0.08 |
+| USB-C | TYPE-C-31-M-12 (C165948), top mount (current part) | **TYPE-C 16P CB0.8 073 (C2906289)**, sinking 0.8 mm, made for 0.8 mm boards, ~$0.10 |
 | Jack | PJ-342 (C668606), top mount (current part) | **PJ-342C CB (C49287245)**, sinking 1.25 mm, ~$0.27 |
 | Port centring | USB-C +0.5 / jack −0.5 mm from centre (the two parts differ in height) | both within 0.01 mm of centre |
 | Ramp width | ~8 mm (rounded corners), ~14 mm (sharp) | same |
@@ -246,7 +251,9 @@ Trade-offs and notes:
 - **B could be 7.4 mm** with the ports ~0.4 mm above centre (`center_ports=False`). Centring them costs 1 mm
 - A sinking USB-C does **not** help A: it raises the port, and A's ports already sit high
 - **B needs schematic changes**: PJ-342C CB is a 4-pole (TRRS) jack with a different pinout (1 MIC, 2 GND, 3 AU-R, 4 AU-L, 5 reserved, 6 HP-DET), so the jack symbol, footprint and detect circuit change. Check how HP-DET switches before drawing it. Both sinking parts need a **board cutout** (Edge.Cuts in their footprints)
-- **Battery connector**: JST PH (5.5 mm tall) does not fit in B. Solder the cell leads to pads, or use a low-profile connector
+- **Battery connector**: JST PH (5.5 mm tall) does not fit in B, so BT1 moves to JST SH (SM02B-SRSS-TB, ~2.9 mm)
+- **Power button**: right side, level with the display. EVQP7J01P side-push switch on the front of the PCB at the right edge
+- **Display connector**: FH12 is 2.0 mm tall and does not fit on the front (~1.8 mm of room). Put it on the back and fold the flex around the board edge or through a slot. Decide at placement
 - Catalogue cell sizes exclude the protection PCB and leads (+3–5 mm). Get the exact drawing of the chosen cell before fixing the board outline
 
 ## Schematic

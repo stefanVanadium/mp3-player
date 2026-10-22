@@ -2,7 +2,7 @@ import sys, numpy as np, pyvista as pv
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1]))
 import concept
 out = sys.argv[1]
-HIDE = ("body", "cap", "wheel", "button")
+HIDE = ("body", "cap", "wheel", "button", "key")
 # camera direction (from object centre), view-up
 views = [("front", (0.9, -1.2, 1.6), (0, 1, 0), False),
          ("back", (-0.9, -1.4, -1.5), (0, 1, 0), False),

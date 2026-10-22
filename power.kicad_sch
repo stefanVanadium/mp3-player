@@ -6972,7 +6972,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TS-1088-AR02016"
+		(property "Value" "EVQP7J01P"
 			(at 71.12 52.0699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6983,7 +6983,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "mp3_player:SW-SMD_L3.9-W3.0-P4.45"
+		(property "Footprint" "mp3_player:SW-SMD_EVQP7J01P"
 			(at 60.96 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -7038,7 +7038,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C720477"
+		(property "LCSC Part" "C2828254"
 			(at 50.8 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -7874,7 +7874,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "mp3_player:CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN"
+		(property "Footprint" "mp3_player:CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN"
 			(at 99.06 35.306 90)
 			(hide yes)
 			(show_name no)
@@ -7907,7 +7907,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C295747"
+		(property "LCSC Part" "C160402"
 			(at 99.06 35.306 90)
 			(hide yes)
 			(show_name no)

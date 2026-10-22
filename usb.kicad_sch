@@ -1455,14 +1455,14 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "mp3_player:TYPE-C-31-M-12"
+		(symbol "mp3_player:TYPE-C16PCB0.8073"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "USBC"
-				(at 0 19.05 0)
+			(property "Reference" "USB"
+				(at 0 13.97 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1471,18 +1471,18 @@
 					)
 				)
 			)
-			(property "Value" "TYPE-C-31-M-12"
+			(property "Value" "TYPE-C 16P CB0.8 073"
+				(at 0 -16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "mp3_player:USB-C-SMD_TYPE-C-16P-CB0.8-073"
 				(at 0 -19.05 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "mp3_player:USB-C_SMD-TYPE-C-31-M-12_1"
-				(at 0 -21.59 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1492,8 +1492,8 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://lcsc.com/product-detail/USB-Type-C_Korean-Hroparts-Elec-TYPE-C-31-M-12_C165948.html"
-				(at 0 -24.13 0)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C2906289.pdf"
+				(at 0 -21.59 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1514,7 +1514,18 @@
 					)
 				)
 			)
-			(property "Manufacturer" "韩国韩荣"
+			(property "Manufacturer" "SHOU HAN(首韩)"
+				(at 0 -24.13 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "TYPE-C 16P CB0.8 073"
 				(at 0 -26.67 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1525,19 +1536,8 @@
 					)
 				)
 			)
-			(property "MPN" "TYPE-C-31-M-12"
+			(property "LCSC Part" "C2906289"
 				(at 0 -29.21 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part" "C165948"
-				(at 0 -31.75 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1558,10 +1558,10 @@
 					)
 				)
 			)
-			(symbol "TYPE-C-31-M-12_0_1"
+			(symbol "TYPE-C16PCB0.8073_0_1"
 				(rectangle
-					(start -3.81 16.51)
-					(end 8.89 -16.51)
+					(start -10.16 11.43)
+					(end 10.16 -6.35)
 					(stroke
 						(width 0)
 						(type default)
@@ -1570,17 +1570,28 @@
 						(type background)
 					)
 				)
+				(circle
+					(center -8.89 10.16)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin unspecified line
-					(at 11.43 -13.97 180)
-					(length 2.54)
-					(name "EH"
+					(at 0 -11.43 90)
+					(length 5.08)
+					(name "0"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
+					(number "0"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1589,61 +1600,7 @@
 					)
 				)
 				(pin unspecified line
-					(at 11.43 -11.43 180)
-					(length 2.54)
-					(name "EH"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 11.43 -8.89 180)
-					(length 2.54)
-					(name "EH"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 11.43 -6.35 180)
-					(length 2.54)
-					(name "EH"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -6.35 13.97 0)
+					(at -12.7 8.89 0)
 					(length 2.54)
 					(name "GND"
 						(effects
@@ -1661,7 +1618,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 11.43 0)
+					(at -12.7 6.35 0)
 					(length 2.54)
 					(name "VBUS"
 						(effects
@@ -1679,7 +1636,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 6.35 0)
+					(at -12.7 1.27 0)
 					(length 2.54)
 					(name "CC1"
 						(effects
@@ -1697,7 +1654,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 1.27 0)
+					(at -12.7 -3.81 0)
 					(length 2.54)
 					(name "DP1"
 						(effects
@@ -1715,7 +1672,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 -1.27 0)
+					(at 12.7 -3.81 180)
 					(length 2.54)
 					(name "DN1"
 						(effects
@@ -1733,9 +1690,9 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 -6.35 0)
+					(at 12.7 1.27 180)
 					(length 2.54)
-					(name "SBU1"
+					(name "SUB1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1751,7 +1708,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 -13.97 0)
+					(at 12.7 8.89 180)
 					(length 2.54)
 					(name "GND"
 						(effects
@@ -1769,7 +1726,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 -11.43 0)
+					(at 12.7 6.35 180)
 					(length 2.54)
 					(name "VBUS"
 						(effects
@@ -1787,7 +1744,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 -8.89 0)
+					(at 12.7 3.81 180)
 					(length 2.54)
 					(name "CC2"
 						(effects
@@ -1805,7 +1762,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 -3.81 0)
+					(at 12.7 -1.27 180)
 					(length 2.54)
 					(name "DP2"
 						(effects
@@ -1823,7 +1780,7 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 3.81 0)
+					(at -12.7 -1.27 0)
 					(length 2.54)
 					(name "DN2"
 						(effects
@@ -1841,9 +1798,9 @@
 					)
 				)
 				(pin unspecified line
-					(at -6.35 8.89 0)
+					(at -12.7 3.81 0)
 					(length 2.54)
-					(name "SBU2"
+					(name "SUB2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2861,6 +2818,12 @@
 		(uuid "3ecbff56-23c5-4393-9c59-560546b8d7ab")
 	)
 	(junction
+		(at 57.15 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4e06e573-5811-4239-bc27-f495f729f55f")
+	)
+	(junction
 		(at 40.64 151.13)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2903,16 +2866,10 @@
 		(uuid "930024d1-bd9c-4d97-85f2-17d0ba5e6454")
 	)
 	(junction
-		(at 85.09 63.5)
+		(at 81.28 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "963d8d98-94ba-4a88-b0a3-cee855f95bdf")
-	)
-	(junction
-		(at 53.34 45.72)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a8faa70c-f2dd-41c8-93fb-76a7b573d828")
+		(uuid "99ea4b96-ef12-4dc2-b414-4ce87ac8d63e")
 	)
 	(junction
 		(at 238.76 110.49)
@@ -2941,6 +2898,10 @@
 		(uuid "422ae056-8ad6-4d0a-b55c-8251d8ddc5af")
 	)
 	(no_connect
+		(at 93.98 55.88)
+		(uuid "542a1502-e85b-4207-825d-f44113021bc3")
+	)
+	(no_connect
 		(at 113.03 166.37)
 		(uuid "7a2054fe-ba8c-443a-be10-2bded043ab14")
 	)
@@ -2957,6 +2918,10 @@
 		(uuid "9e07cb13-4333-4f9e-8c92-93876bb281b4")
 	)
 	(no_connect
+		(at 68.58 53.34)
+		(uuid "a1fc9f1e-ac37-41de-b942-5f814e7ef7d8")
+	)
+	(no_connect
 		(at 64.77 146.05)
 		(uuid "b0d07b5a-ec8d-4ddb-9077-c3adfdfe5389")
 	)
@@ -2965,26 +2930,18 @@
 		(uuid "e98a310c-c75b-4495-8237-7328100a6d0c")
 	)
 	(no_connect
-		(at 73.66 60.96)
-		(uuid "f5111d63-5301-4f04-9e9b-5eebffbb1936")
-	)
-	(no_connect
 		(at 64.77 173.99)
 		(uuid "f773349b-98c7-44bc-8713-adc35b206fd1")
 	)
-	(no_connect
-		(at 73.66 45.72)
-		(uuid "f89dbbc7-2347-4f61-8e27-e9298c807bc5")
-	)
 	(wire
 		(pts
-			(xy 52.07 45.72) (xy 53.34 45.72)
+			(xy 55.88 50.8) (xy 57.15 50.8)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "04bbb75b-c7a5-41ae-9afa-e92addc1a5d3")
+		(uuid "00b4dbdf-b22e-4a9a-a59a-80bc61fcc01d")
 	)
 	(wire
 		(pts
@@ -3025,6 +2982,16 @@
 			(type default)
 		)
 		(uuid "34ae3865-0eb5-4c81-8270-0aaf5edaef31")
+	)
+	(wire
+		(pts
+			(xy 81.28 69.85) (xy 81.28 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37c8e467-62a2-4770-98aa-7c75b93f8b8f")
 	)
 	(wire
 		(pts
@@ -3078,13 +3045,13 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 63.5) (xy 73.66 63.5)
+			(xy 57.15 50.8) (xy 68.58 50.8)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7f949e53-bac3-4511-99e5-ce1f6d707bce")
+		(uuid "6f212301-cd72-49d6-92d3-16818580b0ea")
 	)
 	(wire
 		(pts
@@ -3178,6 +3145,16 @@
 	)
 	(wire
 		(pts
+			(xy 81.28 71.12) (xy 81.28 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bce61a4d-df62-46a3-8bfc-e216a5ceb737")
+	)
+	(wire
+		(pts
 			(xy 40.64 153.67) (xy 48.26 153.67)
 		)
 		(stroke
@@ -3185,16 +3162,6 @@
 			(type default)
 		)
 		(uuid "cec6a35f-92f2-4f9c-8c03-57739b3a6f2a")
-	)
-	(wire
-		(pts
-			(xy 86.36 63.5) (xy 85.09 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d108a98f-4528-44f6-8180-5d4b7c61e7dd")
 	)
 	(wire
 		(pts
@@ -3225,40 +3192,6 @@
 			(type default)
 		)
 		(uuid "eda78c7a-5dae-42cc-a2b4-f9b7a9b814e6")
-	)
-	(wire
-		(pts
-			(xy 53.34 45.72) (xy 55.88 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fe9c173f-1b7d-4477-8950-f196065b6044")
-	)
-	(global_label "USB_DN"
-		(shape input)
-		(at 73.66 50.8 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "13cb2719-a998-4c2e-a290-9cd44061f590")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 84.0233 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 	)
 	(global_label "USB_DP"
 		(shape input)
@@ -3332,30 +3265,6 @@
 			)
 		)
 	)
-	(global_label "USB_DP"
-		(shape input)
-		(at 73.66 53.34 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "367cb5b7-8453-45d1-b0ea-f16fe60e4a05")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 83.9628 53.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "USB_DN"
 		(shape input)
 		(at 201.93 58.42 180)
@@ -3380,9 +3289,9 @@
 			)
 		)
 	)
-	(global_label "USB_DN"
+	(global_label "USB_DP"
 		(shape input)
-		(at 73.66 55.88 0)
+		(at 93.98 58.42 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3390,9 +3299,57 @@
 			)
 			(justify left)
 		)
-		(uuid "429ace19-6cb9-408d-87f4-0234162a76d7")
+		(uuid "4a6453d0-c6f1-4605-911c-6940e3b9fdb1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 84.0233 55.88 0)
+			(at 104.2828 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "USB_DN"
+		(shape input)
+		(at 68.58 58.42 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4e6fc0f1-a2b1-493a-97b7-276d9fe5e685")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 58.2167 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "USB_DN"
+		(shape input)
+		(at 93.98 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "50a5142c-c518-4098-9897-ac05398df624")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 104.3433 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3454,17 +3411,17 @@
 	)
 	(global_label "USB_DP"
 		(shape input)
-		(at 73.66 48.26 0)
+		(at 68.58 60.96 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
-		(uuid "7f12ccd0-ae78-48af-bd37-f3f4a5e3a3ef")
+		(uuid "74c67e28-f6fa-4320-a9f0-1ca86da387cf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 83.9628 48.26 0)
+			(at 58.2772 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3472,7 +3429,7 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 	)
@@ -4084,6 +4041,85 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 68.58 48.26 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "04e6ad6a-4039-4794-8b9f-0ebc09cb0733")
+		(property "Reference" "#PWR012"
+			(at 62.23 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 48.2599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 68.58 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "82b91a7d-54e7-403c-9ff3-30c34c475dad")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "mp3_player:USBLC6-2SC6")
 		(at 219.71 50.8 0)
 		(unit 1)
@@ -4203,6 +4239,85 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 93.98 48.26 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "106e8865-85bf-40ce-84a0-37d6f2fa0964")
+		(property "Reference" "#PWR02"
+			(at 100.33 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 97.79 48.2599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 93.98 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 93.98 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 93.98 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "520f05a9-5614-4fdd-9b8a-3a556f967d00")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -4411,85 +4526,6 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 73.66 66.04 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "13e2a70f-99ac-41d0-b13d-e3a320e538ba")
-		(property "Reference" "#PWR12"
-			(at 80.01 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 77.47 66.0399 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 73.66 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 73.66 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 73.66 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "b641f38e-67bb-432b-b6c6-7c14100d16f8")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR12")
 					(unit 1)
 				)
 			)
@@ -4738,85 +4774,6 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "#PWR21")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 73.66 38.1 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1d490cfa-2c20-4df8-ba5c-b09b641888a7")
-		(property "Reference" "#PWR2"
-			(at 80.01 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 77.47 38.0999 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 73.66 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 73.66 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 73.66 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ae30748a-30b1-49e7-86f2-af7794a37649")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR2")
 					(unit 1)
 				)
 			)
@@ -5073,8 +5030,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 55.88 38.1 270)
+		(lib_id "power:VBUS")
+		(at 93.98 50.8 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5083,9 +5040,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "2f66e3a3-837f-4acf-93e2-925d604edb41")
-		(property "Reference" "#PWR1"
-			(at 49.53 38.1 0)
+		(uuid "3c678474-8645-4528-9e36-27b0216f1d78")
+		(property "Reference" "#PWR04"
+			(at 90.17 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5095,19 +5052,19 @@
 				)
 			)
 		)
-		(property "Value" "GND"
-			(at 52.07 38.0999 90)
+		(property "Value" "VBUS"
+			(at 97.79 50.7999 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 55.88 38.1 0)
+			(at 93.98 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5118,7 +5075,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 55.88 38.1 0)
+			(at 93.98 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5128,8 +5085,8 @@
 				)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 55.88 38.1 0)
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
+			(at 93.98 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5140,20 +5097,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "a8d06951-fac5-476e-8bf1-2f3cce36562f")
+			(uuid "1616483b-68e7-4ccf-8dda-2ee47cc0b033")
 		)
 		(instances
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR1")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 81.28 58.42 90)
+		(lib_id "power:PWR_FLAG")
+		(at 57.15 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5162,9 +5119,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "40dc6600-d9b8-4248-be2f-7bf648ed04c4")
-		(property "Reference" "#PWR10"
-			(at 87.63 58.42 0)
+		(uuid "486bad8d-b2fd-4262-bc43-48e7d267d0cd")
+		(property "Reference" "#FLG010"
+			(at 57.15 48.895 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5174,19 +5131,18 @@
 				)
 			)
 		)
-		(property "Value" "GND"
-			(at 85.09 58.4199 90)
+		(property "Value" "PWR_FLAG"
+			(at 57.15 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
-			(at 81.28 58.42 0)
+			(at 57.15 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5197,7 +5153,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 81.28 58.42 0)
+			(at 57.15 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5207,8 +5163,8 @@
 				)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 81.28 58.42 0)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 57.15 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5219,20 +5175,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "d28085cf-5c77-4644-bcec-fdd418f5e03a")
+			(uuid "1f739403-cb8a-47d7-b278-c28592ef1cce")
 		)
 		(instances
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR10")
+					(reference "#FLG010")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 52.07 45.72 270)
+		(lib_id "mp3_player:R")
+		(at 97.79 53.34 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5240,11 +5196,19 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4f40a9aa-0ede-4446-b169-e6f09665266f")
-		(property "Reference" "#PWR7"
-			(at 45.72 45.72 0)
-			(hide yes)
+		(uuid "4ac8c682-a270-4c81-ad16-c2b7f9a75a5d")
+		(property "Reference" "R1"
+			(at 94.742 52.578 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.635 0.635)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 97.79 53.34 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5253,19 +5217,8 @@
 				)
 			)
 		)
-		(property "Value" "GND"
-			(at 48.26 45.7199 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 52.07 45.72 0)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 97.79 55.118 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5276,7 +5229,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 52.07 45.72 0)
+			(at 97.79 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5286,8 +5239,8 @@
 				)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 52.07 45.72 0)
+		(property "Description" "Resistor"
+			(at 97.79 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5296,14 +5249,28 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "LCSC Part" "C25905"
+			(at 97.79 55.118 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "2d90bb6f-eae7-43b3-b606-e6aa54177f18")
 		)
 		(pin "1"
-			(uuid "f73bb969-add0-48cd-8311-545244946fe2")
+			(uuid "5453c6b5-2868-4fbf-9039-644eb3d9f4f8")
 		)
 		(instances
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR7")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -5383,85 +5350,6 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "#PWR15")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 55.88 40.64 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "556ffb4b-3ca3-4425-b981-e9e78ce260bd")
-		(property "Reference" "#PWR3"
-			(at 49.53 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 52.07 40.6399 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 55.88 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.88 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 55.88 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "4b1dba62-cffd-482c-8d0b-07f01eaf5412")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR3")
 					(unit 1)
 				)
 			)
@@ -5648,6 +5536,85 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 60.96 55.88 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5e0db72a-2228-4d9b-b6f1-87aad83719ba")
+		(property "Reference" "#PWR010"
+			(at 54.61 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 57.15 55.8801 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 60.96 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ecc3ce61-1ede-47be-8b3b-09efedbd7b1c")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "mp3_player:R")
 		(at 138.43 165.1 90)
 		(unit 1)
@@ -5732,85 +5699,6 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VBUS")
-		(at 86.36 63.5 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "627cdbe4-7d50-4050-94f7-f00022873da7")
-		(property "Reference" "#PWR11"
-			(at 82.55 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VBUS"
-			(at 90.17 63.4999 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 86.36 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 86.36 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VBUS\""
-			(at 86.36 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c99b894f-cc2b-4206-8aa3-5d163af8d9fb")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR11")
 					(unit 1)
 				)
 			)
@@ -5985,161 +5873,6 @@
 		)
 	)
 	(symbol
-		(lib_id "mp3_player:TYPE-C-31-M-12")
-		(at 67.31 52.07 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7175a876-9dd2-41fd-b7e1-bc8fc62706e9")
-		(property "Reference" "USBC1"
-			(at 64.77 30.48 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TYPE-C-31-M-12"
-			(at 64.77 33.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "mp3_player:USB-C_SMD-TYPE-C-31-M-12_1"
-			(at 67.31 30.48 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/USB-Type-C_Korean-Hroparts-Elec-TYPE-C-31-M-12_C165948.html"
-			(at 67.31 27.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 67.31 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "韩国韩荣"
-			(at 67.31 25.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "TYPE-C-31-M-12"
-			(at 67.31 22.86 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part" "C165948"
-			(at 67.31 20.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "B5"
-			(uuid "51b2bef2-a586-47df-932a-90cc4bb60abc")
-		)
-		(pin "B4A9"
-			(uuid "fb97cfe4-ca93-44ec-b706-28b73ac67cfb")
-		)
-		(pin "B7"
-			(uuid "aa20779b-1ef0-40f9-bef8-779a32aca183")
-		)
-		(pin "B6"
-			(uuid "53161853-476f-4669-b516-d7b27d16a69c")
-		)
-		(pin "A6"
-			(uuid "ae373b23-c2a1-44f2-8ac9-f7d2520067d7")
-		)
-		(pin "B1A12"
-			(uuid "a4c8e8cd-dcb3-4e1e-976e-91c89f72da9c")
-		)
-		(pin "A8"
-			(uuid "389a8ab1-ce06-4269-a251-3514eaf98742")
-		)
-		(pin "B8"
-			(uuid "0502ba83-bf86-4d65-8998-c855b504e2d9")
-		)
-		(pin "A7"
-			(uuid "d0616b9b-0e34-4788-892f-12e39b3af81b")
-		)
-		(pin "4"
-			(uuid "108ec781-2996-4bf6-8c2c-63fad7eba80e")
-		)
-		(pin "3"
-			(uuid "151d6998-c331-4c72-a909-2589ebb39a7e")
-		)
-		(pin "2"
-			(uuid "3e8511fe-0949-4f91-b642-6c05d47f2755")
-		)
-		(pin "1"
-			(uuid "e48ecc71-34d4-4d86-9a89-dfc4a4a5e89f")
-		)
-		(pin "A1B12"
-			(uuid "efede7fa-5da4-4247-b994-257186358760")
-		)
-		(pin "A4B9"
-			(uuid "9e697ff7-10e4-4e78-89b3-b392b4df3bc4")
-		)
-		(pin "A5"
-			(uuid "ff06893a-6607-41c9-bdbe-5bf8be2c8d8d")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "USBC1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 40.64 157.48 180)
 		(unit 1)
@@ -6226,6 +5959,175 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "mp3_player:R")
+		(at 64.77 55.88 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "791e6f9c-25f1-4b79-b8dc-769e59ecdfe1")
+		(property "Reference" "R2"
+			(at 67.818 56.642 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.635 0.635)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 64.77 55.88 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 64.77 54.102 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 64.77 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C25905"
+			(at 64.77 54.102 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "9aeb00bf-a0fc-46dc-afe4-b46eabfa84bc")
+		)
+		(pin "1"
+			(uuid "fdd81fbe-4ae2-46da-8fec-3e7f782e6272")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 101.6 53.34 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7c6c03a5-b60e-4f58-a9b2-0ca9b8bde4cf")
+		(property "Reference" "#PWR06"
+			(at 107.95 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 105.41 53.3399 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 101.6 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9235b15e-ef5d-47f3-88b1-e31b03ebbda5")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -6480,8 +6382,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 85.09 63.5 180)
+		(lib_id "power:GND")
+		(at 81.28 71.12 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6490,9 +6392,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "84689ed5-a27d-4c19-8ee1-73d39ece708d")
-		(property "Reference" "#FLG10"
-			(at 85.09 65.405 0)
+		(uuid "8bd76b6e-5200-49e5-b1e4-7c086a4db659")
+		(property "Reference" "#PWR01"
+			(at 81.28 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6502,8 +6404,8 @@
 				)
 			)
 		)
-		(property "Value" "PWR_FLAG"
-			(at 85.09 68.58 0)
+		(property "Value" "GND"
+			(at 81.28 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6513,7 +6415,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 85.09 63.5 0)
+			(at 81.28 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6524,7 +6426,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 85.09 63.5 0)
+			(at 81.28 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6534,8 +6436,8 @@
 				)
 			)
 		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 85.09 63.5 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 81.28 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6546,12 +6448,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "3c714ff5-d4e0-43f4-8fa3-e24645ec0eb4")
+			(uuid "bd6124e2-1714-47d4-b71c-c33097f42dd1")
 		)
 		(instances
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#FLG10")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -6638,85 +6540,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 55.88 43.18 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "903fe2da-fef3-466a-8ba1-c917795c0e49")
-		(property "Reference" "#PWR5"
-			(at 49.53 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 52.07 43.1799 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 55.88 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.88 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 55.88 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "74dc739f-e5b3-465b-aded-e02b14984d23")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 203.2 50.8 270)
 		(unit 1)
 		(body_style 1)
@@ -6789,6 +6612,85 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "#PWR8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 81.28 69.85 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9efe76bd-0f05-420d-9437-fbcf789c1e9b")
+		(property "Reference" "#FLG09"
+			(at 83.185 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 85.09 69.8499 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 81.28 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 81.28 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 81.28 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3762e508-3e0f-4138-af88-fa7a13a07868")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
+					(reference "#FLG09")
 					(unit 1)
 				)
 			)
@@ -6881,85 +6783,6 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "C4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VBUS")
-		(at 73.66 40.64 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a3d2b143-ab0c-4801-a6dc-ea90a64a564a")
-		(property "Reference" "#PWR4"
-			(at 69.85 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VBUS"
-			(at 77.47 40.6399 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 73.66 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 73.66 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VBUS\""
-			(at 73.66 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "49a21a73-6eb6-4286-aa5a-4f811772988d")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR4")
 					(unit 1)
 				)
 			)
@@ -7648,8 +7471,8 @@
 		)
 	)
 	(symbol
-		(lib_id "mp3_player:R")
-		(at 77.47 58.42 90)
+		(lib_id "mp3_player:TYPE-C16PCB0.8073")
+		(at 81.28 57.15 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7657,19 +7480,10 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "bf383c62-98fe-409a-b7ea-d0fa30e9b699")
-		(property "Reference" "R2"
-			(at 74.422 57.658 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.635 0.635)
-				)
-			)
-		)
-		(property "Value" "R"
-			(at 77.47 58.42 90)
+		(fields_autoplaced yes)
+		(uuid "c186535d-5a13-43b9-9680-6765ef04968f")
+		(property "Reference" "USB1"
+			(at 81.28 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7678,8 +7492,18 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 77.47 60.198 90)
+		(property "Value" "TYPE-C 16P CB0.8 073"
+			(at 81.28 43.18 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mp3_player:USB-C-SMD_TYPE-C-16P-CB0.8-073"
+			(at 81.28 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7689,8 +7513,8 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
-			(at 77.47 58.42 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2906289.pdf"
+			(at 81.28 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7700,8 +7524,8 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 77.47 58.42 0)
+		(property "Description" ""
+			(at 81.28 57.15 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7711,8 +7535,8 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C25905"
-			(at 77.47 60.198 90)
+		(property "Manufacturer" "SHOU HAN(首韩)"
+			(at 81.28 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7722,16 +7546,71 @@
 				)
 			)
 		)
-		(pin "2"
-			(uuid "22dc2422-f3e9-426c-a036-b1c71c2b050a")
+		(property "MPN" "TYPE-C 16P CB0.8 073"
+			(at 81.28 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)
-		(pin "1"
-			(uuid "0d40d199-23d9-40d3-98da-c7c542fd6ca8")
+		(property "LCSC Part" "C2906289"
+			(at 81.28 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "A1B12"
+			(uuid "dde2d1e5-c570-4e60-8e52-b8b5584b7085")
+		)
+		(pin "B1A12"
+			(uuid "c8e5035a-a6c7-4392-9237-7085d51b8957")
+		)
+		(pin "B7"
+			(uuid "5f6d3781-3410-4e3a-b875-fbda70ac084c")
+		)
+		(pin "B5"
+			(uuid "40da5121-ef6a-4873-a691-6ce70394cc57")
+		)
+		(pin "A4B9"
+			(uuid "baa52580-43bb-4d26-bd70-7aa6befb45fa")
+		)
+		(pin "0"
+			(uuid "ebb42e7b-e247-4cca-9338-774fb64d3f13")
+		)
+		(pin "A7"
+			(uuid "8ea4456a-a3ed-4b4a-91dc-ca37b836310a")
+		)
+		(pin "B8"
+			(uuid "be3a7e49-e847-4d01-85dd-393178cd61e0")
+		)
+		(pin "B6"
+			(uuid "33694ea2-ba0d-4f0c-a2cc-6dd4ca8684d3")
+		)
+		(pin "A6"
+			(uuid "325e8fd7-47e8-48b3-be12-5de196d4a375")
+		)
+		(pin "A8"
+			(uuid "cc5ae080-54ad-415c-8f97-e300721ac00e")
+		)
+		(pin "B4A9"
+			(uuid "37b39c1a-4cb8-4fce-abee-2fd5931238ed")
+		)
+		(pin "A5"
+			(uuid "a9ff3603-eab9-4a50-90a0-f47e4af3c921")
 		)
 		(instances
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "R2")
+					(reference "USB1")
 					(unit 1)
 				)
 			)
@@ -7850,163 +7729,6 @@
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
 					(reference "Q2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 53.34 45.72 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cb0e5e22-5465-4370-8a5f-db8ad5710ef1")
-		(property "Reference" "#FLG9"
-			(at 53.34 47.625 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 53.34 50.8 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 53.34 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 53.34 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 53.34 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "cc9739e0-2acd-4472-8056-c1638096d6d8")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#FLG9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 81.28 43.18 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d956c835-91d3-4fc8-a564-9c3d52624cfe")
-		(property "Reference" "#PWR6"
-			(at 87.63 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 85.09 43.1799 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 81.28 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 81.28 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 81.28 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ac96ea06-7c69-4ab9-a966-3d40ae7989d2")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "#PWR6")
 					(unit 1)
 				)
 			)
@@ -8373,8 +8095,8 @@
 		)
 	)
 	(symbol
-		(lib_id "mp3_player:R")
-		(at 77.47 43.18 90)
+		(lib_id "power:VBUS")
+		(at 55.88 50.8 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8382,19 +8104,11 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "f542ec3a-38c8-4ac0-b39e-51cb5d7176ae")
-		(property "Reference" "R1"
-			(at 74.422 42.418 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.635 0.635)
-				)
-			)
-		)
-		(property "Value" "R"
-			(at 77.47 43.18 90)
+		(fields_autoplaced yes)
+		(uuid "f7b387f0-5134-48f9-b864-b8f4e247523a")
+		(property "Reference" "#PWR011"
+			(at 59.69 50.8 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8403,8 +8117,19 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 77.47 44.958 90)
+		(property "Value" "VBUS"
+			(at 52.07 50.8001 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 55.88 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8415,7 +8140,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 77.47 43.18 0)
+			(at 55.88 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8425,8 +8150,8 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 77.47 43.18 0)
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
+			(at 55.88 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8435,28 +8160,14 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(property "LCSC Part" "C25905"
-			(at 77.47 44.958 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "6f78d5b1-11d4-4808-9756-10af3c13f864")
 		)
 		(pin "1"
-			(uuid "da4a2c7c-7a53-4f4b-8c3f-182f216629a4")
+			(uuid "18bfbc80-002d-4b3c-b2f2-d81a06f43269")
 		)
 		(instances
 			(project "mp3_player"
 				(path "/48b626a8-147d-4457-a8b4-c289755da89f"
-					(reference "R1")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)

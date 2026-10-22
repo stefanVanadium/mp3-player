@@ -1128,7 +1128,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "mp3_player:PJ-342"
+		(symbol "mp3_player:PJ-342CCB"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1144,7 +1144,7 @@
 					)
 				)
 			)
-			(property "Value" "PJ-342"
+			(property "Value" "PJ-342C CB"
 				(at 0 -12.7 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1154,7 +1154,7 @@
 					)
 				)
 			)
-			(property "Footprint" "mp3_player:AUDIO-SMD_PJ-342_C668606"
+			(property "Footprint" "mp3_player:AUDIO-SMD_HX-PJ-342C"
 				(at 0 -15.24 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1165,7 +1165,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Audio-Video-Connectors_SHOU-HAN-PJ-342_C668606.html"
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C49287245.pdf"
 				(at 0 -17.78 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1198,7 +1198,7 @@
 					)
 				)
 			)
-			(property "MPN" "PJ-342"
+			(property "MPN" "PJ-342C CB"
 				(at 0 -22.86 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1209,7 +1209,7 @@
 					)
 				)
 			)
-			(property "LCSC Part" "C668606"
+			(property "LCSC Part" "C49287245"
 				(at 0 -25.4 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1220,32 +1220,10 @@
 					)
 				)
 			)
-			(property "ki_keywords" "Audio Connectors"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "PJ-342_0_1"
-				(rectangle
-					(start -6.35 -0.51)
-					(end -5.33 -4.32)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
+			(symbol "PJ-342CCB_0_1"
 				(polyline
 					(pts
-						(xy -1.27 2.54) (xy -1.52 1.27)
+						(xy 5.08 5.08) (xy -7.62 5.08) (xy -8.89 3.81) (xy -10.16 5.08)
 					)
 					(stroke
 						(width 0)
@@ -1257,7 +1235,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 5.08) (xy -5.84 5.08) (xy -5.84 -0.51)
+						(xy 5.08 2.54) (xy 0 2.54) (xy -1.27 1.27) (xy -2.54 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1269,7 +1247,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 2.54) (xy -3.56 2.54) (xy -4.06 1.52) (xy -4.57 2.54)
+						(xy 5.08 0) (xy 3.3 0) (xy 3.3 0.76) (xy 3.3 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1281,7 +1259,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 0) (xy -1.27 0) (xy -1.27 2.54) (xy -1.02 1.27)
+						(xy 5.08 -2.54) (xy 3.3 -2.54) (xy 3.3 -3.3) (xy 3.3 -5.08)
 					)
 					(stroke
 						(width 0)
@@ -1293,7 +1271,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -5.08) (xy 1.52 -3.81)
+						(xy 5.08 -5.08) (xy 2.54 -5.08) (xy 1.27 -3.81) (xy 0 -5.08)
 					)
 					(stroke
 						(width 0)
@@ -1305,31 +1283,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -7.62) (xy -4.83 -7.62) (xy -5.33 -6.6) (xy -5.84 -7.62)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 -2.54) (xy 1.27 -2.54) (xy 1.27 -5.08) (xy 1.02 -3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 -5.08) (xy -1.27 -5.08) (xy -1.78 -4.06) (xy -2.29 -5.08)
+						(xy 5.08 -7.62) (xy -5.08 -7.62) (xy -6.35 -6.35) (xy -7.62 -7.62)
 					)
 					(stroke
 						(width 0)
@@ -1340,9 +1294,27 @@
 					)
 				)
 				(pin unspecified line
-					(at 6.35 -7.62 180)
+					(at 10.16 5.08 180)
 					(length 5.08)
-					(name "2"
+					(name "MIC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 -7.62 180)
+					(length 5.08)
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1358,9 +1330,9 @@
 					)
 				)
 				(pin unspecified line
-					(at 6.35 -5.08 180)
+					(at 10.16 2.54 180)
 					(length 5.08)
-					(name "3"
+					(name "AU-R"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1376,9 +1348,9 @@
 					)
 				)
 				(pin unspecified line
-					(at 6.35 -2.54 180)
+					(at 10.16 -5.08 180)
 					(length 5.08)
-					(name "4"
+					(name "AU-L"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1394,9 +1366,9 @@
 					)
 				)
 				(pin unspecified line
-					(at 6.35 5.08 180)
+					(at 10.16 0 180)
 					(length 5.08)
-					(name "5"
+					(name "Reserved"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1412,9 +1384,9 @@
 					)
 				)
 				(pin unspecified line
-					(at 6.35 2.54 180)
+					(at 10.16 -2.54 180)
 					(length 5.08)
-					(name "6"
+					(name "HP-DET"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1422,24 +1394,6 @@
 						)
 					)
 					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 6.35 0 180)
-					(length 5.08)
-					(name "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1962,7 +1916,7 @@
 		(uuid "2b20fac0-9fe7-46ee-9914-a6137b85d004")
 	)
 	(no_connect
-		(at 228.6 46.99)
+		(at 207.01 46.99)
 		(uuid "3dd6cfc5-108d-47f4-93d9-4f149a9ec446")
 	)
 	(no_connect
@@ -2135,23 +2089,13 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 44.45) (xy 243.84 44.45)
+			(xy 207.01 49.53) (xy 228.6 49.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "573460ae-8547-4cdb-b66b-4be812b5f407")
-	)
-	(wire
-		(pts
-			(xy 243.84 52.07) (xy 240.03 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5e91c239-d389-44a9-90a2-9efa1530e3c3")
+		(uuid "60c517d3-1f9c-4d7b-928b-1971cf940bd1")
 	)
 	(wire
 		(pts
@@ -2205,6 +2149,16 @@
 	)
 	(wire
 		(pts
+			(xy 207.01 44.45) (xy 243.84 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f8ed061-9d5b-4eac-a244-95ee132fd237")
+	)
+	(wire
+		(pts
 			(xy 205.74 125.73) (xy 199.39 125.73)
 		)
 		(stroke
@@ -2225,26 +2179,6 @@
 	)
 	(wire
 		(pts
-			(xy 228.6 44.45) (xy 240.03 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d687cec-1634-4c5f-b019-678be03c1ac3")
-	)
-	(wire
-		(pts
-			(xy 240.03 52.07) (xy 228.6 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9201b318-22cf-40f5-99bf-d205f455a39c")
-	)
-	(wire
-		(pts
 			(xy 67.31 120.65) (xy 66.04 120.65)
 		)
 		(stroke
@@ -2252,6 +2186,16 @@
 			(type default)
 		)
 		(uuid "942b84f5-b33f-4df6-ba01-d15e3f6af6ee")
+	)
+	(wire
+		(pts
+			(xy 207.01 41.91) (xy 228.6 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97f8ca38-3f53-4839-a5ae-22fe50412bf5")
 	)
 	(wire
 		(pts
@@ -2425,6 +2369,16 @@
 	)
 	(wire
 		(pts
+			(xy 207.01 52.07) (xy 243.84 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e51eabf1-a09f-4781-bf37-57f2ae956669")
+	)
+	(wire
+		(pts
 			(xy 252.73 135.89) (xy 252.73 134.62)
 		)
 		(stroke
@@ -2462,6 +2416,16 @@
 			(type default)
 		)
 		(uuid "f92fbc89-0dd3-43de-b32b-5b2d3cd6392a")
+	)
+	(wire
+		(pts
+			(xy 207.01 54.61) (xy 228.6 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9bafcf6-0289-427d-badc-b605908a42af")
 	)
 	(global_label "HP_R"
 		(shape input)
@@ -4635,131 +4599,6 @@
 		)
 	)
 	(symbol
-		(lib_id "mp3_player:PJ-342")
-		(at 222.25 46.99 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "49b004aa-fdab-4f24-aa32-e53b13191222")
-		(property "Reference" "CN2"
-			(at 220.98 36.83 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PJ-342"
-			(at 220.98 39.37 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "mp3_player:AUDIO-SMD_PJ-342_C668606"
-			(at 222.25 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Audio-Video-Connectors_SHOU-HAN-PJ-342_C668606.html"
-			(at 222.25 64.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 222.25 46.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "SHOU HAN(首韩)"
-			(at 222.25 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "PJ-342"
-			(at 222.25 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part" "C668606"
-			(at 222.25 72.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "4"
-			(uuid "bb31ff58-56d3-4aa0-8a79-6d8b104e8aa8")
-		)
-		(pin "5"
-			(uuid "670e3ac2-d750-4e58-99e9-6ef01aa4cebc")
-		)
-		(pin "7"
-			(uuid "842fcc63-2b1f-4703-a670-4a6ccd7edfbf")
-		)
-		(pin "6"
-			(uuid "b25a0b34-acde-4de9-8dc9-5689c04a946b")
-		)
-		(pin "3"
-			(uuid "cb9e7ac3-0787-4698-8e2b-0bcc72093cff")
-		)
-		(pin "2"
-			(uuid "7c644162-98ec-4fe7-bf7e-83e61a864bf1")
-		)
-		(instances
-			(project "mp3_player"
-				(path "/c6422f90-0327-4136-a608-1204883e57cc"
-					(reference "CN2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "mp3_player:R")
 		(at 85.09 43.18 270)
 		(unit 1)
@@ -6723,6 +6562,131 @@
 			(project "mp3_player"
 				(path "/c6422f90-0327-4136-a608-1204883e57cc"
 					(reference "#PWR127")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "mp3_player:PJ-342CCB")
+		(at 196.85 46.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cfa919ca-5642-4302-9b16-d7059fb703eb")
+		(property "Reference" "CN1"
+			(at 194.31 36.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PJ-342C CB"
+			(at 194.31 39.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mp3_player:AUDIO-SMD_HX-PJ-342C"
+			(at 196.85 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C49287245.pdf"
+			(at 196.85 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 196.85 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "SHOU HAN(首韩)"
+			(at 196.85 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "PJ-342C CB"
+			(at 196.85 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C49287245"
+			(at 196.85 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "5"
+			(uuid "9c8dc4f6-11f8-46a2-b313-73d92ab03052")
+		)
+		(pin "6"
+			(uuid "1901fde8-dd88-4dc6-8bcc-5fdabb6cf26a")
+		)
+		(pin "4"
+			(uuid "82b7fca8-ecd6-41e9-ae00-464d5fd86d5d")
+		)
+		(pin "1"
+			(uuid "4b1f1326-df1f-4750-a664-094e4b183671")
+		)
+		(pin "2"
+			(uuid "81c289f4-55f2-4a89-a325-35e0a68b7b57")
+		)
+		(pin "3"
+			(uuid "bdb33c65-f3f8-4769-942b-87486f187484")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/c6422f90-0327-4136-a608-1204883e57cc"
+					(reference "CN1")
 					(unit 1)
 				)
 			)

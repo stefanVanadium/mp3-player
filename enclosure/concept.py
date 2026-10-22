@@ -32,6 +32,8 @@ DISPLAY_WINDOW = (25.0, 25.0)  # active area 23.04 + margin
 WHEEL_OD, WHEEL_ID, WHEEL_T = 30.0, 11.5, 1.2
 ESP32 = (13.2, 16.6, 2.42)
 SD_SOCKET = (15.0, 16.1, 2.55)  # TF-01A, card enters along X
+POWER_SW = (3.55, 3.5, 1.35)  # EVQP7J01P side push, on the front of the PCB
+POWER_KEY = (7.0, 1.6)  # opening for the printed side key (length along Y, height)
 JACK_HOLE_D = 6.0
 USBC_HOLE = (9.6, 3.8)
 
@@ -167,6 +169,10 @@ def build(v: Variant):
     sd_z = pcb_bot - SD_SOCKET[2] / 2
     shell -= Pos(-W / 2, sd_cy, sd_z) * Box(6, 12.5, 1.8)
 
+    # Power key on the right side, level with the display
+    pwr_z = pcb_top + POWER_SW[2] / 2
+    shell -= Pos(W / 2, disp_cy, pwr_z) * Box(6, *POWER_KEY)
+
     # Split into metal body and plastic cap
     split_y = L - CAP_H
     body = shell & (Pos(0, split_y / 2, T / 2) * Box(W + 2, split_y, T + 2))
@@ -188,6 +194,9 @@ def build(v: Variant):
     esp_x = W / 2 - WALL_SIDE - 1 - ESP32[0] / 2
     esp32 = Pos(esp_x, esp_y, pcb_bot - ESP32[2] / 2) * Box(*ESP32)
     sd = Pos(-W / 2 + WALL_SIDE + SD_SOCKET[0] / 2, sd_cy, sd_z) * Box(*SD_SOCKET)
+    power_sw = Pos(W / 2 - WALL_SIDE - 0.2 - POWER_SW[0] / 2, disp_cy, pwr_z) * Box(*POWER_SW)
+    power_key = Pos(W / 2 - WALL_SIDE / 2 + 0.3, disp_cy, pwr_z) * Box(WALL_SIDE + 0.6, POWER_KEY[0] - 0.3,
+                                                                     POWER_KEY[1] - 0.2)
     def port_body(port, x, y0):
         h = port.below + port.sink
         return Pos(x, y0 + port.l / 2, pcb_bot + port.sink - h / 2) * Box(port.w, port.l, h)
@@ -208,6 +217,8 @@ def build(v: Variant):
         (battery, f"LiPo {bw:g}x{bl:g}x{bt:g}", Color(0.85, 0.7, 0.2)),
         (esp32, "ESP32-PICO-MINI-02", Color(0.6, 0.6, 0.6)),
         (sd, "TF-01A", Color(0.7, 0.7, 0.7)),
+        (power_sw, "EVQP7J01P", Color(0.3, 0.3, 0.3)),
+        (power_key, "power key (3D printed)", Color(0.9, 0.9, 0.9)),
         (jack, v.jack.part, Color(0.15, 0.15, 0.15)),
         (usbc, v.usb.part, Color(0.75, 0.75, 0.75)),
     ]

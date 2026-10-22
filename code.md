@@ -12,6 +12,7 @@
 - `PWR_INT` (IO8) is shared by BQ25180 /INT (128µs pulse, power button WAKE1/WAKE2) and MAX17048 ALRT. Read both chips to find the source
 - GPIO0 is boot-only (diode to GPIO2 = SD D0). Never drive it low at runtime
 - `SD_DET` (I36) and `JACK_DET` (I39): poll with debounce (ESP32 errata glitch on GPIO36/39)
+- `JACK_DET`: **LOW = headphones in** (PJ-342C CB, HP-DET closes to the tip when a plug is in)
 - before entering ship mode: write MAX17048 `MODE.EnSleep = 1`. The gauge sits directly on the battery, and with EnSleep set it drops to <1µA sleep once SDA/SCL go low (I2C pull-ups lose power) for >2.5s. Without it, it stays in hibernate at ~4µA
 - display (LS013B7DH03): keep `LCD_DISP` (IO33) low, send the all-clear command, then set DISP high. Toggle the VCOM bit in the SPI header about once a second (EXTMODE = GND)
 - BQ25180 charges at only ~10 mA after reset (ICHG_CTRL = 0x05). Set ICHG over I2C at every boot, 0.5C for the chosen 1000 mAh cell = 500 mA

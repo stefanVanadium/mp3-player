@@ -1918,6 +1918,12 @@
 		(uuid "adc826e4-4c71-4f70-a2ea-accca6941fb6")
 	)
 	(junction
+		(at 77.47 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3921b54-fcf0-4b2e-a328-a8dd4880c3cd")
+	)
+	(junction
 		(at 109.22 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2285,6 +2291,16 @@
 	)
 	(wire
 		(pts
+			(xy 73.66 77.47) (xy 77.47 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77680f04-36ca-4460-a96f-3ae007a054ab")
+	)
+	(wire
+		(pts
 			(xy 118.11 109.22) (xy 116.84 109.22)
 		)
 		(stroke
@@ -2462,6 +2478,16 @@
 			(type default)
 		)
 		(uuid "be4f54f8-307e-42f1-bcb2-cb070e2fcb18")
+	)
+	(wire
+		(pts
+			(xy 77.47 77.47) (xy 129.54 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0ed354c-03da-41f8-a6fc-639b332514f4")
 	)
 	(wire
 		(pts
@@ -3299,7 +3325,7 @@
 	)
 	(global_label "JACK_DET"
 		(shape input)
-		(at 129.54 77.47 180)
+		(at 73.66 77.47 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3309,7 +3335,7 @@
 		)
 		(uuid "f2bab33c-3557-41b3-9bf3-e16a83909e34")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.6044 77.47 0)
+			(at 61.7244 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3828,6 +3854,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 77.47 85.09 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2c0c68e8-b034-4024-85c5-421db771cf8b")
+		(property "Reference" "#PWR0153"
+			(at 77.47 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 77.47 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 77.47 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 77.47 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 77.47 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f2fcb855-f0a0-4d5f-81f0-3578fd5d7529")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/e7a6a6cd-6e47-432f-a794-94ecc7288598"
+					(reference "#PWR0153")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
 		(at 118.11 121.92 270)
 		(unit 1)
@@ -4318,7 +4421,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TS-1088-AR02016"
+		(property "Value" "TS-1187B-B"
 			(at 99.06 134.6199 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4329,7 +4432,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "mp3_player:SW-SMD_L3.9-W3.0-P4.45"
+		(property "Footprint" "mp3_player:KEY-SMD_4P-L4.8-W4.8-P3.70-LS6.4-TL"
 			(at 88.9 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -4384,7 +4487,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C720477"
+		(property "LCSC Part" "C500066"
 			(at 78.74 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -6222,6 +6325,98 @@
 			(project "mp3_player"
 				(path "/e7a6a6cd-6e47-432f-a794-94ecc7288598"
 					(reference "#PWR82")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 77.47 81.28 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "94c02225-889a-4c8c-9513-f0d1e9ca9475")
+		(property "Reference" "C44"
+			(at 76.835 83.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 76.835 78.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 76.5048 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 77.47 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 77.47 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1525"
+			(at 76.5048 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "094b78bf-2d3d-444b-b788-518667336765")
+		)
+		(pin "1"
+			(uuid "3d8e1b68-0802-4695-b3a5-a714f4fc2661")
+		)
+		(instances
+			(project "mp3_player"
+				(path "/e7a6a6cd-6e47-432f-a794-94ecc7288598"
+					(reference "C44")
 					(unit 1)
 				)
 			)
