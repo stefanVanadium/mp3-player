@@ -6,7 +6,7 @@ Sheets: `usb.kicad_sch` → `power.kicad_sch` → `esp32.kicad_sch` → `audio.k
 
 ## 1. Datasheet review
 
-Symbols and footprints match their datasheets for: ESP32-PICO-MINI-02, PCM5122, OPA1622, LM27762, BQ25180, TPS63802, LP5907, MAX17048, CP2102N (QFN24), MMBT3904, USB-C, USBLC6, TF-01A, FH12, PJ-342.
+Symbols and footprints match their datasheets for: ESP32-PICO-MINI-02, PCM5122, OPA1622, LM27762, BQ25180, TPS63802, LP5907, MAX17048, CP2102N (QFN24), MMBT3904, USB-C, USBLC6, TF-01A, FH19C, PJ-342.
 
 Issues found and how they were resolved:
 
@@ -27,7 +27,7 @@ Issues found and how they were resolved:
 Not verifiable from the datasheet, check with a multimeter on the real part:
 - **PJ-342C CB**: from the drawing, pin 6 (HP-DET) is a normally open contact that touches the plug tip (L) when a plug is in. Check this, and that pin 5 (reserved) is unconnected
 - **TF-01A pin 9 (CD)**: assumed to close to GND/shell when a card is inserted (active low)
-- **FH12 vs LS013 flex**: Sharp recommends a top-contact connector. Check which side the contacts face
+- **FH19C vs LS013 flex**: the tail lies flat (not folded under the panel), so its contacts face the PCB; Sharp's Figure 8-1 recommends a bottom-contact connector for this, and FH19C is bottom contact. Flex pin 1 is on the right seen from the display side, FPC4 pin 1 is on the right too. Check on the first board
 
 ## 2. Power rails
 
@@ -298,7 +298,7 @@ The divider enables the amp only once the rails are almost up, so no pop (datash
 
 The 10k pull-ups on CMD and D0–D3 are on the ESP32 sheet. **No pull-up on CLK.**
 
-### 4.7 Display: Sharp LS013B7DH03 on FH12-10S (J4)
+### 4.7 Display: Sharp LS013B7DH03 on FH19C-10S (FPC4)
 
 | FPC pin | Signal | Connection |
 |---|---|---|

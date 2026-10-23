@@ -93,7 +93,7 @@ Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122
 |---|---|---|---|---|---|
 | microSD | push-push (自弹式) | C91145 (TF-01A) | 181k | $0.19 | check footprint + card detect pin |
 | display | **Sharp LS013B7DH03** 1.28" 128x128 memory LCD | 0 stock at JLC | — | ~$10 | DigiKey/Mouser. 10-pin FPC 0.5mm. Chosen 2026-10-21 over ST7567: known pinout, nicer, and the same display is reused across projects (see ../PROJECTS.md) |
-| FPC | 0.5mm, pin count per panel | Hirose FH12-10S-0.5SH, C506791 (10P) | 7900 | $0.51 | |
+| FPC | 0.5mm, 10P, bottom contact, 0.9 mm tall | Hirose FH19C-10S-0.5SH(10), C598004 (FH12 was 2.0 mm, too tall) | 3984 | $0.29 | |
 | buttons | side tact switch / small SMD | to choose | — | — | play/pause, next, prev, vol+, vol- (+ power = BQ25180 button) |
 
 **Display notes (LS013B7DH03):**
@@ -156,7 +156,7 @@ Parts with visible pins are bought from LCSC in the same cart (same parcel) and 
 | LP5907-3.3 | C80670 | SOT-23-5 | easy |
 | USBLC6-2SC6 | C7519 | SOT-23-6 | easy |
 | microSD push-push | C91145 (TF-01A) | SMD | medium (pins under the metal shell, lots of flux) |
-| display FPC (x1, only the one used) | C506791 Hirose FH12-10S | 0.5mm | medium (drag soldering + flux + wick) |
+| display FPC (x1, only the one used) | C598004 Hirose FH19C-10S | 0.5mm | medium (drag soldering + flux + wick) |
 | USB-C 16 pins, sinking | C2906289 | SMD, 0.5mm pitch, sits in a board cutout | **hard** — flux, fine tip, inspect for bridges under magnification |
 | battery (JST or direct) | — | — | easy |
 | display on FPC | — | — | just plug it into the connector |
@@ -223,8 +223,8 @@ Next:
   - D2 boot diode, front, top strip (143.0, 63.8)
   - click wheel, front, centre (149.1, 126.85), contacts on the ring mid-radius 10.375 mm: SW4 PLAY centre, SW5 VOL+ top, SW6 VOL− bottom, SW8 PREV left, SW7 NEXT right (TS-1187B-B is 0.75 mm tall, 1.4 mm free under the ring)
   - SW1 EN (147.0, 138.6) and SW3 BOOT (153.0, 138.6) on the back under the start of the ramp (~3.3 mm free for the 2.0 mm switches); reachable only with the battery out, auto-reset covers normal flashing
-  - FPC4 not placed: FH12 is 2.0 mm tall and fits neither the front (~1.8 mm) nor the back (the battery is behind the display). The LCD tail (13.63 mm past the glass, centred, contacts on the back side) lies flat and ends at y ~110.9, so x ~143.5–155.5, y ~106.5–111.3 on the front is kept free for a low-profile bottom-contact connector, e.g. Hirose FH19C-10S-0.5SH(10) (C598004, 0.9 mm, 0.3 mm FPC). Needs a schematic footprint/LCSC swap
-  - next: FPC4, then passives around their chips
+  - FPC4 Hirose FH19C-10S-0.5SH(10) (C598004, 0.9 mm, bottom contact, 0.3 mm FPC) on the front at (149.1, 110.1) 180°, opening toward the display. FH12 (2.0 mm) fit neither side. The LCD tail (13.63 mm past the glass at y 97.3, centred, contacts on the PCB side) lies flat into it; flex pin 1 and FPC4 pin 1 are both on the right
+  - next: passives around their chips
 - [ ] check the real PJ-342C CB (HP-DET), TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
 
@@ -264,7 +264,7 @@ Trade-offs and notes:
 - **B needs schematic changes**: PJ-342C CB is a 4-pole (TRRS) jack with a different pinout (1 MIC, 2 GND, 3 AU-R, 4 AU-L, 5 reserved, 6 HP-DET), so the jack symbol, footprint and detect circuit change. Check how HP-DET switches before drawing it. Both sinking parts need a **board cutout** (Edge.Cuts in their footprints)
 - **Battery connector**: JST PH (5.5 mm tall) does not fit in B, so BT1 moves to JST SH (SM02B-SRSS-TB, ~2.9 mm)
 - **Power button**: right side, just under the cap (14.6 mm from the top end, near the top of the display). EVQP7J01P side-push switch on the **back** of the PCB at the right edge: hanging under the board, its actuator sits at z 4.33 vs. mid-thickness 4.21, so the opening is centred and the printed key hides the 0.1 mm. On the front it would be 2.3 mm off centre
-- **Display connector**: FH12 is 2.0 mm tall and does not fit on the front (~1.8 mm of room). Put it on the back and fold the flex around the board edge or through a slot. Decide at placement
+- **Display connector**: FH12 is 2.0 mm tall and does not fit on the front (~1.8 mm of room). Swapped for FH19C-10S (0.9 mm) on the front, just below the display; the flex lies flat, no fold
 - Catalogue cell sizes exclude the protection PCB and leads (+3–5 mm). Get the exact drawing of the chosen cell before fixing the board outline
 
 ## Schematic

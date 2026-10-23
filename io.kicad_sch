@@ -5270,7 +5270,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "FH12-10S-0.5SH"
+		(property "Value" "FH19C-10S-0.5SH(10)"
 			(at 227.33 101.5999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5281,7 +5281,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "mp3_player:FPC-SMD_FH12-10S-0.5SH-55"
+		(property "Footprint" "mp3_player:FPC-SMD_10P-P0.50_FH19C-10S-0.5SH-10"
 			(at 220.98 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -5292,7 +5292,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/FFC-FPC-Connectors_HRS-Hirose-HRS-FH12-10S-0-5SH-55_C506791.html"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410010404_HRS-Hirose-FH19C-10S-0-5SH-10_C598004.pdf"
 			(at 220.98 127 0)
 			(hide yes)
 			(show_name no)
@@ -5336,7 +5336,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C506791"
+		(property "LCSC Part" "C598004"
 			(at 220.98 134.62 0)
 			(hide yes)
 			(show_name no)
