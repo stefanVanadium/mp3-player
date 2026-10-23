@@ -214,8 +214,8 @@ Next:
 - [x] schematic for enclosure B (2026-10-22): jack PJ-342C CB (CN1), USB-C CB0.8 (USB1), BT1 JST SH, wheel TS-1187B-B, power EVQP7J01P, 100nF on `JACK_DET`. ERC 0/0, netlist diff vs. previous commit = only these changes
 - [ ] choose the exact LP403759 cell (drawing with PCM length, JST SH lead)
 - [x] Board Setup (2026-10-22): 4 layers (F.Cu signal, In1 GND, In2 GND2, B.Cu signal), 0.8 mm, ENIG. JLC-safe rules: 0.15 mm track/clearance, via 0.6/0.3, hole-to-hole 0.5, edge 0.3, silk 0.15 mm / 1.0 mm text. Net class `Power` (0.4 mm) on VBUS, VBAT, VSYS, +3V3, +3V3_A, ±3V0_AMP
-- [x] board outline on Edge.Cuts from `enclosure/out/pcb_outline_B.dxf` (38.2 × 99.6 mm, R3.6), board at x 130–168.2, y 55.4–155 (centre line x 149.1), drill/place and grid origin at the bottom-left corner (130, 155). USB1 at (138.9, 150.35) 0°, CN1 at (159.3, 147.89) 90°, i.e. ±10.2 mm from the centre line. U7 (ESP32) at (149.1, 66.5), antenna 0.1 mm from the top edge; rule area "Antenna keepout" on all copper layers, full width, y 55.4–61.0. Their cutouts are drawn on the board outline (removed from the footprints); CN1 pads trimmed to 1.2 × 1.465 mm for 0.2 mm to the slot; `mp3_player.kicad_dru` allows 0.2 mm edge clearance for USB1/CN1 pads only, 0.3 mm elsewhere. TF-01A peg holes made non-plated
-- [ ] PCB: placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
+- [x] board outline on Edge.Cuts from `enclosure/out/pcb_outline_B.dxf` (38.2 × 99.6 mm, R3.6), board at x 130–168.2, y 55.4–155 (centre line x 149.1), drill/place and grid origin at the bottom-left corner (130, 155). USB1 at (138.9, 150.35), CN1 at (159.3, 147.89), i.e. ±10.2 mm from the centre line. Their cutouts are drawn on the board outline (removed from the footprints); CN1 pads trimmed to 1.2 × 1.465 mm for 0.2 mm to the slot; `mp3_player.kicad_dru` allows 0.2 mm edge clearance for USB1/CN1 pads only, 0.3 mm elsewhere. TF-01A peg holes made non-plated
+- [ ] PCB placement. Front: display, wheel, small parts only (1.6 mm front stack). Back: everything tall; the battery covers the middle (board y ~74–137), so back parts go in the top and bottom strips. Done so far (all on the back): USB1 (138.9, 150.35), CN1 (159.3, 147.89), U7 ESP32 (157.6, 66.5) antenna at the top edge, Card3 microSD (139.9, 65.5) 90°, SW2 power (166.6, 68.6) actuator out of the right edge. Rule area "Antenna keepout" on all copper layers, x 148–168.2, y 55.4–61.0. Next: audio away from the ESP32 and the TPS63802 inductor
 - [ ] check the real PJ-342C CB (HP-DET), TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
 
@@ -227,7 +227,7 @@ Concept decided 2026-10-22. **Chosen: variant B, rounded corners** (A and the sh
 - **v2 shell: anodized titanium.** Interference colours (natural grey, blue, purple, gold, magenta; no pastel pink), heavier and more premium, several times the machining cost. Only after v1 fits
 - **Click wheel**: mechanical, iPod mini style. A 3D printed ring rocking on 4 contacts (top VOL+, bottom VOL−, left PREV, right NEXT) plus a centre PLAY button. Contacts are **metal domes** (~0.4 mm, hand-applied), not 2 mm tactile switches, or the front stack grows by ~1.5 mm. No capacitive scrolling in v1 (needs a touch controller and free GPIOs)
 - **Antenna window**: a metal shell blocks BT/WiFi, so the **top end is a 3D printed plastic cap** (9 mm), with the ESP32 antenna right under it
-- **microSD**: slot in the left side, next to the ESP32 (short SD traces, keeps the cap free of metal)
+- **microSD**: stays inside (no slot in the shell, the card is changed with the shell open). Socket on the back, top-left, card enters from the left board edge
 - **Back ramp**: a wedge cut into the back, centred, running into the bottom edge (half the thickness deep at the edge). It starts where the battery ends, so it covers the bottom ~19 mm, not half the length. USB-C and jack sit in the two full-thickness pillars on either side
 - **Ports**: on the flat part of the bottom face, clear of the corner radius; plug axes centred in the thickness
 - **Display**: LS013B7DH03 behind a clear window (glass or acrylic) in the front face, on a spacer above the PCB
@@ -254,7 +254,7 @@ Trade-offs and notes:
 - A sinking USB-C does **not** help A: it raises the port, and A's ports already sit high
 - **B needs schematic changes**: PJ-342C CB is a 4-pole (TRRS) jack with a different pinout (1 MIC, 2 GND, 3 AU-R, 4 AU-L, 5 reserved, 6 HP-DET), so the jack symbol, footprint and detect circuit change. Check how HP-DET switches before drawing it. Both sinking parts need a **board cutout** (Edge.Cuts in their footprints)
 - **Battery connector**: JST PH (5.5 mm tall) does not fit in B, so BT1 moves to JST SH (SM02B-SRSS-TB, ~2.9 mm)
-- **Power button**: right side, level with the display. EVQP7J01P side-push switch on the front of the PCB at the right edge
+- **Power button**: right side, just under the cap (14.6 mm from the top end, near the top of the display). EVQP7J01P side-push switch on the **back** of the PCB at the right edge: hanging under the board, its actuator sits at z 4.33 vs. mid-thickness 4.21, so the opening is centred and the printed key hides the 0.1 mm. On the front it would be 2.3 mm off centre
 - **Display connector**: FH12 is 2.0 mm tall and does not fit on the front (~1.8 mm of room). Put it on the back and fold the flex around the board edge or through a slot. Decide at placement
 - Catalogue cell sizes exclude the protection PCB and leads (+3–5 mm). Get the exact drawing of the chosen cell before fixing the board outline
 

@@ -32,7 +32,7 @@ DISPLAY_WINDOW = (25.0, 25.0)  # active area 23.04 + margin
 WHEEL_OD, WHEEL_ID, WHEEL_T = 30.0, 11.5, 1.2
 ESP32 = (13.2, 16.6, 2.42)
 SD_SOCKET = (15.0, 16.1, 2.55)  # TF-01A, card enters along X
-POWER_SW = (3.55, 3.5, 1.35)  # EVQP7J01P side push, on the front of the PCB
+POWER_SW = (2.9, 3.5, 1.35)  # EVQP7J01P side push, on the back of the PCB, actuator along +X
 POWER_KEY = (7.0, 1.6)  # opening for the printed side key (length along Y, height)
 JACK_HOLE_D = 6.0
 USBC_HOLE = (9.6, 3.8)
@@ -164,14 +164,17 @@ def build(v: Variant):
     shell -= usb_cut
     shell -= Pos(port_x, 0, jack_z) * Rot(90, 0, 0) * Cylinder(JACK_HOLE_D / 2, 6)
 
-    # microSD slot on the left side, next to the ESP32
-    sd_cy = L - WALL_END - 3 - SD_SOCKET[1] / 2
+    # Top strip, positions from the PCB (x = board x - 149.1, distances from the top
+    # end measured on the variant B board). microSD stays inside, no side slot
+    sd_x, sd_cy = -11.5, L - 11.5
     sd_z = pcb_bot - SD_SOCKET[2] / 2
-    shell -= Pos(-W / 2, sd_cy, sd_z) * Box(6, 12.5, 1.8)
+    esp_x, esp_y = 8.5, L - 9.8
 
-    # Power key on the right side, level with the display
-    pwr_z = pcb_top + POWER_SW[2] / 2
-    shell -= Pos(W / 2, disp_cy, pwr_z) * Box(6, *POWER_KEY)
+    # Power key on the right side, just under the cap. The switch hangs under the
+    # PCB, so its actuator lands ~0.1 mm from mid-thickness; the opening is centred
+    pwr_y = L - 14.6
+    pwr_sw_z = pcb_bot - POWER_SW[2] / 2
+    shell -= Pos(W / 2, pwr_y, T / 2) * Box(6, *POWER_KEY)
 
     # Split into metal body and plastic cap
     split_y = L - CAP_H
@@ -190,13 +193,11 @@ def build(v: Variant):
     bw, bl, bt = v.battery
     batt_y0 = WALL_END + v.bottom_zone
     battery = Pos(0, batt_y0 + bl / 2, WALL_BACK + 0.1 + bt / 2) * Box(bw, bl, bt)
-    esp_y = L - WALL_END - 0.5 - ESP32[1] / 2
-    esp_x = W / 2 - WALL_SIDE - 1 - ESP32[0] / 2
     esp32 = Pos(esp_x, esp_y, pcb_bot - ESP32[2] / 2) * Box(*ESP32)
-    sd = Pos(-W / 2 + WALL_SIDE + SD_SOCKET[0] / 2, sd_cy, sd_z) * Box(*SD_SOCKET)
-    power_sw = Pos(W / 2 - WALL_SIDE - 0.2 - POWER_SW[0] / 2, disp_cy, pwr_z) * Box(*POWER_SW)
-    power_key = Pos(W / 2 - WALL_SIDE / 2 + 0.3, disp_cy, pwr_z) * Box(WALL_SIDE + 0.6, POWER_KEY[0] - 0.3,
-                                                                     POWER_KEY[1] - 0.2)
+    sd = Pos(sd_x, sd_cy, sd_z) * Box(*SD_SOCKET)
+    power_sw = Pos(17.5, pwr_y, pwr_sw_z) * Box(*POWER_SW)
+    power_key = Pos(W / 2 - WALL_SIDE / 2 + 0.3, pwr_y, T / 2) * Box(WALL_SIDE + 0.6, POWER_KEY[0] - 0.3,
+                                                                  POWER_KEY[1] - 0.2)
     def port_body(port, x, y0):
         h = port.below + port.sink
         return Pos(x, y0 + port.l / 2, pcb_bot + port.sink - h / 2) * Box(port.w, port.l, h)
