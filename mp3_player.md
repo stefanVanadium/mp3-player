@@ -214,7 +214,7 @@ Next:
 - [x] schematic for enclosure B (2026-10-22): jack PJ-342C CB (CN1), USB-C CB0.8 (USB1), BT1 JST SH, wheel TS-1187B-B, power EVQP7J01P, 100nF on `JACK_DET`. ERC 0/0, netlist diff vs. previous commit = only these changes
 - [ ] choose the exact LP403759 cell (drawing with PCM length, JST SH lead)
 - [x] Board Setup (2026-10-22): 4 layers (F.Cu signal, In1 GND, In2 GND2, B.Cu signal), 0.8 mm, ENIG. JLC-safe rules: 0.15 mm track/clearance, via 0.6/0.3, hole-to-hole 0.5, edge 0.3, silk 0.15 mm / 1.0 mm text. Net class `Power` (0.4 mm) on VBUS, VBAT, VSYS, +3V3, +3V3_A, ±3V0_AMP
-- [ ] import the board outline on Edge.Cuts: `enclosure/out/pcb_outline_B.dxf` (38.2 × 99.6 mm, R3.6, made by `concept.py`)
+- [x] board outline on Edge.Cuts from `enclosure/out/pcb_outline_B.dxf` (38.2 × 99.6 mm, R3.6), board at x 130–168.2, y 55.4–155 (centre line x 149.1), drill/place and grid origin at the bottom-left corner (130, 155). USB1 at (138.9, 150.35) 0°, CN1 at (159.3, 147.89) 90°, i.e. ±10.2 mm from the centre line. U7 (ESP32) at (149.1, 66.5), antenna 0.1 mm from the top edge; rule area "Antenna keepout" on all copper layers, full width, y 55.4–61.0. Their cutouts are drawn on the board outline (removed from the footprints); CN1 pads trimmed to 1.2 × 1.465 mm for 0.2 mm to the slot; `mp3_player.kicad_dru` allows 0.2 mm edge clearance for USB1/CN1 pads only, 0.3 mm elsewhere. TF-01A peg holes made non-plated
 - [ ] PCB: placement (antenna at the edge, audio away from ESP32 and the TPS63802 inductor), 4-layer stackup
 - [ ] check the real PJ-342C CB (HP-DET), TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
