@@ -218,13 +218,22 @@ Next:
 - [ ] PCB placement. Front: display, wheel, small parts only (1.6 mm front stack). Back: everything tall; the battery covers the middle (board y ~74–137), so back parts go in the top and bottom strips. Done so far (all on the back): USB1 (138.9, 150.35), CN1 (159.3, 147.89), U7 ESP32 (157.6, 66.5) antenna at the top edge, Card3 microSD (139.9, 65.5) 90°, SW2 power (166.6, 68.6) actuator out of the right edge. Rule area "Antenna keepout" on all copper layers, x 148–168.2, y 55.4–61.0. Chips (2026-10-23), front stays outside the wheel opening (R 15.5 around 149.1, 126.85) and the display (y 67–97.3):
   - power corner, back, bottom-left between the battery end (y ~136.2) and USB1: BT1 (133.2, 139.2) 0°, cable entry toward the battery; U2 BQ25180 (137.2, 140.2); U5 MAX17048 (133.2, 143.8); D1 USBLC6 (138.9, 145.4) right above the USB data pads; U4 TPS63802 (141.0, 141.0) with L1 (143.72, 141.0) on its switch pins. Assumes the cell leads come out at the bottom end
   - front, bottom-left under the wheel: U1 CP2102N (137.5, 143.0) 90°, USB pins toward the connector, UART pins toward Q1 (132.4, 140.4) and Q2 (132.4, 144.6)
-  - DAC, front, middle band right (~40 mm from L1): U9 PCM5122 (161.2, 104.5), I2S pins up, analog outputs down; U6 LP5907 (157.6, 110.2) 90°
-  - amp at the jack: U8 OPA1622 front (161.5, 140.5) 180°, HP_R/HP_L outputs facing their CN1 pads; U3 LM27762 back (160.5, 138.6) above the jack
+  - DAC, front, middle band right (~40 mm from L1): U9 PCM5122 (161.2, 104.5), I2S pins up, analog outputs down; U6 LP5907 (165.2, 113.2) 270°, moved right on 2026-10-24 to free the charge-pump pins
+  - amp at the jack: U8 OPA1622 front (161.5, 139.9) 180° (moved up 0.6 mm on 2026-10-24 so the EN trace fits above the jack cutout), HP_R/HP_L outputs facing their CN1 pads; U3 LM27762 back (160.5, 138.6) above the jack
   - D2 boot diode, front, top strip (143.0, 63.8)
   - click wheel, front, centre (149.1, 126.85), contacts on the ring mid-radius 10.375 mm: SW4 PLAY centre, SW5 VOL+ top, SW6 VOL− bottom, SW8 PREV left, SW7 NEXT right (TS-1187B-B is 0.75 mm tall, 1.4 mm free under the ring)
   - SW1 EN (147.0, 138.6) and SW3 BOOT (153.0, 138.6) on the back under the start of the ramp (~3.3 mm free for the 2.0 mm switches); reachable only with the battery out, auto-reset covers normal flashing
   - FPC4 Hirose FH19C-10S-0.5SH(10) (C598004, 0.9 mm, bottom contact, 0.3 mm FPC) on the front at (149.1, 110.1) 180°, opening toward the display. FH12 (2.0 mm) fit neither side. The LCD tail (13.63 mm past the glass at y 97.3, centred, contacts on the PCB side) lies flat into it; flex pin 1 and FPC4 pin 1 are both on the right
-  - next: passives around their chips
+  - passives (2026-10-24), each next to the pin it serves, the non-GND pad facing that pin. DRC: 0 errors (silkscreen warnings left for the cleanup):
+    - back, power corner: C9/C10/C7/R12 at BQ25180, C15 (VIN) / C16+C17 (VOUT) / R15+R16 (FB) / R17 (PG) at TPS63802, C18 at MAX17048, C4 + R1/R2 (CC) at USB1
+    - back, LM27762: C12 (VIN), C11 (flying), C13 (CP), C8/C14 (outputs), R10/R13 and R11/R14 (feedback) around U3
+    - back, jack: R41 + C44 (detect low-pass) at CN1 pin 6, R37/R34 bleeders at the HP_L/HP_R pads
+    - back, top strip: C22 + C23 at the ESP32 3V3 pin, C40 + C39 at the microSD VDD pin, R40 (33 Ω) right under ESP32 pin 18 (source termination)
+    - front: CP2102N decoupling + VBUS divider + RSTb right of U1, R5/R6 between U1 and Q1/Q2; PCM5122 caps on their pins (DVDD/LDOO above, CPVDD/CAPP-CAPM/VNEG/AVDD below); LP5907 caps around U6; OPA1622 supply caps above U8, RC input filter (R35/C24, R36/C25) beside its inputs, EN divider R38/R39 on the right; display caps + DISP pull-down left of FPC4
+    - front pull-ups: right of the display for the right-column ESP32 pins (buttons, SD_DET, JACK_DET, EN), over the module for I2C/PWR_INT/AUDIO_EN/PLAY, over the card pins for SD D0–D3/CMD, R4 next to D2
+    - four 0402s (C25, C30, C37, R36) sit under the outer edge of the wheel ring (r 14.4–15.2 mm, 0.55 mm tall vs 1.4 mm free). No 0603/0805 under the ring
+    - routing note: U3 (back) sits right behind U8's exposed pad, so U8 thermal vias must avoid U3's pads; connect the −3V pad mostly on the front
+  - next: silkscreen cleanup, then routing
 - [ ] check the real PJ-342C CB (HP-DET), TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
 
