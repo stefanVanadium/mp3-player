@@ -44,7 +44,7 @@
 	(fp_line (start -4.47 -1.79) (end 4.47 -1.79) (layer F.CrtYd) (width 0.05))
 	(fp_line (start 4.47 -1.79) (end 4.47 4.71) (layer F.CrtYd) (width 0.05))
 	(fp_line (start 4.47 4.71) (end -4.47 4.71) (layer F.CrtYd) (width 0.05))
-	(model "${KIPRJMOD}/lib/mp3_player.3dshapes/USB-C-SMD_TYPE-C-16P-CB0.8-073.wrl"
+	(model "${KIPRJMOD}/lib/mp3_player.3dshapes/TYPE-C-16P-CB0.8-073.step"
 		(offset (xyz 0.000 0.000 0.000))
 		(scale (xyz 1 1 1))
 		(rotate (xyz 0 0 0))

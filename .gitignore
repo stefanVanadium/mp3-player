@@ -17,3 +17,8 @@ enclosure/.venv/
 __pycache__/
 # Fabrication exports (regenerated from a commit)
 fab/
+# Enclosure: big regenerated exports (case.py / full.py, kicad-cli)
+enclosure/out/*.glb
+enclosure/out/pcb.step
+enclosure/out/case_assembly.step
+enclosure/out/mp3_player_full.step

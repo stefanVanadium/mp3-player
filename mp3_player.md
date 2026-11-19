@@ -284,6 +284,21 @@ Concept decided 2026-10-22. **Chosen: variant B, rounded corners** (A and the sh
 - **Renders**: `render/hero.py` makes the README image (`out/hero_B.png`). Later, once the PCB and the final model are done: a photoreal render (materials, lighting, depth of field), e.g. in Blender from the STEP
 - **Sketch**: `examplev1.dxf`, Stefan's first design sketch (proportions not to scale)
 
+### Final model decisions (2026-11-19)
+
+- **Body**: one milled 6061 tub, open at the back. Front, sides and both ends in one piece
+- **Back cover**: 0.7 mm aluminium plate (1.1 mm at the screw pads) on a 0.1 mm die-cut adhesive gasket (dust / splash seal), 2 × M1.6×4 countersunk Torx screws at (±16.0, 9.0) mm, 3 mm in from the sides. The bosses stop 0.58 mm under the board, over back passives ≤ 0.43 mm tall (3.3 mm of thread). Square top end, closed by the antenna cap, which slides onto the top end like a pen cap and is locked by a pin on the plate. Assembly: PCB, battery, cap, back plate, 2 screws
+- **Ports (2026-11-19)**: bottom wall 0.8 mm, board gap 0.1 mm. CN1 moved 0.8 mm and USB1 0.6 mm toward the bottom edge (cutouts moved with them): the jack collar sits in a ø5.4 hole, the USB-C shell in an 8.9 × 3.2 slot, 0.24 mm under the surface. USB1 got its own 3D model from the datasheet (`enclosure/models/usb_c_16p_cb08.py`)
+- **Battery limit**: 62.2 mm free between SW1/SW3 and the ESP32 body, so the cell incl. its protection PCB must be ≤ 61.5 mm
+- **microSD**: stays inside; the card enters from the left board edge, 0.2 mm from the wall, so swapping it means taking the PCB out. Music goes on over WiFi
+- **Finish**: natural grey, bead blasted, matte anodized. Small polished diamond-cut chamfer on the front edge
+- **Click wheel**: flush with the front face, printed in a colour close to the body
+- **Display window**: 0.5–0.7 mm glass, glued flush into a recess in the front face
+- **Antenna cap**: 3D printed, matte black
+- **Back engraving**: laser, logo + one small line of text
+- **Extras**: lanyard hole in a bottom corner. No charge LED (none on the board): charging is shown on the display
+- **Back engraving content**: Vanadium logo (with its wavy grooves) + the line `made by "humans"`
+
 ### Final variants (2026-10-22)
 
 | | **A, compact** | **B, thin** |
