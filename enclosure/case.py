@@ -451,6 +451,9 @@ def main():
         name = slug(label)
         export_gltf(shape, str(OUT / f"case_{name}.glb"), binary=True,
                     linear_deflection=0.01, angular_deflection=0.1)
+        # meshes for the Blender renders (STL: no node transforms, unlike the glb)
+        (OUT / "mesh").mkdir(exist_ok=True)
+        export_stl(shape, OUT / "mesh" / f"{name}.stl", tolerance=0.002, angular_tolerance=0.05)
         if name in ("body", "plate"):
             export_step(shape, OUT / f"case_{name}.step")      # CNC
         if name in ("cap", "wheel", "button", "key"):

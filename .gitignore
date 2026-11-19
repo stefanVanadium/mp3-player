@@ -22,3 +22,7 @@ enclosure/out/*.glb
 enclosure/out/pcb.step
 enclosure/out/case_assembly.step
 enclosure/out/mp3_player_full.step
+enclosure/out/mesh/
+enclosure/out/render/carousel/
+enclosure/out/render/
+enclosure/out/screen.png
