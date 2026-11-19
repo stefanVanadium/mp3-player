@@ -166,7 +166,33 @@ Order: JLC does the reflow, then at home first USB-C and microSD (the fine ones)
 Tools: iron with a fine tip (e.g. Pinecil/TS101), gel flux (no-clean), wick, 0.3-0.5mm solder, magnifier, multimeter.
 Check USB-C for continuity (VBUS-GND and D+/D-) **before** plugging it in.
 
-## Cost estimate (2026-10-20, to re-check when ordering)
+## Cost estimate (2026-11-19, JLC prices and stock checked today)
+
+Fab files exported from commit `d9e6a6e` into `fab/` (not in git): Gerbers + PTH/NPTH drill (`mp3_player_gerbers_d9e6a6e.zip`), `mp3_player_bom_jlc.csv` + `mp3_player_cpl_jlc.csv` (98 parts, 37 lines), `mp3_player_bom_hand_soldered.csv`.
+
+**To re-check when ordering** (Stefan, 2026-11-19: no part swaps until he actually orders; stock changes, decide then):
+- **PCM5122PW (C1540085) and PCM5122PWR (C962071): 0 in stock** at JLC (backorder). Drop-in option: **PCM5121PW C1540083** (34 in stock, $2.59), same datasheet (SLAS763), same TSSOP-28 pinout and register map, 106 dB instead of 112 dB dynamic range. Other same-pinout parts: PCM5142PWR C180370 (25, $6.22), PCM5141PWR C2869002 (10, $5.77)
+- **R15 511k (C163461): 1 in stock, min. order 4749.** Replacement: 0402WGF5113TCE **C64042** (150k in stock, extended)
+
+**Assembly is double-sided** (ESP32, BQ25180, TPS63802, LM27762, MAX17048 and many passives on the back; CP2102N, PCM5122, OPA1622 on the front), so it needs Standard PCBA, not Economic.
+
+2 assembled boards, 5 PCBs, with PCM5121 + C64042:
+| What | ~$ |
+|---|---|
+| JLC-placed parts, 2 boards | 42.0 |
+| hand-soldered parts (LCSC, same cart), 2 boards | 3.6 |
+| Standard PCBA setup, double-sided | 51.1 |
+| stencil, double-sided | 16.4 |
+| extended feeder loading (20 types x $1.53, unit unclear on the JLC page) | 30.6 |
+| SMT joints (~600 per board) | 1.9 |
+| 4-layer PCB x5 (from 2026-10-20, not re-checked) | 8 |
+| shipping to RO (from 2026-10-20) | 12 |
+| VAT 21% | 34.8 |
+| **total** | **~200 (~1000 lei)** |
+
+Extended types: 8 ICs plus 12 passives (C2987940 2.2nF C0G, C97009 inductor, and ten 0.1% RT0402 thin-film resistors). The 10k pull-ups (C190095, x20) and 100k (C852472, x6) could go to basic 1% parts (C25744 / C25741) to cut the extended count.
+
+## Cost estimate (2026-10-20, superseded)
 
 Parts per board (price at 1-9 pcs): ~$23
 - ICs: ~$21 (ESP32 5.6, PCM5122 4.1, OPA1622 3.0, MAX17048 2.15, CP2102N 2.0, BQ25180 1.76, TPS63802+inductor 1.1, LM27762 0.96, rest <1)

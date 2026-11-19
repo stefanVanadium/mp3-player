@@ -15,3 +15,5 @@ fp-info-cache
 # Enclosure (build123d venv)
 enclosure/.venv/
 __pycache__/
+# Fabrication exports (regenerated from a commit)
+fab/
