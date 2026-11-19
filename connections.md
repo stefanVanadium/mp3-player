@@ -22,7 +22,7 @@ Issues found and how they were resolved:
 | 8 | all 21 GPIOs are used | info | for more I/O add an I2C expander (e.g. TCA9534) |
 | 9 | ESP32-PICO-MINI-02 is marked NRND | info | still stocked at JLC, fine for this project |
 | 10 | display: ST7567 pinout varies by seller | decision | dropped. **Sharp LS013B7DH03 only** (same display across projects, see `../PROJECTS.md`) |
-| 11 | enclosure B (8.4 mm thick) needs low parts and centred ports (2026-10-22) | decision | sinking USB-C and jack, JST SH battery connector, 0.75 mm wheel switches, side power switch. See 4.1, 4.4, 4.5, 4.8 |
+| 11 | enclosure B (8.4 mm thick then, 8.0 mm since 2026-11-19) needs low parts and centred ports (2026-10-22) | decision | sinking USB-C and jack, JST SH battery connector, 0.75 mm wheel switches, side power switch. See 4.1, 4.4, 4.5, 4.8 |
 
 Not verifiable from the datasheet, check with a multimeter on the real part:
 - **PJ-342C CB**: from the drawing, pin 6 (HP-DET) is a normally open contact that touches the plug tip (L) when a plug is in. Check this, and that pin 5 (reserved) is unconnected

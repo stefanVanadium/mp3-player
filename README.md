@@ -2,7 +2,7 @@
 
 ![KiCad](https://img.shields.io/badge/KiCad-10-314CB0?logo=kicad&logoColor=white)
 ![ESP32](https://img.shields.io/badge/ESP32-PICO--MINI--02-E7352C?logo=espressif&logoColor=white)
-![Status](https://img.shields.io/badge/status-schematic%20done-yellow)
+![Status](https://img.shields.io/badge/status-PCB%20routed-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A modern hi-fi music player with a retro look. It plays FLAC/WAV through a proper DAC and headphone amp, streams to Bluetooth headphones, and has a reflective display you can read in direct sunlight.
@@ -11,6 +11,16 @@ A modern hi-fi music player with a retro look. It plays FLAC/WAV through a prope
   <img src="enclosure/out/hero_B.png" alt="Concept render of the enclosure, front and back" width="520">
 </p>
 <p align="center"><sub>First concept render of the enclosure (41 × 102 × 8 mm, anodized aluminium with a printed click wheel and antenna cap). Not final.</sub></p>
+
+## PCB
+
+<p align="center">
+  <img src="images/pcb_iso.png" alt="3D render of the routed PCB" width="560">
+</p>
+<p align="center">
+  <img src="images/pcb_front_back.png" alt="PCB front and back" width="420">
+</p>
+<p align="center"><sub>4-layer, 38.2 × 99.6 × 0.8 mm. Front: click wheel switches, display connector, DAC, headphone amp, USB-UART. Back: ESP32 module and microSD at the top, battery in the middle, charger, 3.3 V buck-boost and ± rails at the bottom.</sub></p>
 
 ## Highlights
 
@@ -51,7 +61,7 @@ Full architecture, BOM with JLCPCB stock/prices, who-solders-what, cost estimate
 | Wireless | Bluetooth A2DP (SBC) |
 | Board | 4-layer, 0.8 mm, assembled by JLCPCB + hand-soldered connectors |
 | Case | CNC aluminium, anodized (titanium for v2), 41 × 102 × 8 mm |
-| Prototype cost | ~$125 for 2 boards |
+| Prototype cost | ~$200 for 2 assembled boards (double-sided JLC assembly, checked 2026-11-19) |
 
 ## Repo layout
 
@@ -63,6 +73,7 @@ datasheets/           datasheets for every chosen part
 connections.md        pin-by-pin schematic connections and datasheet review
 code.md               firmware notes
 enclosure/            parametric case model (build123d), STEP + renders
+images/               PCB renders
 mp3_player.tex/.pdf   printable writeup
 ```
 
@@ -72,7 +83,9 @@ mp3_player.tex/.pdf   printable writeup
 - [x] KiCad libraries + datasheets
 - [x] Schematic (5 sheets: USB, power, ESP32, audio, I/O)
 - [x] Case concept (parametric model, two variants)
-- [ ] PCB
+- [x] PCB: placement, routing (4 layers, DRC clean), silkscreen
+- [x] Fab files (Gerbers, drill, JLC BOM + CPL)
+- [ ] Order (re-check stock first)
 - [ ] Firmware (`arduino-audio-tools` + `ESP32-A2DP`)
 - [ ] Final case model + photoreal render
 

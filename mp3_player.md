@@ -94,7 +94,7 @@ Simpler/cheaper fallback: PCM5102A (C107671, 3254 pcs, $1.45) instead of PCM5122
 | microSD | push-push (自弹式) | C91145 (TF-01A) | 181k | $0.19 | check footprint + card detect pin |
 | display | **Sharp LS013B7DH03** 1.28" 128x128 memory LCD | 0 stock at JLC | — | ~$10 | DigiKey/Mouser. 10-pin FPC 0.5mm. Chosen 2026-10-21 over ST7567: known pinout, nicer, and the same display is reused across projects (see ../PROJECTS.md) |
 | FPC | 0.5mm, 10P, bottom contact, 0.9 mm tall | Hirose FH19C-10S-0.5SH(10), C598004 (FH12 was 2.0 mm, too tall) | 3984 | $0.29 | |
-| buttons | side tact switch / small SMD | to choose | — | — | play/pause, next, prev, vol+, vol- (+ power = BQ25180 button) |
+| buttons | click wheel: TS-1187B-B (x5); power: EVQP7J01P side push; EN/BOOT: TS-1088 | C500066 / C2828254 / C720477 | — | — | play/pause, next, prev, vol+, vol- (+ power = BQ25180 button) |
 
 **Display notes (LS013B7DH03):**
 - SPI up to 1 MHz, SCS is active HIGH
@@ -132,7 +132,7 @@ quality upgrade (thin film instead of basic 10K/100K/470/20K/150K) costs ~$15 ex
 Rule: JLC places only what can't be hand-soldered (QFN/DFN/BGA/LGA, no visible pins).
 Parts with visible pins are bought from LCSC in the same cart (same parcel) and soldered at home → no $3/type fee.
 
-### JLC (assembly) — 9 extended types (~$27 in fees)
+### JLC (assembly) — double-sided, Standard PCBA; 20 extended types (see Cost estimate)
 | Part | LCSC | Package | Why JLC |
 |---|---|---|---|
 | ESP32-PICO-MINI-02 | C2980306 / C3013939 | LGA (pads underneath) | impossible by hand |
@@ -141,10 +141,10 @@ Parts with visible pins are bought from LCSC in the same cart (same parcel) and 
 | LM27762 | C473398 | WSON-12 2x3 | thermal pad underneath |
 | BQ25180 | C3682423 | DSBGA-8 | BGA |
 | TPS63802 | C2845237 | VSON-10 2x3 | no pins |
-| TPS63802 inductor (0.47uH) | to choose | 2016/2520 | must sit next to the IC, reflowed |
+| TPS63802 inductor (0.47uH) | C97009 WPN201610HR47MT | 2016 | must sit next to the IC, reflowed |
 | MAX17048 | C2682616 | DFN-8 2x2 | no pins |
 | CP2102N-A02-GQFN24R | C969151 | QFN-24 4x4 | no pins |
-| resistors, capacitors, 2 auto-reset transistors, B5819W Schottky (C8598, GPIO2→GPIO0 boot fix) | **basic** list only | 0402/0603, SOT-23, SOD-123 | basic = no fee |
+| resistors, capacitors, 2 auto-reset transistors, B5819W Schottky (C8598, GPIO2→GPIO0 boot fix) | basic where possible (12 passives are extended, see Cost estimate) | 0402/0603/0805, SOT-23, SOD-123 | basic = no fee |
 
 ### Me (iron + flux) — 0 fees
 | Part | LCSC | Package | Difficulty |
@@ -152,7 +152,7 @@ Parts with visible pins are bought from LCSC in the same cart (same parcel) and 
 | click wheel buttons (x5) | C500066 TS-1187B-B, 0.75 mm | SMD | easy |
 | power button, side push | C2828254 EVQP7J01P, 1.35 mm | SMD | medium (small pads at the board edge) |
 | boot + reset buttons | C720477 TS-1088 | SMD | easy |
-| 3.5mm jack with detect | to choose (PJ-320/PJ-342) | SMD/THT | easy |
+| 3.5mm jack with detect | C49287245 PJ-342C CB (sinking) | SMD | easy |
 | LP5907-3.3 | C80670 | SOT-23-5 | easy |
 | USBLC6-2SC6 | C7519 | SOT-23-6 | easy |
 | microSD push-push | C91145 (TF-01A) | SMD | medium (pins under the metal shell, lots of flux) |
@@ -223,11 +223,11 @@ Extra (per unit): battery ~20-30 lei, LS013B7DH03 ~60-70 lei, microSD ~30 lei.
 - **music on the card**: the classic ESP32 has no native USB. Copy to microSD on a PC or upload over WiFi (web page served by the player)
 - **speakers (v2)**: WM8960 or a small class-D (MAX98357A on I2S) + phone speakers
 
-## Status (2026-10-21)
+## Status (2026-11-19)
 
 Done:
 - [x] architecture + BOM chosen, JLC stock/prices checked
-- [x] JLC vs "I solder" list, cost estimated ~$125
+- [x] JLC vs "I solder" list, cost estimated ~$125 (2026-10-20), re-estimated ~$200 on 2026-11-19 (double-sided Standard PCBA)
 - [x] KiCad libraries installed (`lib/`, symbol + footprint + 3D per part)
 - [x] datasheets in `datasheets/` (all parts, MAX17048 included)
 - [x] pins verified against datasheets, full connection list in **[connections.md](connections.md)**
@@ -241,13 +241,13 @@ Next:
 - [ ] choose the exact LP403759 cell (drawing with PCM length, JST SH lead)
 - [x] Board Setup (2026-10-22): 4 layers (F.Cu signal, In1 GND, In2 GND2, B.Cu signal), 0.8 mm, ENIG. JLC-safe rules: 0.15 mm track/clearance, via 0.45/0.2 (JLC's smallest via with no surcharge, checked 2026-11-19; was 0.6/0.3), hole-to-hole 0.25 (JLC 0.2), edge 0.3, silk 0.15 mm / 1.0 mm text. Net class `Power` (0.3 mm, was 0.4) on VBUS, VBAT, VSYS, +3V3, +3V3_A, ±3V0_AMP
 - [x] board outline on Edge.Cuts from `enclosure/out/pcb_outline_B.dxf` (38.2 × 99.6 mm, R3.6), board at x 130–168.2, y 55.4–155 (centre line x 149.1), drill/place and grid origin at the bottom-left corner (130, 155). USB1 at (138.9, 150.35), CN1 at (159.3, 147.89), i.e. ±10.2 mm from the centre line. Their cutouts are drawn on the board outline (removed from the footprints); CN1 pads trimmed to 1.2 × 1.465 mm for 0.2 mm to the slot; `mp3_player.kicad_dru` allows 0.2 mm edge clearance for USB1/CN1 pads only, 0.3 mm elsewhere. TF-01A peg holes made non-plated
-- [ ] PCB placement. Front: display, wheel, small parts only (1.6 mm front stack). Back: everything tall; the battery covers the middle (board y ~74–137), so back parts go in the top and bottom strips. Done so far (all on the back): USB1 (138.9, 150.35), CN1 (159.3, 147.89), U7 ESP32 (157.6, 66.5) antenna at the top edge, Card3 microSD (139.9, 65.5) 90°, SW2 power (166.6, 68.6) actuator out of the right edge. Rule area "Antenna keepout" on all copper layers, x 148–168.2, y 55.4–61.0. Chips (2026-10-23), front stays outside the wheel opening (R 15.5 around 149.1, 126.85) and the display (y 67–97.3):
+- [x] PCB placement. Front: display, wheel, small parts only (1.4 mm free above the PCB at 8.0 mm thickness, 1.0 mm under the wheel ring). Back: everything tall; the battery covers the middle (board y ~74–137), so back parts go in the top and bottom strips. Done so far (all on the back): USB1 (138.9, 150.35), CN1 (159.3, 147.89), U7 ESP32 (157.6, 66.5) antenna at the top edge, Card3 microSD (139.9, 65.5) 90°, SW2 power (166.6, 68.6) actuator out of the right edge. Rule area "Antenna keepout" on all copper layers, x 148–168.2, y 55.4–61.0. Chips (2026-10-23), front stays outside the wheel opening (R 15.5 around 149.1, 126.85) and the display (y 67–97.3):
   - power corner, back, bottom-left between the battery end (y ~136.2) and USB1: BT1 (133.2, 139.2) 0°, cable entry toward the battery; U2 BQ25180 (137.2, 140.2); U5 MAX17048 (133.2, 143.8); D1 USBLC6 (138.9, 145.4) right above the USB data pads; U4 TPS63802 (141.0, 141.0) with L1 (143.72, 141.0) on its switch pins. Assumes the cell leads come out at the bottom end
   - front, bottom-left under the wheel: U1 CP2102N (137.5, 143.0) 90°, USB pins toward the connector, UART pins toward Q1 (132.4, 140.4) and Q2 (132.4, 144.6)
   - DAC, front, middle band right (~40 mm from L1): U9 PCM5122 (161.2, 104.5), I2S pins up, analog outputs down; U6 LP5907 (165.2, 113.2) 270°, moved right on 2026-10-24 to free the charge-pump pins
   - amp at the jack: U8 OPA1622 front (161.5, 139.9) 180° (moved up 0.6 mm on 2026-10-24 so the EN trace fits above the jack cutout), HP_R/HP_L outputs facing their CN1 pads; U3 LM27762 back (160.5, 138.6) above the jack
   - D2 boot diode, front, top strip (143.0, 63.8)
-  - click wheel, front, centre (149.1, 126.85), contacts on the ring mid-radius 10.375 mm: SW4 PLAY centre, SW5 VOL+ top, SW6 VOL− bottom, SW8 PREV left, SW7 NEXT right (TS-1187B-B is 0.75 mm tall, 1.4 mm free under the ring)
+  - click wheel, front, centre (149.1, 126.85), contacts on the ring mid-radius 10.375 mm: SW4 PLAY centre, SW5 VOL+ top, SW6 VOL− bottom, SW8 PREV left, SW7 NEXT right (TS-1187B-B is 0.75 mm tall, 1.0 mm free under the ring at 8.0 mm thickness; was 1.4 mm at 8.4 mm)
   - SW1 EN (147.0, 138.6) and SW3 BOOT (153.0, 138.6) on the back in the bottom strip (4.3 mm free under the PCB for the 2.0 mm switches); reachable only with the battery out, auto-reset covers normal flashing
   - FPC4 Hirose FH19C-10S-0.5SH(10) (C598004, 0.9 mm, bottom contact, 0.3 mm FPC) on the front at (149.1, 110.1) 180°, opening toward the display. FH12 (2.0 mm) fit neither side. The LCD tail (13.63 mm past the glass at y 97.3, centred, contacts on the PCB side) lies flat into it; flex pin 1 and FPC4 pin 1 are both on the right
   - passives (2026-10-24), each next to the pin it serves, the non-GND pad facing that pin. DRC: 0 errors (silkscreen warnings left for the cleanup):
@@ -257,11 +257,14 @@ Next:
     - back, top strip: C22 + C23 at the ESP32 3V3 pin, C40 + C39 at the microSD VDD pin, R40 (33 Ω) right under ESP32 pin 18 (source termination)
     - front: CP2102N decoupling + VBUS divider + RSTb right of U1, R5/R6 between U1 and Q1/Q2; PCM5122 caps on their pins (DVDD/LDOO above, CPVDD/CAPP-CAPM/VNEG/AVDD below); LP5907 caps around U6; OPA1622 supply caps above U8, RC input filter (R35/C24, R36/C25) beside its inputs, EN divider R38/R39 on the right; display caps + DISP pull-down left of FPC4
     - front pull-ups: right of the display for the right-column ESP32 pins (buttons, SD_DET, JACK_DET, EN), over the module for I2C/PWR_INT/AUDIO_EN/PLAY, over the card pins for SD D0–D3/CMD, R4 next to D2
-    - four 0402s (C25, C30, C37, R36) sit under the outer edge of the wheel ring (r 14.4–15.2 mm, 0.55 mm tall vs 1.4 mm free). No 0603/0805 under the ring
+    - four 0402s (C25, C30, C37, R36) sit under the outer edge of the wheel ring (r 14.4–15.2 mm, 0.55 mm tall vs 1.0 mm free). No 0603/0805 under the ring
     - routing note: U3 (back) sits right behind U8's exposed pad, so U8 thermal vias must avoid U3's pads; connect the −3V pad mostly on the front
   - **re-placement for routing (2026-11-19)**: the bottom-left power corner was too dense to route (BQ25180 0.4 mm DSBGA, TPS63802, CP2102N, USB-C and ESD in ~12 × 15 mm). Moved, keeping relative positions inside each block: TPS63802 block (U4, L1, C15–C17, R15–R17) on the back by (+7.5, +5.0) into the free strip between USB1 and CN1, U4 now at (148.5, 146.0); CP2102N block (U1, R7–R9, C2, C3, C5) on the front by (+9.5, +1.5), U1 at (147.0, 144.5). Small moves: D1 up to (138.9, 144.3) so A6/A7 get vias below it, C7 to (137.8, 141.6) to free the BQ25180 VSYS ball, R12 to (139.6, 140.0) 180°, R10/R13 to x 157.6 and C8 to (157.2, 141.7) for an AUDIO_EN escape at LM27762 pin 12, C30/C37 0.1 mm apart for the OPA1622 GND pin, C6 to (148.0, 148.3) under U1 pins 5/6
   - **routing done (2026-11-19, by Claude at Stefan's request)**: hand-routed TPS63802 loop (inductor nodes, VIN cap, VOUT caps, FB, all locked), USB-C D+/D− (B6/B7 straight to D1, A6/A7 through vias to the front, then to U1), CC1/CC2, BQ25180 ball escapes, LM27762 +3V0/AUDIO_EN; the rest with Freerouting 2.5.0 on Front, In2 and Back (In1 stays a solid GND plane). Afterwards: neckdowns widened to 0.15 mm, power tracks widened to 0.4 mm (0.3 mm where clearance did not allow), GND pours on Front, Back and In2 plus stitching vias. 1265 tracks, 143 vias. DRC: 0 errors, 0 unconnected; only silkscreen warnings left (31 edge, 157 over copper, 141 overlap). Seven small GND pads have a solid zone connection (one thermal spoke only otherwise): C1.1, BT1.2, C33.1, U3.1, R10.2, USB1.A1B12, C16.2
-  - next: silkscreen cleanup, review of the autorouted digital traces (In2 crosses under the battery area), then fabrication files
+- [x] **silkscreen cleanup** (2026-11-19, `d9e6a6e`): passive refs hidden on silk (kept on Fab), refs of ICs/connectors/buttons placed in free spots at 1.0 mm (USB1 and D1 have no room, hidden), 40 footprint silk segments over pads or past the edge removed. DRC: 0 errors, 0 unconnected, 10 `lib_footprint_mismatch` warnings from the trimmed silk. ERC 0
+- [x] **routing review** (2026-11-19): no fast digital net (I2S, SD, LCD SCK/MOSI, USB) or inductor node within 1 mm of DAC_L/R, AMP_INL/R, HP_L/R on the same or adjacent layer (closest: LCD_CS 0.76 mm from DAC_R on In2). OPA1622 EP (−3V) tied on the front. Longest nets (I2C ~130 mm, ESP_EN/BOOT ~110 mm, TS/MR ~100 mm) run corner to corner by placement, slow signals
+- [x] **fab files** exported from `d9e6a6e` into `fab/` (see Cost estimate)
+- [ ] order: re-check stock first (PCM5122 and R15 were out on 2026-11-19), check CPL rotations in the JLC viewer, decide whether hand-soldered pads keep stencil paste
 - [ ] check the real PJ-342C CB (HP-DET), TF-01A card detect and LS013 flex contact side against the footprints before ordering
 - [ ] firmware bring-up (see `code.md`)
 
