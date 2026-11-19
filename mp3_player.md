@@ -315,6 +315,16 @@ code.md
 - ESP-IDF or Arduino + `arduino-audio-tools` + `ESP32-A2DP` (pschatzmann): read SD → decode MP3/FLAC → I2S (jack) or A2DP (BT headphones)
 
 ## Tests
+Planned bring-up, in order (also in `mp3_player.tex`):
+1. Bare board: continuity VBUS–GND, VBAT–GND, D+/D− to the CP2102N, no shorts on any rail
+2. USB power without a battery: VSYS, 3.3V digital, 3.3V analog; ±3V with `AUDIO_EN` high
+3. Programming: auto-reset into download mode, eFuse, first flash
+4. Battery (safety): JST polarity checked against the cell's red wire, charge current 500 mA, charging stops at full, cell temperature stays near ambient while charging
+5. Ship mode: battery current in ship mode, wake from the button
+6. Fuel gauge: voltage and state of charge over I2C, cut-off at 3.4V
+7. Audio: sine at −4 dBFS into 32 Ω without clipping, noise floor with no signal, jack detect
+8. Storage and display: SD in 4-bit mode, card detect, display clear and VCOM
+9. Bluetooth A2DP to headphones; WiFi upload
 
 ## Resources
 - datasheets: `datasheets/` (all parts + ESP32 hardware design guidelines + LS013B7DH03)
