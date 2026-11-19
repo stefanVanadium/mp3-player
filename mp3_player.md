@@ -222,7 +222,7 @@ Next:
   - amp at the jack: U8 OPA1622 front (161.5, 139.9) 180° (moved up 0.6 mm on 2026-10-24 so the EN trace fits above the jack cutout), HP_R/HP_L outputs facing their CN1 pads; U3 LM27762 back (160.5, 138.6) above the jack
   - D2 boot diode, front, top strip (143.0, 63.8)
   - click wheel, front, centre (149.1, 126.85), contacts on the ring mid-radius 10.375 mm: SW4 PLAY centre, SW5 VOL+ top, SW6 VOL− bottom, SW8 PREV left, SW7 NEXT right (TS-1187B-B is 0.75 mm tall, 1.4 mm free under the ring)
-  - SW1 EN (147.0, 138.6) and SW3 BOOT (153.0, 138.6) on the back under the start of the ramp (~3.3 mm free for the 2.0 mm switches); reachable only with the battery out, auto-reset covers normal flashing
+  - SW1 EN (147.0, 138.6) and SW3 BOOT (153.0, 138.6) on the back in the bottom strip (4.3 mm free under the PCB for the 2.0 mm switches); reachable only with the battery out, auto-reset covers normal flashing
   - FPC4 Hirose FH19C-10S-0.5SH(10) (C598004, 0.9 mm, bottom contact, 0.3 mm FPC) on the front at (149.1, 110.1) 180°, opening toward the display. FH12 (2.0 mm) fit neither side. The LCD tail (13.63 mm past the glass at y 97.3, centred, contacts on the PCB side) lies flat into it; flex pin 1 and FPC4 pin 1 are both on the right
   - passives (2026-10-24), each next to the pin it serves, the non-GND pad facing that pin. DRC: 0 errors (silkscreen warnings left for the cleanup):
     - back, power corner: C9/C10/C7/R12 at BQ25180, C15 (VIN) / C16+C17 (VOUT) / R15+R16 (FB) / R17 (PG) at TPS63802, C18 at MAX17048, C4 + R1/R2 (CC) at USB1
@@ -246,8 +246,8 @@ Concept decided 2026-10-22. **Chosen: variant B, rounded corners** (A and the sh
 - **Click wheel**: mechanical, iPod mini style. A 3D printed ring rocking on 4 contacts (top VOL+, bottom VOL−, left PREV, right NEXT) plus a centre PLAY button. Contacts are **metal domes** (~0.4 mm, hand-applied), not 2 mm tactile switches, or the front stack grows by ~1.5 mm. No capacitive scrolling in v1 (needs a touch controller and free GPIOs)
 - **Antenna window**: a metal shell blocks BT/WiFi, so the **top end is a 3D printed plastic cap** (9 mm), with the ESP32 antenna right under it
 - **microSD**: stays inside (no slot in the shell, the card is changed with the shell open). Socket on the back, top-left, card enters from the left board edge
-- **Back ramp**: a wedge cut into the back, centred, running into the bottom edge (half the thickness deep at the edge). It starts where the battery ends, so it covers the bottom ~19 mm, not half the length. USB-C and jack sit in the two full-thickness pillars on either side
-- **Ports**: on the flat part of the bottom face, clear of the corner radius; plug axes centred in the thickness
+- **Back**: flat over the whole length. The back ramp of the first concept was dropped on 2026-11-19; it set none of the dimensions, so the size stays the same and the bottom strip gets the full 4.3 mm under the PCB (B)
+- **Ports**: on the flat part of the bottom face, clear of the corner radius. In B the plug axes are not centred (+0.2 mm): the PCB fixes their height and the thickness is set so the 6 mm jack hole keeps 0.3 mm of flat face before the 0.5 mm front edge rounding (2026-11-19)
 - **Display**: LS013B7DH03 behind a clear window (glass or acrylic) in the front face, on a spacer above the PCB
 - **Tools**: modelled in code with [build123d](https://github.com/gumyr/build123d), `enclosure/concept.py` (venv in `enclosure/.venv`). STEP + renders in `enclosure/out/`. View in FreeCAD. Renders: `.venv/bin/python render/compare.py out` (also `render.py`, `ends_ortho.py`; need `pyvista`)
 - **Renders**: `render/hero.py` makes the README image (`out/hero_B.png`). Later, once the PCB and the final model are done: a photoreal render (materials, lighting, depth of field), e.g. in Blender from the STEP
@@ -257,22 +257,22 @@ Concept decided 2026-10-22. **Chosen: variant B, rounded corners** (A and the sh
 
 | | **A, compact** | **B, thin** |
 |---|---|---|
-| Size (W × L × T) | **41 × 90.4 × 10.7 mm** | **41 × 102.4 × 8.4 mm** |
+| Size (W × L × T) | **41 × 90.4 × 10.7 mm** | **41 × 102.4 × 8.0 mm** (7.8 sharp) |
 | Battery | LiPo 503450, 1000 mAh (5 × 34 × 50, ~54 mm with PCM), behind the parts | LiPo LP403759, 1000 mAh (4 × 37 × 59, ~63 mm with PCM), next to the parts |
 | Layout on the back | battery over the middle, parts ≤ 1.5 mm under it | ESP32 + SD at the top, battery in the middle, power + audio at the bottom |
 | USB-C | TYPE-C-31-M-12 (C165948), top mount (current part) | **TYPE-C 16P CB0.8 073 (C2906289)**, sinking 0.8 mm, made for 0.8 mm boards, ~$0.10 |
 | Jack | PJ-342 (C668606), top mount (current part) | **PJ-342C CB (C49287245)**, sinking 1.25 mm, ~$0.27 |
-| Port centring | USB-C +0.5 / jack −0.5 mm from centre (the two parts differ in height) | both within 0.01 mm of centre |
-| Ramp width | ~8 mm (rounded corners), ~14 mm (sharp) | same |
+| Port centring | USB-C +0.5 / jack −0.5 mm from centre (the two parts differ in height) | not centred: USB-C +0.22 / jack +0.20 mm, set by the jack hole clearance |
+| Port position (X) | ±10.2 mm (rounded corners), ±13.2 mm (sharp) | same |
 
-Corner options for both: rounded (R5 plan view, 1 mm edges) or sharp (R0.6 / 0.3 mm edges). Sharp corners leave more room for the ports, so the ramp gets wider.
+Corner options for both: rounded (R5 plan view; 1 mm edges on A, 0.5 mm on B) or sharp (R0.6 / 0.3 mm edges). Sharp corners let the ports sit further out (±13.2 mm instead of ±10.2 mm).
 
 Trade-offs and notes:
-- **B could be 7.4 mm** with the ports ~0.4 mm above centre (`center_ports=False`). Centring them costs 1 mm
+- **B thickness**: the stack alone allows 7.4 mm, but then the 6 mm jack hole runs into the front edge. With centred ports and 1 mm edges it was 8.42 mm and the hole still touched both roundings (0.2 mm). Now 8.0 mm with 0.5 mm edges: 0.3 mm flat above the hole, 0.7 mm below. A 5 mm hole would allow ~7.5 mm but many headphone plugs have thicker collars
 - A sinking USB-C does **not** help A: it raises the port, and A's ports already sit high
 - **B needs schematic changes**: PJ-342C CB is a 4-pole (TRRS) jack with a different pinout (1 MIC, 2 GND, 3 AU-R, 4 AU-L, 5 reserved, 6 HP-DET), so the jack symbol, footprint and detect circuit change. Check how HP-DET switches before drawing it. Both sinking parts need a **board cutout** (Edge.Cuts in their footprints)
 - **Battery connector**: JST PH (5.5 mm tall) does not fit in B, so BT1 moves to JST SH (SM02B-SRSS-TB, ~2.9 mm)
-- **Power button**: right side, just under the cap (14.6 mm from the top end, near the top of the display). EVQP7J01P side-push switch on the **back** of the PCB at the right edge: hanging under the board, its actuator sits at z 4.33 vs. mid-thickness 4.21, so the opening is centred and the printed key hides the 0.1 mm. On the front it would be 2.3 mm off centre
+- **Power button**: right side, just under the cap (14.6 mm from the top end, near the top of the display). EVQP7J01P side-push switch on the **back** of the PCB at the right edge: hanging under the board, its actuator sits at z 4.33 vs. mid-thickness 4.0, so the opening is centred and the printed key hides the 0.3 mm. On the front it would be 2.3 mm off centre
 - **Display connector**: FH12 is 2.0 mm tall and does not fit on the front (~1.8 mm of room). Swapped for FH19C-10S (0.9 mm) on the front, just below the display; the flex lies flat, no fold
 - Catalogue cell sizes exclude the protection PCB and leads (+3–5 mm). Get the exact drawing of the chosen cell before fixing the board outline
 

@@ -13,8 +13,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from build123d import (
-    Axis, Box, Color, Compound, Cylinder, ExportDXF, Location, Plane, Polyline, Pos,
-    RectangleRounded, Rot, Unit, export_step, export_stl, extrude, fillet, make_face,
+    Axis, Box, Color, Compound, Cylinder, ExportDXF, Pos,
+    RectangleRounded, Rot, Unit, export_step, export_stl, fillet,
 )
 
 OUT = Path(__file__).parent / "out"
@@ -70,6 +70,7 @@ class Variant:
     edge_r: float = 1.0  # front/back edge rounding
     parts_h: float = 1.5  # tallest part between PCB and stacked battery
     center_ports: bool = True  # USB-C + jack balanced around mid-thickness
+    port_clear: float = 0.3  # min. flat face left between a port hole and the edge rounding
     usb: Port = USB_STD
     jack: Port = JACK_STD
 
@@ -90,10 +91,24 @@ class Variant:
         return z
 
     @property
+    def hole_top(self):
+        """Highest point of the USB-C and jack openings in the bottom face."""
+        return max(self.pcb_bot - self.usb.centre + USBC_HOLE[1] / 2,
+                   self.pcb_bot - self.jack.centre + JACK_HOLE_D / 2)
+
+    @property
+    def hole_bot(self):
+        return min(self.pcb_bot - self.usb.centre - USBC_HOLE[1] / 2,
+                   self.pcb_bot - self.jack.centre - JACK_HOLE_D / 2)
+
+    @property
     def thickness(self):
         if self.center_ports:
             return round(2 * (self.pcb_bot - self.port_drop), 2)
-        return round(self.pcb_bot + PCB_T + FRONT_STACK, 2)
+        # Ports stay where the PCB puts them; the front face goes only as low as
+        # the stack allows and the holes stay clear of the front edge rounding
+        return round(max(self.pcb_bot + PCB_T + FRONT_STACK,
+                         self.hole_top + self.edge_r + self.port_clear), 2)
 
     @property
     def length(self):
@@ -103,10 +118,11 @@ class Variant:
 
 VARIANTS = [
     Variant("A", 41.0, (34.0, 54.0, 5.0), True, 17.0, 17.0),
-    Variant("B", 41.0, (37.0, 63.0, 4.0), False, 18.0, 19.0, usb=USB_SINK, jack=JACK_SINK),
+    Variant("B", 41.0, (37.0, 63.0, 4.0), False, 18.0, 19.0, edge_r=0.5, center_ports=False,
+            usb=USB_SINK, jack=JACK_SINK),
     Variant("A_sharp", 41.0, (34.0, 54.0, 5.0), True, 17.0, 17.0, corner_r=0.6, edge_r=0.3),
     Variant("B_sharp", 41.0, (37.0, 63.0, 4.0), False, 18.0, 19.0, corner_r=0.6, edge_r=0.3,
-            usb=USB_SINK, jack=JACK_SINK),
+            center_ports=False, usb=USB_SINK, jack=JACK_SINK),
 ]
 
 
@@ -115,38 +131,23 @@ def round_z(shape, r):
     return fillet(shape.edges().filter_by(Axis.Z), r) if r > 0.05 else shape
 
 
-def wedge(width, length, depth, z0=0.0, overshoot=2.0):
-    """Ramp on the back: depth at y=0, zero at y=length, centred in X."""
-    pts = [(-overshoot, z0 - overshoot), (-overshoot, z0 + depth + depth / length * overshoot),
-           (length, z0), (length, z0 - overshoot)]
-    face = make_face(Polyline(*pts, close=True))
-    face = Plane.YZ * face  # local x -> Y, local y -> Z
-    return Pos(-width / 2, 0, 0) * extrude(face, width)
-
-
 def build(v: Variant):
     W, L, T = v.width, v.length, v.thickness
     pcb_bot = v.pcb_bot
     pcb_top = pcb_bot + PCB_T
-    # Ports sit on the flat part of the bottom face, clear of the corner radius;
-    # the ramp takes whatever width is left between the two pillars
+    # Ports sit on the flat part of the bottom face, clear of the corner radius
     port_half = max(USBC_HOLE[0], v.jack.w) / 2
     port_x = W / 2 - max(v.corner_r, WALL_SIDE + 0.8) - port_half - 0.5
-    ramp_w = 2 * (port_x - port_half - WALL_SIDE)
-    ramp_depth = T / 2
-    ramp_len = v.bottom_zone + WALL_END
 
     # Outer shape
     outer = Pos(0, L / 2, T / 2) * Box(W, L, T)
     outer = round_z(outer, v.corner_r)
     outer = fillet(outer.edges().filter_by(lambda e: e.length > 3 and not e.is_closed
                                            and abs(e.tangent_at(0).Z) < 0.01), v.edge_r)
-    outer -= wedge(ramp_w, ramp_len, ramp_depth)
 
     cavity = Pos(0, L / 2, (WALL_BACK + T - 0.8) / 2) * Box(
         W - 2 * WALL_SIDE, L - 2 * WALL_END, T - 0.8 - WALL_BACK)
     cavity = round_z(cavity, v.corner_r - WALL_SIDE)
-    cavity -= wedge(ramp_w + 2 * WALL_SIDE, ramp_len + 1.0, ramp_depth, z0=WALL_BACK)
     shell = outer - cavity
 
     # Front openings
@@ -156,7 +157,7 @@ def build(v: Variant):
     shell -= Pos(0, disp_cy, T - 0.4) * Box(DISPLAY[0] + 2, DISPLAY[1] + 2, 0.4)  # glass seat
     shell -= Pos(0, wheel_cy, T) * Cylinder(WHEEL_OD / 2 + 0.3, 2)
 
-    # Bottom ports in the two full-thickness pillars
+    # Bottom ports
     usb_z = pcb_bot - v.usb.centre
     jack_z = pcb_bot - v.jack.centre
     usb_cut = Pos(-port_x, 0, usb_z) * Rot(90, 0, 0) * Box(USBC_HOLE[0], USBC_HOLE[1], 6)
@@ -185,7 +186,6 @@ def build(v: Variant):
     inner_w, inner_l = W - 2 * WALL_SIDE - 0.4, L - 2 * WALL_END - 0.4
     pcb = Pos(0, L / 2, pcb_bot + PCB_T / 2) * Box(inner_w, inner_l, PCB_T)
     pcb = round_z(pcb, v.corner_r - WALL_SIDE - 0.2)
-    pcb -= wedge(ramp_w + 2 * WALL_SIDE + 1, ramp_len + 1.0, ramp_depth, z0=WALL_BACK)
     for x, port in ((-port_x, v.usb), (port_x, v.jack)):
         if port.sink:  # board cutout for a sinking connector
             pcb -= Pos(x, port.l / 2, pcb_bot) * Box(port.w + 0.2, port.l + 2, 4)
@@ -248,6 +248,11 @@ def export_outline(v: Variant):
     return w, l, r
 
 
+def W_port(v):
+    port_half = max(USBC_HOLE[0], v.jack.w) / 2
+    return v.width / 2 - max(v.corner_r, WALL_SIDE + 0.8) - port_half - 0.5
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     for v in VARIANTS:
@@ -260,7 +265,9 @@ def main():
         jack = v.pcb_bot - v.jack.centre - v.thickness / 2
         print(f"{v.name}: {v.width:g} x {v.length:g} x {v.thickness:g} mm, "
               f"USB-C {usb:+.2f} / jack {jack:+.2f} mm from centre "
-              f"({v.usb.part} + {v.jack.part}), battery {v.battery}")
+              f"({v.usb.part} + {v.jack.part}), battery {v.battery}, "
+              f"back clearance under the PCB {v.pcb_bot - WALL_BACK:.2f} mm, "
+              f"port x ±{W_port(v):.2f} mm")
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ A modern hi-fi music player with a retro look. It plays FLAC/WAV through a prope
 <p align="center">
   <img src="enclosure/out/hero_B.png" alt="Concept render of the enclosure, front and back" width="520">
 </p>
-<p align="center"><sub>First concept render of the enclosure (41 × 102 × 8.4 mm, anodized aluminium with a printed click wheel and antenna cap). Not final.</sub></p>
+<p align="center"><sub>First concept render of the enclosure (41 × 102 × 8 mm, anodized aluminium with a printed click wheel and antenna cap). Not final.</sub></p>
 
 ## Highlights
 
@@ -50,7 +50,7 @@ Full architecture, BOM with JLCPCB stock/prices, who-solders-what, cost estimate
 | Battery | LiPo pouch LP403759, 1000 mAh (4 mm thin) |
 | Wireless | Bluetooth A2DP (SBC) |
 | Board | 4-layer, 0.8 mm, assembled by JLCPCB + hand-soldered connectors |
-| Case | CNC aluminium, anodized (titanium for v2), 41 × 102 × 8.4 mm |
+| Case | CNC aluminium, anodized (titanium for v2), 41 × 102 × 8 mm |
 | Prototype cost | ~$125 for 2 boards |
 
 ## Repo layout
