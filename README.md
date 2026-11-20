@@ -87,7 +87,8 @@ mp3_player.kicad_*    KiCad 10 project
 lib/                  symbols, footprints, 3D models (generated from LCSC parts)
 datasheets/           datasheets for every chosen part
 connections.md        pin-by-pin schematic connections and datasheet review
-code.md               firmware notes
+code.md               firmware notes (hardware limits, first boot)
+firmware/             PlatformIO firmware: player + bring-up menu
 enclosure/            case model (build123d): case.py, check.py, full.py, Blender render scripts
 images/               PCB and product renders
 mp3_player.tex/.pdf   printable writeup
@@ -103,7 +104,7 @@ mp3_player.tex/.pdf   printable writeup
 - [x] PCB: placement, routing (4 layers, DRC clean), silkscreen
 - [x] Fab files (Gerbers, drill, JLC BOM + CPL)
 - [ ] Order (re-check stock first)
-- [ ] Firmware (`arduino-audio-tools` + `ESP32-A2DP`)
+- [ ] Firmware: draft in `firmware/` (`arduino-audio-tools` + `ESP32-A2DP`), compiles, not yet run on hardware
 
 ## License
 

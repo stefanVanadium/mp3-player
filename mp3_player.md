@@ -327,7 +327,7 @@ One sheet per block: `usb.kicad_sch` (USB-C, ESD, CP2102N, auto-reset), `power.k
 
 ## Software
 code.md
-- ESP-IDF or Arduino + `arduino-audio-tools` + `ESP32-A2DP` (pschatzmann): read SD → decode MP3/FLAC → I2S (jack) or A2DP (BT headphones)
+- PlatformIO + Arduino-ESP32 3.x + `arduino-audio-tools` + `ESP32-A2DP` (pschatzmann): read SD → decode MP3/FLAC/WAV → I2S (jack) or A2DP (BT headphones). Draft in [firmware/](firmware/README.md) (2026-11-20): compiles, with a bring-up menu (env `bringup`), not run on hardware yet
 
 ## Tests
 Planned bring-up, in order (also in `mp3_player.tex`):
